@@ -1,0 +1,331 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## 1. Brand Colors
+
+### Core Colors
+
+<Tabs>
+  <Tab title="Red">
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(90px, 1fr))',gap:'8px'}}>
+      <div><div style={{width:'100%',height:'64px',background:'#FEF1F3',borderRadius:'6px',border:'1px solid #eee'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>15 · #FEF1F3</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#FDE8EB',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>25 · #FDE8EB</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#FBD1D7',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>50 · #FBD1D7</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F9B3BC',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>100 · #F9B3BC</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F68D9A',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>200 · #F68D9A</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F36779',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>300 · #F36779</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F04158',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>400 · #F04158</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#ED1B36',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px',fontWeight:600}}>500 · #ED1B36</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#C5172D',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>600 · #C5172D</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#9E1224',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>700 · #9E1224</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#770E1B',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>800 · #770E1B</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#4F0912',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>900 · #4F0912</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#2F050B',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>950 · #2F050B</div></div>
+    </div>
+  </Tab>
+  <Tab title="Blue">
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(90px, 1fr))',gap:'8px'}}>
+      <div><div style={{width:'100%',height:'64px',background:'#F0F8FF',borderRadius:'6px',border:'1px solid #eee'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>15 · #F0F8FF</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#E6F3FE',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>25 · #E6F3FE</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#D3EAFE',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>50 · #D3EAFE</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#B6DCFE',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>100 · #B6DCFE</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#91CAFD',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>200 · #91CAFD</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#6CB9FC',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>300 · #6CB9FC</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#48A7FC',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>400 · #48A7FC</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#2396FB',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px',fontWeight:600}}>500 · #2396FB</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#1D7DD1',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>600 · #1D7DD1</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#1764A7',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>700 · #1764A7</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#124B7E',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>800 · #124B7E</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#0C3254',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>900 · #0C3254</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#071E32',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>950 · #071E32</div></div>
+    </div>
+  </Tab>
+  <Tab title="Green">
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(90px, 1fr))',gap:'8px'}}>
+      <div><div style={{width:'100%',height:'64px',background:'#F4FBF8',borderRadius:'6px',border:'1px solid #eee'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>15 · #F4FBF8</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#ECF8F3',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>25 · #ECF8F3</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#D1EEE2',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>50 · #D1EEE2</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#B3E2CF',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>100 · #B3E2CF</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#8DD3B6',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>200 · #8DD3B6</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#67C59E',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>300 · #67C59E</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#41B686',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>400 · #41B686</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#1BA86E',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px',fontWeight:600}}>500 · #1BA86E</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#178C5C',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>600 · #178C5C</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#127049',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>700 · #127049</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#0E5437',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>800 · #0E5437</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#093825',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>900 · #093825</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#052216',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>950 · #052216</div></div>
+    </div>
+  </Tab>
+  <Tab title="Cyan">
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(90px, 1fr))',gap:'8px'}}>
+      <div><div style={{width:'100%',height:'64px',background:'#F3FAFC',borderRadius:'6px',border:'1px solid #eee'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>15 · #F3FAFC</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#EBF7FA',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>25 · #EBF7FA</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#CCECF2',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>50 · #CCECF2</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#AAE0E9',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>100 · #AAE0E9</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#80D0DE',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>200 · #80D0DE</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#55C1D3',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>300 · #55C1D3</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#2BB1C8',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>400 · #2BB1C8</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#00A2BD',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px',fontWeight:600}}>500 · #00A2BD</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#00879D',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>600 · #00879D</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#006C7E',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>700 · #006C7E</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#00515F',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>800 · #00515F</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#00363F',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>900 · #00363F</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#002026',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>950 · #002026</div></div>
+    </div>
+  </Tab>
+  <Tab title="Yellow">
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(90px, 1fr))',gap:'8px'}}>
+      <div><div style={{width:'100%',height:'64px',background:'#FCFAF2',borderRadius:'6px',border:'1px solid #eee'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>15 · #FCFAF2</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#FBF7EA',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>25 · #FBF7EA</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F5ECCC',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>50 · #F5ECCC</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#EFDFAB',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>100 · #EFDFAB</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#E7CF80',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>200 · #E7CF80</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#DFBF56',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>300 · #DFBF56</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#D7AF2C',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>400 · #D7AF2C</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#CF9F02',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px',fontWeight:600}}>500 · #CF9F02</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#AC8402',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>600 · #AC8402</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#8A6A01',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>700 · #8A6A01</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#685001',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>800 · #685001</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#453501',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>900 · #453501</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#292000',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>950 · #292000</div></div>
+    </div>
+  </Tab>
+  <Tab title="Crimson">
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(90px, 1fr))',gap:'8px'}}>
+      <div><div style={{width:'100%',height:'64px',background:'#FDF2F4',borderRadius:'6px',border:'1px solid #eee'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>15 · #FDF2F4</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#FCE9ED',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>25 · #FCE9ED</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F8D0D8',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>50 · #F8D0D8</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F3B1BE',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>100 · #F3B1BE</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#ED899D',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>200 · #ED899D</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#E8627D',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>300 · #E8627D</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#E23B5D',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>400 · #E23B5D</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#DC143C',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px',fontWeight:600}}>500 · #DC143C</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#B71132',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>600 · #B71132</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#930D28',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>700 · #930D28</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#6E0A1E',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>800 · #6E0A1E</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#490714',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>900 · #490714</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#2C040C',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>950 · #2C040C</div></div>
+    </div>
+  </Tab>
+  <Tab title="Cardbox">
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(90px, 1fr))',gap:'8px'}}>
+      <div><div style={{width:'100%',height:'64px',background:'#FAF8F4',borderRadius:'6px',border:'1px solid #eee'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>15 · #FAF8F4</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F7F3ED',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>25 · #F7F3ED</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F1E8DE',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>50 · #F1E8DE</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#E7D8C9',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>100 · #E7D8C9</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#DBC5AD',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>200 · #DBC5AD</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#D0B292',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>300 · #D0B292</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#C49E77',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>400 · #C49E77</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#B88B5C',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px',fontWeight:600}}>500 · #B88B5C</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#99744D',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>600 · #99744D</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#7B5D3D',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>700 · #7B5D3D</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#5C462E',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>800 · #5C462E</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#3D2E1F',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>900 · #3D2E1F</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#292000',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>950 · #292000</div></div>
+    </div>
+  </Tab>
+  <Tab title="Orange">
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(90px, 1fr))',gap:'8px'}}>
+      <div><div style={{width:'100%',height:'64px',background:'#FDF5F1',borderRadius:'6px',border:'1px solid #eee'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>15 · #FDF5F1</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#FCEFE8',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>25 · #FCEFE8</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#FAE3D7',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>50 · #FAE3D7</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F7D0BC',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>100 · #F7D0BC</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F3B99B',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>200 · #F3B99B</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#EFA27A',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>300 · #EFA27A</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#EB8A58',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>400 · #EB8A58</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#E77337',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px',fontWeight:600}}>500 · #E77337</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#C0602E',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>600 · #C0602E</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#9A4D25',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>700 · #9A4D25</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#743A1C',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>800 · #743A1C</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#4D2612',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>900 · #4D2612</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#2E170B',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>950 · #2E170B</div></div>
+    </div>
+  </Tab>
+  <Tab title="Purple">
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(90px, 1fr))',gap:'8px'}}>
+      <div><div style={{width:'100%',height:'64px',background:'#F6F1FE',borderRadius:'6px',border:'1px solid #eee'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>15 · #F6F1FE</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F0E8FD',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>25 · #F0E8FD</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#E5D8FB',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>50 · #E5D8FB</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#D3BDF9',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>100 · #D3BDF9</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#BD9CF6',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>200 · #BD9CF6</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#A87CF3',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>300 · #A87CF3</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#925BF0',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>400 · #925BF0</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#7C3AED',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px',fontWeight:600}}>500 · #7C3AED</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#6730C5',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>600 · #6730C5</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#53279E',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>700 · #53279E</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#3E1D77',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>800 · #3E1D77</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#29134F',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>900 · #29134F</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#190C2F',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>950 · #190C2F</div></div>
+    </div>
+  </Tab>
+  <Tab title="Pink">
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(90px, 1fr))',gap:'8px'}}>
+      <div><div style={{width:'100%',height:'64px',background:'#FDF2F7',borderRadius:'6px',border:'1px solid #eee'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>15 · #FDF2F7</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F9DCE9',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>25 · #F9DCE9</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F9DCE9',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>50 · #F9DCE9</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F5C5DB',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>100 · #F5C5DB</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F0A8C8',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>200 · #F0A8C8</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#EC8CB6',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>300 · #EC8CB6</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#E76FA4',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>400 · #E76FA4</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#E25292',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px',fontWeight:600}}>500 · #E25292</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#BC447A',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>600 · #BC447A</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#973761',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>700 · #973761</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#712949',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>800 · #712949</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#4B1B31',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>900 · #4B1B31</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#2D101D',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>950 · #2D101D</div></div>
+    </div>
+  </Tab>
+</Tabs>
+
+### Neutral Colors
+
+<Tabs>
+  <Tab title="Black">
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(90px, 1fr))',gap:'8px'}}>
+      <div><div style={{width:'100%',height:'64px',background:'#454545',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>25 · #454545</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#404040',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>50 · #404040</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#3B3B3B',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>100 · #3B3B3B</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#333333',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>150 · #333333</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#2B2B2B',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>200 · #2B2B2B</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#262626',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>250 · #262626</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#212121',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>300 · #212121</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#1A1A1A',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>350 · #1A1A1A</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#121212',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>400 · #121212</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#0D0D0D',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>450 · #0D0D0D</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#000000',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px',fontWeight:600}}>500 · #000000</div></div>
+    </div>
+  </Tab>
+  <Tab title="White">
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(90px, 1fr))',gap:'8px'}}>
+      <div><div style={{width:'100%',height:'64px',background:'#BFBFBF',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>25 · #BFBFBF</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#C4C4C4',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>50 · #C4C4C4</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#CCCCCC',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>100 · #CCCCCC</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#D4D4D4',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>150 · #D4D4D4</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#D9D9D9',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>200 · #D9D9D9</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#DEDEDE',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>250 · #DEDEDE</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#E6E6E6',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>300 · #E6E6E6</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#EDEDED',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>350 · #EDEDED</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F2F2F2',borderRadius:'6px',border:'1px solid #eee'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>400 · #F2F2F2</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#F7F7F7',borderRadius:'6px',border:'1px solid #eee'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>450 · #F7F7F7</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#FFFFFF',borderRadius:'6px',border:'1px solid #ddd'}} /><div style={{fontSize:'11px',marginTop:'4px',fontWeight:600}}>500 · #FFFFFF</div></div>
+    </div>
+  </Tab>
+  <Tab title="Grey">
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(90px, 1fr))',gap:'8px'}}>
+      <div><div style={{width:'100%',height:'64px',background:'#E6E5E5',borderRadius:'6px',border:'1px solid #ddd'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>25 · #E6E5E5</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#D9D8D8',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>50 · #D9D8D8</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#CDCBCB',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>100 · #CDCBCB</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#C0BFBF',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>150 · #C0BFBF</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#B3B2B2',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>200 · #B3B2B2</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#A6A5A5',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>250 · #A6A5A5</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#999999',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>300 · #999999</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#8C8C8C',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>350 · #8C8C8C</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#808080',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>400 · #808080</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#737373',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>450 · #737373</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#666666',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px',fontWeight:600}}>500 · #666666</div></div>
+    </div>
+  </Tab>
+  <Tab title="Charcoal">
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(90px, 1fr))',gap:'8px'}}>
+      <div><div style={{width:'100%',height:'64px',background:'#C2C6D6',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>25 · #C2C6D6</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#B2B8CC',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>50 · #B2B8CC</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#A3AAC2',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>100 · #A3AAC2</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#949CB8',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>150 · #949CB8</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#848EAE',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>200 · #848EAE</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#7580A3',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>250 · #7580A3</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#667199',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>300 · #667199</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#5C668A',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>350 · #5C668A</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#515B7B',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>400 · #515B7B</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#474F6B',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px'}}>450 · #474F6B</div></div>
+      <div><div style={{width:'100%',height:'64px',background:'#3D445C',borderRadius:'6px'}} /><div style={{fontSize:'11px',marginTop:'4px',fontWeight:600}}>500 · #3D445C</div></div>
+    </div>
+  </Tab>
+</Tabs>
+
+### Alpha Colors
+
+<div style={{display:'grid',gridTemplateColumns:'repeat(3, 1fr)',gap:'16px',marginBottom:'24px'}}>
+  <div>
+    <div style={{fontSize:'13px',fontWeight:600,marginBottom:'6px'}}>Alpha Black</div>
+    <div style={{display:'flex',gap:'4px'}}>
+      <div style={{flex:1,height:'48px',background:'rgba(0,0,0,0.05)',borderRadius:'4px',border:'1px solid #eee'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(0,0,0,0.10)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(0,0,0,0.20)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(0,0,0,0.40)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(0,0,0,0.60)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(0,0,0,0.80)',borderRadius:'4px'}} />
+    </div>
+    <div style={{display:'flex',gap:'4px',fontSize:'9px',color:'#888',marginTop:'2px'}}><div style={{flex:1,textAlign:'center'}}>5%</div><div style={{flex:1,textAlign:'center'}}>10%</div><div style={{flex:1,textAlign:'center'}}>20%</div><div style={{flex:1,textAlign:'center'}}>40%</div><div style={{flex:1,textAlign:'center'}}>60%</div><div style={{flex:1,textAlign:'center'}}>80%</div></div>
+  </div>
+  <div>
+    <div style={{fontSize:'13px',fontWeight:600,marginBottom:'6px'}}>Alpha White</div>
+    <div style={{display:'flex',gap:'4px'}}>
+      <div style={{flex:1,height:'48px',background:'rgba(255,255,255,0.05)',borderRadius:'4px',border:'1px solid #ccc'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(255,255,255,0.10)',borderRadius:'4px',border:'1px solid #ccc'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(255,255,255,0.20)',borderRadius:'4px',border:'1px solid #ccc'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(255,255,255,0.40)',borderRadius:'4px',border:'1px solid #ccc'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(255,255,255,0.60)',borderRadius:'4px',border:'1px solid #ccc'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(255,255,255,0.80)',borderRadius:'4px',border:'1px solid #ccc'}} />
+    </div>
+    <div style={{display:'flex',gap:'4px',fontSize:'9px',color:'#888',marginTop:'2px'}}><div style={{flex:1,textAlign:'center'}}>5%</div><div style={{flex:1,textAlign:'center'}}>10%</div><div style={{flex:1,textAlign:'center'}}>20%</div><div style={{flex:1,textAlign:'center'}}>40%</div><div style={{flex:1,textAlign:'center'}}>60%</div><div style={{flex:1,textAlign:'center'}}>80%</div></div>
+  </div>
+  <div>
+    <div style={{fontSize:'13px',fontWeight:600,marginBottom:'6px'}}>Alpha Red</div>
+    <div style={{display:'flex',gap:'4px'}}>
+      <div style={{flex:1,height:'48px',background:'rgba(237,27,54,0.05)',borderRadius:'4px',border:'1px solid #eee'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(237,27,54,0.10)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(237,27,54,0.20)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(237,27,54,0.40)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(237,27,54,0.60)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(237,27,54,0.80)',borderRadius:'4px'}} />
+    </div>
+    <div style={{display:'flex',gap:'4px',fontSize:'9px',color:'#888',marginTop:'2px'}}><div style={{flex:1,textAlign:'center'}}>5%</div><div style={{flex:1,textAlign:'center'}}>10%</div><div style={{flex:1,textAlign:'center'}}>20%</div><div style={{flex:1,textAlign:'center'}}>40%</div><div style={{flex:1,textAlign:'center'}}>60%</div><div style={{flex:1,textAlign:'center'}}>80%</div></div>
+  </div>
+  <div>
+    <div style={{fontSize:'13px',fontWeight:600,marginBottom:'6px'}}>Alpha Green</div>
+    <div style={{display:'flex',gap:'4px'}}>
+      <div style={{flex:1,height:'48px',background:'rgba(27,168,110,0.05)',borderRadius:'4px',border:'1px solid #eee'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(27,168,110,0.10)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(27,168,110,0.20)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(27,168,110,0.40)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(27,168,110,0.60)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(27,168,110,0.80)',borderRadius:'4px'}} />
+    </div>
+    <div style={{display:'flex',gap:'4px',fontSize:'9px',color:'#888',marginTop:'2px'}}><div style={{flex:1,textAlign:'center'}}>5%</div><div style={{flex:1,textAlign:'center'}}>10%</div><div style={{flex:1,textAlign:'center'}}>20%</div><div style={{flex:1,textAlign:'center'}}>40%</div><div style={{flex:1,textAlign:'center'}}>60%</div><div style={{flex:1,textAlign:'center'}}>80%</div></div>
+  </div>
+  <div>
+    <div style={{fontSize:'13px',fontWeight:600,marginBottom:'6px'}}>Alpha Blue</div>
+    <div style={{display:'flex',gap:'4px'}}>
+      <div style={{flex:1,height:'48px',background:'rgba(35,150,251,0.05)',borderRadius:'4px',border:'1px solid #eee'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(35,150,251,0.10)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(35,150,251,0.20)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(35,150,251,0.40)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(35,150,251,0.60)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(35,150,251,0.80)',borderRadius:'4px'}} />
+    </div>
+    <div style={{display:'flex',gap:'4px',fontSize:'9px',color:'#888',marginTop:'2px'}}><div style={{flex:1,textAlign:'center'}}>5%</div><div style={{flex:1,textAlign:'center'}}>10%</div><div style={{flex:1,textAlign:'center'}}>20%</div><div style={{flex:1,textAlign:'center'}}>40%</div><div style={{flex:1,textAlign:'center'}}>60%</div><div style={{flex:1,textAlign:'center'}}>80%</div></div>
+  </div>
+  <div>
+    <div style={{fontSize:'13px',fontWeight:600,marginBottom:'6px'}}>Alpha Yellow</div>
+    <div style={{display:'flex',gap:'4px'}}>
+      <div style={{flex:1,height:'48px',background:'rgba(207,159,2,0.05)',borderRadius:'4px',border:'1px solid #eee'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(207,159,2,0.10)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(207,159,2,0.20)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(207,159,2,0.40)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(207,159,2,0.60)',borderRadius:'4px'}} />
+      <div style={{flex:1,height:'48px',background:'rgba(207,159,2,0.80)',borderRadius:'4px'}} />
+    </div>
+    <div style={{display:'flex',gap:'4px',fontSize:'9px',color:'#888',marginTop:'2px'}}><div style={{flex:1,textAlign:'center'}}>5%</div><div style={{flex:1,textAlign:'center'}}>10%</div><div style={{flex:1,textAlign:'center'}}>20%</div><div style={{flex:1,textAlign:'center'}}>40%</div><div style={{flex:1,textAlign:'center'}}>60%</div><div style={{flex:1,textAlign:'center'}}>80%</div></div>
+  </div>
+</div>
+
+
+<CardGroup cols={2}>
+  <Card title="Colors Overview" icon="palette" href="/foundations/colors">
+    Color principles, architecture, and usage guidelines.
+  </Card>
+  <Card title="Color Implementation" icon="code" href="/foundations/colors-implementation">
+    State colors, token mapping, component mapping, theme strategy, and testing.
+  </Card>
+</CardGroup>

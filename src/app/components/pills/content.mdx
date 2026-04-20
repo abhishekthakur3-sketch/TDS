@@ -1,0 +1,226 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+Pills are lightweight UI components used to display selections, filters, or categorized attributes in a compact format. They are visually distinct through their rounded shape and commonly used in filtering systems, metadata displays, and removable selections. Unlike badges, pills are often interactive and may allow users to remove, toggle, or modify the displayed value.
+
+<CardGroup cols={3}>
+  <Card title="8 Variants" icon="palette">
+    Black, White, Coal, Blue, Success, Error, Warning, Legacy Blue
+  </Card>
+  <Card title="5 Types" icon="layer-group">
+    Solid, Subtle, Outlined, Disabled, Ghost
+  </Card>
+  <Card title="3 Sizes" icon="expand">
+    Large (28px), Medium (24px), Small (20px)
+  </Card>
+</CardGroup>
+
+
+## Playground
+
+Explore pill types, behaviors, and real-world patterns with rendered examples.
+
+<Tabs>
+  <Tab title="Types">
+    <div style={{display:'flex', gap:'12px', flexWrap:'wrap', padding:'32px 24px', background:'#F5F5F5', borderRadius:'12px', width:'100%', alignItems:'center'}}>
+      <div style={{background:'#000', color:'#FFF', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center'}}>Solid</div>
+      <div style={{background:'rgba(0,0,0,0.08)', color:'#000', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center'}}>Subtle</div>
+      <div style={{border:'1px solid #000', color:'#000', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center', background:'transparent'}}>Outlined</div>
+      <div style={{background:'#000', color:'#FFF', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center', opacity:0.4}}>Disabled</div>
+      <div style={{color:'#000', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center'}}>Ghost</div>
+    </div>
+  </Tab>
+  <Tab title="Selectable Pills">
+    <div style={{padding:'32px 24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div style={{fontSize:'12px', opacity:0.5, marginBottom:'12px'}}>Select time range:</div>
+      <div style={{display:'flex', gap:'8px', flexWrap:'wrap'}}>
+        <div style={{background:'#2396FB', color:'#FFF', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center'}}>Today</div>
+        <div style={{border:'1px solid #CCC', color:'#3D445C', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center', background:'#FFF'}}>This Week</div>
+        <div style={{border:'1px solid #CCC', color:'#3D445C', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center', background:'#FFF'}}>This Month</div>
+        <div style={{border:'1px solid #CCC', color:'#3D445C', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center', background:'#FFF'}}>Custom</div>
+      </div>
+      <div style={{fontSize:'11px', opacity:0.4, marginTop:'12px'}}>↑ "Today" is selected (solid blue). Others are unselected (outlined).</div>
+    </div>
+  </Tab>
+  <Tab title="Active Filters">
+    <div style={{padding:'32px 24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div style={{fontSize:'12px', opacity:0.5, marginBottom:'12px'}}>Active filters:</div>
+      <div style={{display:'flex', gap:'8px', flexWrap:'wrap', alignItems:'center'}}>
+        <div style={{background:'#2396FB', color:'#FFF', fontSize:'12px', padding:'4px 10px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center', gap:'6px'}}>Status: Active <span style={{opacity:0.7, cursor:'pointer'}}>✕</span></div>
+        <div style={{background:'#2396FB', color:'#FFF', fontSize:'12px', padding:'4px 10px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center', gap:'6px'}}>Region: North <span style={{opacity:0.7, cursor:'pointer'}}>✕</span></div>
+        <div style={{background:'#2396FB', color:'#FFF', fontSize:'12px', padding:'4px 10px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center', gap:'6px'}}>Type: Express <span style={{opacity:0.7, cursor:'pointer'}}>✕</span></div>
+        <div style={{color:'#DC143C', fontSize:'12px', padding:'4px 8px', cursor:'pointer'}}>Clear all</div>
+      </div>
+      <div style={{fontSize:'11px', opacity:0.4, marginTop:'12px'}}>↑ Removable filter pills with ✕ close action. "Clear all" resets.</div>
+    </div>
+  </Tab>
+  <Tab title="Removable Pills">
+    <div style={{padding:'32px 24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div style={{fontSize:'12px', opacity:0.5, marginBottom:'12px'}}>Selected technologies:</div>
+      <div style={{display:'flex', gap:'8px', flexWrap:'wrap'}}>
+        <div style={{background:'#000', color:'#FFF', fontSize:'12px', padding:'4px 10px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center', gap:'6px'}}>React <span style={{opacity:0.6}}>✕</span></div>
+        <div style={{background:'#000', color:'#FFF', fontSize:'12px', padding:'4px 10px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center', gap:'6px'}}>TypeScript <span style={{opacity:0.6}}>✕</span></div>
+        <div style={{background:'#000', color:'#FFF', fontSize:'12px', padding:'4px 10px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center', gap:'6px'}}>Node.js <span style={{opacity:0.6}}>✕</span></div>
+      </div>
+      <div style={{fontSize:'11px', opacity:0.4, marginTop:'12px'}}>↑ Closable pills with trailing ✕ icon. Click to remove.</div>
+    </div>
+  </Tab>
+  <Tab title="Sizes">
+    <div style={{display:'flex', gap:'16px', padding:'32px 24px', background:'#F5F5F5', borderRadius:'12px', width:'100%', alignItems:'center'}}>
+      <div style={{display:'flex', flexDirection:'column', alignItems:'center', gap:'6px'}}>
+        <div style={{background:'#000', color:'#FFF', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center'}}>Large</div>
+        <div style={{fontSize:'10px', opacity:0.4}}>28px</div>
+      </div>
+      <div style={{display:'flex', flexDirection:'column', alignItems:'center', gap:'6px'}}>
+        <div style={{background:'#000', color:'#FFF', fontSize:'11px', padding:'3px 10px', borderRadius:'999px', height:'24px', display:'inline-flex', alignItems:'center'}}>Medium</div>
+        <div style={{fontSize:'10px', opacity:0.4}}>24px</div>
+      </div>
+      <div style={{display:'flex', flexDirection:'column', alignItems:'center', gap:'6px'}}>
+        <div style={{background:'#000', color:'#FFF', fontSize:'10px', padding:'2px 8px', borderRadius:'999px', height:'20px', display:'inline-flex', alignItems:'center'}}>Small</div>
+        <div style={{fontSize:'10px', opacity:0.4}}>20px</div>
+      </div>
+    </div>
+  </Tab>
+</Tabs>
+
+<Info>All pill variants support all types and sizes unless specified otherwise. The Playground is for quick exploration — the Pill Matrix below is the complete reference.</Info>
+
+
+
+## Interaction States
+
+Pills support multiple interaction states depending on context.
+
+<div style={{display:'flex', gap:'16px', flexWrap:'wrap', padding:'32px 24px', background:'#F5F5F5', borderRadius:'12px', width:'100%', alignItems:'flex-end'}}>
+  <div style={{display:'flex', flexDirection:'column', alignItems:'center', gap:'6px'}}>
+    <div style={{background:'#2396FB', color:'#FFF', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center'}}>Default</div>
+    <div style={{fontSize:'10px', opacity:0.4}}>Default</div>
+  </div>
+  <div style={{display:'flex', flexDirection:'column', alignItems:'center', gap:'6px'}}>
+    <div style={{background:'#1A7FD8', color:'#FFF', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center'}}>Hover</div>
+    <div style={{fontSize:'10px', opacity:0.4}}>Hover</div>
+  </div>
+  <div style={{display:'flex', flexDirection:'column', alignItems:'center', gap:'6px'}}>
+    <div style={{background:'#2396FB', color:'#FFF', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center', boxShadow:'0 0 0 2px #FFF, 0 0 0 4px #2396FB'}}>Selected</div>
+    <div style={{fontSize:'10px', opacity:0.4}}>Selected</div>
+  </div>
+  <div style={{display:'flex', flexDirection:'column', alignItems:'center', gap:'6px'}}>
+    <div style={{background:'#2396FB', color:'#FFF', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center', outline:'2px solid #2396FB', outlineOffset:'2px'}}>Focused</div>
+    <div style={{fontSize:'10px', opacity:0.4}}>Focused</div>
+  </div>
+  <div style={{display:'flex', flexDirection:'column', alignItems:'center', gap:'6px'}}>
+    <div style={{background:'#2396FB', color:'#FFF', fontSize:'12px', padding:'4px 12px', borderRadius:'999px', height:'28px', display:'inline-flex', alignItems:'center', opacity:0.4}}>Disabled</div>
+    <div style={{fontSize:'10px', opacity:0.4}}>Disabled</div>
+  </div>
+</div>
+
+| State | Visual Change | Behavior |
+|-------|--------------|----------|
+| Default | Normal appearance | Idle, ready for interaction |
+| Hover | Slightly darker background | Cursor over pill, indicates interactivity |
+| Selected | Ring/outline indicator or solid fill | Active selection, filter applied |
+| Focused | 2px focus ring (keyboard) | Keyboard navigation, visible outline |
+| Disabled | 40% opacity | Non-interactive, unavailable |
+
+
+## Anatomy
+
+{/* 🎨 DESIGNER: Replace with pill anatomy diagram from Figma (node: 1823:28559) */}
+<div style={{background:'#F5F5F5', borderRadius:'12px', padding:'48px', marginBottom:'16px', textAlign:'center', minHeight:'200px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+  <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Pill Anatomy Diagram — Replace with /assets/components/pills/pills-anatomy.png</div>
+</div>
+
+| # | Element | Required | Description |
+|---|---------|----------|-------------|
+| 1 | Container | Yes | Rounded background element defining shape and spacing |
+| 2 | Status Mark | No | Small indicator for status or category (left position) |
+| 3 | Leading Icon | No | Icon before label for visual context |
+| 4 | Label | Yes | Text content — short, scannable (1–2 words) |
+| 5 | Trailing Icon | No | Icon after label (remove/close action) |
+
+
+## Types
+
+| Type | Emphasis | Visual Treatment | Use When |
+|------|----------|-----------------|----------|
+| Solid | Highest | Filled background, contrasting text | Selected or active states |
+| Subtle | Low | Softer background color | Secondary or supporting information |
+| Outlined | Low | Border with transparent background | Minimal visual weight needed |
+| Disabled | None | Muted appearance, 40% opacity | Pill is inactive or unavailable |
+| Ghost | Minimal | No background, text only | Pill should blend into interface |
+
+
+## Optional Elements
+
+Pills support additional elements to enhance meaning or interaction.
+
+| Element | Preview | Use Case |
+|---------|---------|----------|
+| Text only | 🔲 *pill* | Default — filter labels, selections |
+| Leading icon + text | 🔲 *pill* | Category identification, visual reinforcement |
+| Text + trailing icon | 🔲 *pill* | Removable pills, dismiss action |
+| Status mark + text | 🔲 *pill* | Live status, category indicator |
+
+{/* 🎨 DESIGNER: Export each pill composition as individual PNGs from Figma */}
+
+
+## Usage Guidelines
+
+<CardGroup cols={2}>
+  <Card title="✓ Do" icon="check" color="#16A34A">
+    - Keep pill labels concise and scannable
+    - Use semantic variants consistently
+    - Place pills near the content they represent
+    - Use icons only when they improve clarity
+    - Provide close icon for removable pills
+    - Use outlined style for unselected state in groups
+  </Card>
+  <Card title="✗ Don't" icon="xmark" color="#DC2626">
+    - Don't use long phrases inside pills
+    - Don't overuse pills in dense interfaces
+    - Don't mix too many visual variants in the same context
+    - Don't use pills as a replacement for structured navigation
+    - Don't rely solely on color for meaning
+    - Don't use pills for primary actions (use Button)
+  </Card>
+</CardGroup>
+
+
+## Design Tokens
+
+<Tabs>
+  <Tab title="Sizing">
+    | Token | Value |
+    |-------|-------|
+    | `pill-height-lg` | 28px |
+    | `pill-height-md` | 24px |
+    | `pill-height-sm` | 20px |
+    | `pill-border-radius` | 999px |
+    | `pill-close-size` | 16px |
+    | `pill-status-size` | 8px |
+  </Tab>
+  <Tab title="Colors">
+    | Token | Value |
+    |-------|-------|
+    | `pill-black-bg` | #000000 |
+    | `pill-white-bg` | #FFFFFF |
+    | `pill-coal-bg` | #3D445C |
+    | `pill-blue-bg` | #2396FB |
+    | `pill-success-bg` | #1BA86E |
+    | `pill-error-bg` | #DC143C |
+    | `pill-warning-bg` | #CF9F02 |
+    | `pill-legacy-blue-bg` | #0066CC |
+  </Tab>
+  <Tab title="Spacing">
+    | Token | Value |
+    |-------|-------|
+    | `pill-padding-lg` | 0 10px |
+    | `pill-padding-md` | 0 8px |
+    | `pill-padding-sm` | 0 6px |
+    | `pill-gap-icon` | 4px |
+    | `pill-gap-status` | 4px |
+  </Tab>
+</Tabs>
+

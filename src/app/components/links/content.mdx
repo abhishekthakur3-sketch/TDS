@@ -1,0 +1,210 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+Links are lightweight navigational elements embedded within text, lists, or UI structures. Unlike buttons, links represent navigation rather than actions. They support optional leading and trailing icons for additional visual context such as external navigation or directional cues. Links should remain visually subtle while clearly indicating interactivity.
+
+<CardGroup cols={3}>
+  <Card title="3 Styles" icon="palette">
+    Blue (Default), Black, White
+  </Card>
+  <Card title="5 Sizes" icon="expand">
+    XLarge (32px), Large (26px), Medium (24px), Small (20px), XSmall (16px)
+  </Card>
+  <Card title="4 States" icon="circle-dot">
+    Default, Hover, Focused, Disabled
+  </Card>
+</CardGroup>
+
+
+## Playground
+
+<Tabs>
+  <Tab title="Blue (Default)">
+    <div style={{display:'flex', flexDirection:'column', gap:'20px', padding:'32px 24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
+        <span style={{fontSize:'20px', color:'#2396FB', textDecoration:'underline', cursor:'pointer'}}>Something goes here</span>
+      </div>
+      <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
+        <span style={{fontSize:'16px', color:'#2396FB', textDecoration:'underline', cursor:'pointer'}}>View documentation →</span>
+      </div>
+      <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
+        <span style={{fontSize:'14px', color:'#2396FB', textDecoration:'underline', cursor:'pointer'}}>Learn more</span>
+      </div>
+      <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
+        <span style={{fontSize:'12px', color:'#2396FB', textDecoration:'underline', cursor:'pointer'}}>Terms & conditions</span>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="Black">
+    <div style={{display:'flex', flexDirection:'column', gap:'20px', padding:'32px 24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
+        <span style={{fontSize:'20px', color:'#000', textDecoration:'underline', cursor:'pointer'}}>Something goes here</span>
+      </div>
+      <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
+        <span style={{fontSize:'16px', color:'#000', textDecoration:'underline', cursor:'pointer'}}>View documentation →</span>
+      </div>
+      <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
+        <span style={{fontSize:'14px', color:'#000', textDecoration:'underline', cursor:'pointer'}}>Learn more</span>
+      </div>
+      <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
+        <span style={{fontSize:'12px', color:'#000', textDecoration:'underline', cursor:'pointer'}}>Terms & conditions</span>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="White (Dark BG)">
+    <div style={{display:'flex', flexDirection:'column', gap:'20px', padding:'32px 24px', background:'#1A1A1A', borderRadius:'12px', width:'100%'}}>
+      <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
+        <span style={{fontSize:'20px', color:'#FFF', textDecoration:'underline', cursor:'pointer'}}>Something goes here</span>
+      </div>
+      <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
+        <span style={{fontSize:'16px', color:'#FFF', textDecoration:'underline', cursor:'pointer'}}>View documentation →</span>
+      </div>
+      <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
+        <span style={{fontSize:'14px', color:'#FFF', textDecoration:'underline', cursor:'pointer'}}>Learn more</span>
+      </div>
+      <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
+        <span style={{fontSize:'12px', color:'#FFF', textDecoration:'underline', cursor:'pointer'}}>Terms & conditions</span>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="States">
+    <div style={{display:'flex', flexDirection:'column', gap:'20px', padding:'32px 24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div style={{display:'flex', alignItems:'center', gap:'12px'}}>
+        <span style={{fontSize:'14px', color:'#2396FB', cursor:'pointer'}}>Default link</span>
+        <span style={{fontSize:'11px', opacity:0.4}}>No underline until hover</span>
+      </div>
+      <div style={{display:'flex', alignItems:'center', gap:'12px'}}>
+        <span style={{fontSize:'14px', color:'#2396FB', textDecoration:'underline', cursor:'pointer'}}>Hover link</span>
+        <span style={{fontSize:'11px', opacity:0.4}}>Underline appears on hover</span>
+      </div>
+      <div style={{display:'flex', alignItems:'center', gap:'12px'}}>
+        <span style={{fontSize:'14px', color:'#2396FB', textDecoration:'underline', outline:'2px solid #2396FB', outlineOffset:'2px', borderRadius:'2px', padding:'0 2px'}}>Focused link</span>
+        <span style={{fontSize:'11px', opacity:0.4}}>Focus ring visible</span>
+      </div>
+      <div style={{display:'flex', alignItems:'center', gap:'12px'}}>
+        <span style={{fontSize:'14px', color:'#2396FB', opacity:0.4}}>Disabled link</span>
+        <span style={{fontSize:'11px', opacity:0.4}}>40% opacity, not interactive</span>
+      </div>
+    </div>
+  </Tab>
+</Tabs>
+
+<Info>Links represent navigation, not actions. Use buttons for primary actions like submit, delete, or save.</Info>
+
+
+
+## Anatomy
+
+<div style={{background:'#F5F5F5', borderRadius:'12px', padding:'48px', marginBottom:'24px', textAlign:'center', minHeight:'200px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+  <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Link Anatomy — Replace with /assets/components/links/link-anatomy.png</div>
+</div>
+
+| # | Element | Required | Description |
+|---|---------|----------|-------------|
+| 1 | Leading Icon | No | Icon before the label for visual context |
+| 2 | Label | Yes | Clickable text describing the navigation destination |
+| 3 | Trailing Icon | No | Icon after the label (external link indicator, arrow, etc.) |
+
+<Warning>Icons should support the link meaning but never replace the text label. The label is always required.</Warning>
+
+
+## Sizes
+
+| Size | Component Height | Font Size | Icon Size | Use Case |
+|------|-----------------|-----------|-----------|----------|
+| XLarge | 32px | 20px | 24px | Hero sections, prominent CTAs |
+| Large | 26px | 17px | 20px | Section headers, featured content |
+| Medium | 24px | 15px | 18px | Body text, standard navigation |
+| Small | 20px | 13px | 16px | Supporting text, metadata |
+| XSmall | 16px | 11px | 14px | Footnotes, dense layouts, captions |
+
+
+## Behavior
+
+### Navigation
+
+- Clicking a link navigates to the target location
+- Links may open content in the same page, a new tab, or an external destination
+- Use `target="_blank"` with `rel="noopener noreferrer"` for external links
+- Disabled links remain visible but cannot be interacted with
+
+### Icon Usage
+
+| Pattern | Example | Use Case |
+|---------|---------|----------|
+| Leading icon | 📄 View document | Contextual icon before label |
+| Trailing icon | Open in new tab ↗ | External link indicator |
+| Both icons | 📄 View document ↗ | Combined context + direction |
+| No icons | Learn more | Simple inline navigation |
+
+### Inline vs Standalone
+
+- Inline links are embedded within body text and should match the surrounding font size
+- Standalone links appear independently and can use any size
+- Inline links should use underline on default state for discoverability within text
+
+
+## Usage Guidelines
+
+<CardGroup cols={2}>
+  <Card title="Do" icon="check" color="#16A34A">
+    - Use descriptive link labels that explain the destination
+    - Maintain visual distinction between links and regular text
+    - Ensure adequate color contrast against the background
+    - Use trailing icons to indicate external navigation
+    - Keep link text concise and actionable
+    - Match link size to surrounding typography
+  </Card>
+  <Card title="Don't" icon="xmark" color="#DC2626">
+    - Don't use links for primary actions (use buttons)
+    - Don't use vague labels like "Click here" or "Read more"
+    - Don't hide link meaning behind icons only
+    - Don't use links without clear context
+    - Don't use Blue links on blue backgrounds
+    - Don't remove underline from inline links in body text
+  </Card>
+</CardGroup>
+
+
+## Design Tokens
+
+<Tabs>
+  <Tab title="Colors">
+    | Token | Value | Usage |
+    |-------|-------|-------|
+    | `--link-blue` | `#2396FB` | Blue style text color |
+    | `--link-blue-hover` | `#1A7FD6` | Blue hover (darker) |
+    | `--link-black` | `#000000` | Black style text color |
+    | `--link-black-hover` | `#333333` | Black hover |
+    | `--link-white` | `#FFFFFF` | White style text color |
+    | `--link-white-hover` | `rgba(255,255,255,0.8)` | White hover |
+    | `--link-disabled-opacity` | `0.4` | Disabled state opacity |
+    | `--link-focus-ring` | `2px` | Focus outline width |
+  </Tab>
+  <Tab title="Typography">
+    | Token | Value | Usage |
+    |-------|-------|-------|
+    | `--link-font-xlarge` | `20px` | XLarge font size |
+    | `--link-font-large` | `17px` | Large font size |
+    | `--link-font-medium` | `15px` | Medium font size |
+    | `--link-font-small` | `13px` | Small font size |
+    | `--link-font-xsmall` | `11px` | XSmall font size |
+    | `--link-font-weight` | `400` | Default weight |
+    | `--link-font-family` | `Noto Sans` | Typeface |
+    | `--link-underline-offset` | `2px` | Underline offset from text |
+  </Tab>
+  <Tab title="Dimensions">
+    | Token | Value | Usage |
+    |-------|-------|-------|
+    | `--link-height-xlarge` | `32px` | Component height, XLarge |
+    | `--link-height-large` | `26px` | Component height, Large |
+    | `--link-height-medium` | `24px` | Component height, Medium |
+    | `--link-height-small` | `20px` | Component height, Small |
+    | `--link-height-xsmall` | `16px` | Component height, XSmall |
+    | `--link-icon-gap` | `4px` | Gap between icon and label |
+    | `--link-focus-offset` | `2px` | Focus ring offset |
+  </Tab>
+</Tabs>
+

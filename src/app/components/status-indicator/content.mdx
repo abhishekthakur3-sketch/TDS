@@ -1,0 +1,216 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+Status indicators are compact visual elements that communicate real-time state information. Each indicator consists of a colored dot and a text label, making status immediately scannable across tables, lists, cards, and dashboards. The color-coded system ensures users can quickly identify success, failure, warnings, and other operational states.
+
+<CardGroup cols={3}>
+  <Card title="11 Variants" icon="palette">
+    Success, Failed, Warning, Information, Synced, Scheduled, Unknown, Pause, Play, Downloading, Pending
+  </Card>
+  <Card title="4 Sizes" icon="expand">
+    Large (24px), Medium (20px), Small (16px), XSmall (12px)
+  </Card>
+  <Card title="Color-Coded" icon="circle-dot">
+    Semantic colors for instant recognition
+  </Card>
+</CardGroup>
+
+
+## Playground
+
+<Tabs>
+  <Tab title="All Variants">
+    <div style={{display:'flex', flexDirection:'column', gap:'16px', padding:'32px 24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div style={{display:'flex', alignItems:'center', gap:'8px'}}><div style={{width:'8px', height:'8px', borderRadius:'50%', background:'#1BA86E', flexShrink:0}}></div><span style={{fontSize:'14px'}}>Success</span></div>
+      <div style={{display:'flex', alignItems:'center', gap:'8px'}}><div style={{width:'8px', height:'8px', borderRadius:'50%', background:'#DC143C', flexShrink:0}}></div><span style={{fontSize:'14px'}}>Failed</span></div>
+      <div style={{display:'flex', alignItems:'center', gap:'8px'}}><div style={{width:'8px', height:'8px', borderRadius:'50%', background:'#CF9F02', flexShrink:0}}></div><span style={{fontSize:'14px'}}>Warning</span></div>
+      <div style={{display:'flex', alignItems:'center', gap:'8px'}}><div style={{width:'8px', height:'8px', borderRadius:'50%', background:'#2396FB', flexShrink:0}}></div><span style={{fontSize:'14px'}}>Information</span></div>
+      <div style={{display:'flex', alignItems:'center', gap:'8px'}}><div style={{width:'8px', height:'8px', borderRadius:'50%', background:'#1BA86E', flexShrink:0}}></div><span style={{fontSize:'14px'}}>Synced</span></div>
+      <div style={{display:'flex', alignItems:'center', gap:'8px'}}><div style={{width:'8px', height:'8px', borderRadius:'50%', background:'#2396FB', flexShrink:0}}></div><span style={{fontSize:'14px'}}>Scheduled</span></div>
+      <div style={{display:'flex', alignItems:'center', gap:'8px'}}><div style={{width:'8px', height:'8px', borderRadius:'50%', background:'#999999', flexShrink:0}}></div><span style={{fontSize:'14px'}}>Unknown</span></div>
+      <div style={{display:'flex', alignItems:'center', gap:'8px'}}><div style={{width:'8px', height:'8px', borderRadius:'50%', background:'#CF9F02', flexShrink:0}}></div><span style={{fontSize:'14px'}}>Pause</span></div>
+      <div style={{display:'flex', alignItems:'center', gap:'8px'}}><div style={{width:'8px', height:'8px', borderRadius:'50%', background:'#1BA86E', flexShrink:0}}></div><span style={{fontSize:'14px'}}>Play</span></div>
+      <div style={{display:'flex', alignItems:'center', gap:'8px'}}><div style={{width:'8px', height:'8px', borderRadius:'50%', background:'#2396FB', flexShrink:0}}></div><span style={{fontSize:'14px'}}>Downloading</span></div>
+      <div style={{display:'flex', alignItems:'center', gap:'8px'}}><div style={{width:'8px', height:'8px', borderRadius:'50%', background:'#999999', flexShrink:0}}></div><span style={{fontSize:'14px'}}>Pending</span></div>
+    </div>
+  </Tab>
+  <Tab title="By Size">
+    <div style={{display:'flex', flexDirection:'column', gap:'20px', padding:'32px 24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div>
+        <div style={{fontSize:'11px', opacity:0.5, marginBottom:'8px'}}>Large (24px height)</div>
+        <div style={{display:'flex', alignItems:'center', gap:'8px'}}><div style={{width:'10px', height:'10px', borderRadius:'50%', background:'#1BA86E', flexShrink:0}}></div><span style={{fontSize:'14px'}}>Success</span></div>
+      </div>
+      <div>
+        <div style={{fontSize:'11px', opacity:0.5, marginBottom:'8px'}}>Medium (20px height)</div>
+        <div style={{display:'flex', alignItems:'center', gap:'8px'}}><div style={{width:'8px', height:'8px', borderRadius:'50%', background:'#1BA86E', flexShrink:0}}></div><span style={{fontSize:'13px'}}>Success</span></div>
+      </div>
+      <div>
+        <div style={{fontSize:'11px', opacity:0.5, marginBottom:'8px'}}>Small (16px height)</div>
+        <div style={{display:'flex', alignItems:'center', gap:'6px'}}><div style={{width:'6px', height:'6px', borderRadius:'50%', background:'#1BA86E', flexShrink:0}}></div><span style={{fontSize:'12px'}}>Success</span></div>
+      </div>
+      <div>
+        <div style={{fontSize:'11px', opacity:0.5, marginBottom:'8px'}}>XSmall (12px height)</div>
+        <div style={{display:'flex', alignItems:'center', gap:'4px'}}><div style={{width:'5px', height:'5px', borderRadius:'50%', background:'#1BA86E', flexShrink:0}}></div><span style={{fontSize:'11px'}}>Success</span></div>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="In Context">
+    <div style={{padding:'32px 24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div style={{fontSize:'12px', opacity:0.5, marginBottom:'12px'}}>Order Status Table</div>
+      <div style={{background:'#FFF', borderRadius:'8px', overflow:'hidden', width:'100%'}}>
+        <div style={{display:'flex', padding:'10px 16px', borderBottom:'1px solid #F0F0F0', fontSize:'12px', opacity:0.5}}>
+          <div style={{flex:1}}>Order ID</div><div style={{flex:1}}>Status</div><div style={{flex:1}}>Updated</div>
+        </div>
+        <div style={{display:'flex', padding:'10px 16px', borderBottom:'1px solid #F0F0F0', fontSize:'13px', alignItems:'center'}}>
+          <div style={{flex:1}}>#ORD-4821</div><div style={{flex:1, display:'flex', alignItems:'center', gap:'6px'}}><div style={{width:'6px', height:'6px', borderRadius:'50%', background:'#1BA86E'}}></div>Success</div><div style={{flex:1, opacity:0.5}}>2 min ago</div>
+        </div>
+        <div style={{display:'flex', padding:'10px 16px', borderBottom:'1px solid #F0F0F0', fontSize:'13px', alignItems:'center'}}>
+          <div style={{flex:1}}>#ORD-4822</div><div style={{flex:1, display:'flex', alignItems:'center', gap:'6px'}}><div style={{width:'6px', height:'6px', borderRadius:'50%', background:'#DC143C'}}></div>Failed</div><div style={{flex:1, opacity:0.5}}>5 min ago</div>
+        </div>
+        <div style={{display:'flex', padding:'10px 16px', borderBottom:'1px solid #F0F0F0', fontSize:'13px', alignItems:'center'}}>
+          <div style={{flex:1}}>#ORD-4823</div><div style={{flex:1, display:'flex', alignItems:'center', gap:'6px'}}><div style={{width:'6px', height:'6px', borderRadius:'50%', background:'#999999'}}></div>Pending</div><div style={{flex:1, opacity:0.5}}>12 min ago</div>
+        </div>
+        <div style={{display:'flex', padding:'10px 16px', fontSize:'13px', alignItems:'center'}}>
+          <div style={{flex:1}}>#ORD-4824</div><div style={{flex:1, display:'flex', alignItems:'center', gap:'6px'}}><div style={{width:'6px', height:'6px', borderRadius:'50%', background:'#CF9F02'}}></div>Warning</div><div style={{flex:1, opacity:0.5}}>18 min ago</div>
+        </div>
+      </div>
+    </div>
+  </Tab>
+</Tabs>
+
+<Info>Status indicators are non-interactive. They communicate state visually — use them in tables, lists, cards, and dashboards.</Info>
+
+
+
+## Anatomy
+
+<div style={{background:'#F5F5F5', borderRadius:'12px', padding:'48px', marginBottom:'24px', textAlign:'center', minHeight:'200px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+  <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Status Indicator Anatomy — Replace with /assets/components/status-indicator/anatomy.png</div>
+</div>
+
+| # | Element | Required | Description |
+|---|---------|----------|-------------|
+| 1 | Dot | Yes | Colored circle indicating the status category |
+| 2 | Label | Yes | Text describing the current status |
+
+<Warning>Both the dot and label are required. Never use a dot without a label — color alone is insufficient for accessibility.</Warning>
+
+
+## Sizes
+
+| Size | Component Height | Dot Diameter | Font Size | Gap | Use Case |
+|------|-----------------|-------------|-----------|-----|----------|
+| Large | 24px | 10px | 14px | 8px | Primary tables, detail views |
+| Medium | 20px | 8px | 13px | 6px | Standard tables, lists |
+| Small | 16px | 6px | 12px | 5px | Compact tables, dense layouts |
+| XSmall | 12px | 5px | 11px | 4px | Inline text, metadata, tooltips |
+
+
+## Status Indicator vs Badge vs Tag
+
+| Feature | Status Indicator | Badge | Tag |
+|---------|-----------------|-------|-----|
+| Purpose | Real-time state | Count or label | Categorization |
+| Interactive | No | No | Sometimes (removable) |
+| Visual | Dot + text | Filled pill | Filled/outlined chip |
+| Best for | Process status, system state | Notification counts, labels | Filtering, categorization |
+| Updates | Real-time | On event | Static or user-driven |
+
+
+## Accessibility
+
+| Requirement | Implementation |
+|-------------|---------------|
+| Color independence | Always include a text label — never rely on color alone |
+| Screen readers | Use `aria-label` or visible text to announce the status |
+| Contrast | Dot colors must meet 3:1 contrast ratio against background |
+| Role | Use `role="status"` for live-updating indicators |
+| Live regions | Add `aria-live="polite"` for real-time status changes |
+| Decorative dot | The dot is decorative — hide from screen readers with `aria-hidden="true"` |
+
+<Info>The text label is the primary accessible element. The colored dot is supplementary visual information and should be hidden from screen readers.</Info>
+
+
+## Developer Handoff
+
+<CodeGroup>
+```tsx API
+import { StatusIndicator } from '@tarmac/design-system';
+
+interface StatusIndicatorProps {
+  variant: 'success' | 'failed' | 'warning' | 'information'
+    | 'synced' | 'scheduled' | 'unknown' | 'pause'
+    | 'play' | 'downloading' | 'pending';
+  size?: 'large' | 'medium' | 'small' | 'xsmall'; // Default: 'medium'
+  label?: string;                                    // Custom label override
+  live?: boolean;                                    // Enable aria-live for real-time updates
+}
+```
+
+```tsx Usage
+// Basic usage
+<StatusIndicator variant="success" />
+<StatusIndicator variant="failed" />
+<StatusIndicator variant="pending" size="small" />
+
+// Custom label
+<StatusIndicator variant="success" label="Delivered" />
+<StatusIndicator variant="downloading" label="Syncing data..." />
+
+// In a table
+<table>
+  <tbody>
+    <tr>
+      <td>#ORD-4821</td>
+      <td><StatusIndicator variant="success" size="small" /></td>
+      <td>2 min ago</td>
+    </tr>
+    <tr>
+      <td>#ORD-4822</td>
+      <td><StatusIndicator variant="failed" size="small" /></td>
+      <td>5 min ago</td>
+    </tr>
+  </tbody>
+</table>
+
+// Live-updating status
+<StatusIndicator variant="downloading" live />
+```
+
+```tsx ARIA
+// Rendered HTML structure
+<span
+  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+  role="status"
+  aria-live="polite"
+>
+  <span
+    aria-hidden="true"
+    style={{
+      width: '8px',
+      height: '8px',
+      borderRadius: '50%',
+      backgroundColor: '#1BA86E',
+      flexShrink: 0,
+    }}
+  />
+  <span>Success</span>
+</span>
+
+{/* Static indicator (no live updates) */}
+<span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+  <span
+    aria-hidden="true"
+    style={{
+      width: '8px',
+      height: '8px',
+      borderRadius: '50%',
+      backgroundColor: '#DC143C',
+    }}
+  />
+  <span>Failed</span>
+</span>
+```
+</CodeGroup>

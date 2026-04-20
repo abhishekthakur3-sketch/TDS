@@ -1,0 +1,175 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+The Search component is an input designed specifically for searching. It enables users to quickly locate information by entering keywords or phrases. Search fields often trigger dynamic suggestions, filters, or result lists via a dropdown. The system is built from three foundational elements: Search Field, Search Dropdown Cells, and Search Dropdown Lists.
+
+<CardGroup cols={3}>
+  <Card title="2 Variants" icon="layer-group">
+    Standard, With Tags
+  </Card>
+  <Card title="6 States" icon="circle-dot">
+    Default, Hover, Active, Focused, Disabled, Ghost
+  </Card>
+  <Card title="2 Sizes" icon="expand">
+    Default, Large
+  </Card>
+</CardGroup>
+
+
+## Playground
+
+<Tabs>
+  <Tab title="Search Field">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'48px', textAlign:'center', minHeight:'200px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+      <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Search Field — Standard and With Tags variants across states and sizes<br/>Replace with /assets/components/search/search-field-playground.png</div>
+    </div>
+  </Tab>
+  <Tab title="Search Dropdown">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'48px', textAlign:'center', minHeight:'200px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+      <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Search Dropdown — Collapsed and Expanded variants across sizes<br/>Replace with /assets/components/search/search-dropdown-playground.png</div>
+    </div>
+  </Tab>
+  <Tab title="Dropdown Cells">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'48px', textAlign:'center', minHeight:'200px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+      <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Search Dropdown Cells — Regular and Blue styles across states and sizes<br/>Replace with /assets/components/search/search-cells-playground.png</div>
+    </div>
+  </Tab>
+</Tabs>
+
+<Info>The Search system combines a search input field with an optional dropdown for results. See each sub-component section below for detailed specs.</Info>
+
+
+## Search Dropdown Cell Matrix
+
+<Tabs>
+  <Tab title="Regular">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'32px', textAlign:'center', minHeight:'200px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+      <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Regular Cells — Default, Hover, Pressed, Disabled × 3 sizes<br/>Replace with /assets/components/search/search-cells-regular.png</div>
+    </div>
+  </Tab>
+  <Tab title="Blue">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'32px', textAlign:'center', minHeight:'200px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+      <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Blue Cells — Default, Hover, Pressed, Disabled × 3 sizes<br/>Replace with /assets/components/search/search-cells-blue.png</div>
+    </div>
+  </Tab>
+</Tabs>
+
+
+## Sub-Component: Search Dropdown Cells
+
+Individual search result items displayed inside the dropdown. Each cell may contain icons, text, or subtext.
+
+| Property | Options | Description |
+|----------|---------|-------------|
+| Style | Regular, Blue | Visual differentiation for highlighted results |
+| State | Default, Hover, Pressed, Disabled | Selection feedback |
+| Size | Default, Large, Small | Matches search field context |
+| Leading Icon | Boolean | Icon before result text |
+| Trailing Icon | Boolean | Action icon after result text |
+| Subtext | Boolean | Secondary description line |
+
+
+## Search Dropdown
+
+The combined component pairing the search field with a results dropdown.
+
+| Property | Options | Description |
+|----------|---------|-------------|
+| Variant | Collapsed, Expanded | Dropdown visibility state |
+| Size | Default, Large, Small | Dimensional scale |
+
+
+## Anatomy — Dropdown Cell
+
+{/* 🎨 DESIGNER: Replace with search dropdown cell anatomy diagram from Figma */}
+<div style={{background:'#F5F5F5', borderRadius:'12px', padding:'48px', marginBottom:'16px', textAlign:'center', minHeight:'200px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+  <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Search Dropdown Cell Anatomy — Replace with /assets/components/search/search-cell-anatomy.png</div>
+</div>
+
+| # | Element | Required | Description |
+|---|---------|----------|-------------|
+| 1 | Cell Container | Yes | Row wrapper |
+| 2 | Leading Icon | No | Result type indicator |
+| 3 | Primary Text | Yes | Result label |
+| 4 | Subtext | No | Secondary description |
+| 5 | Trailing Icon | No | Action or navigation indicator |
+
+
+## Sizes
+
+| Size | Field Height | Cell Height | Usage |
+|------|-------------|-------------|-------|
+| Large | 48px | 70px | Prominent search bars, full-page search |
+| Default | 44px | 62px | Standard navigation search, filters |
+| Small | 36px | 54px | Compact layouts, inline search |
+
+
+## Behavior
+
+| Interaction | Result |
+|-------------|--------|
+| Click search field | Places cursor, ready for input |
+| Type query | Triggers suggestions/results dynamically |
+| Enter key | Confirms search query |
+| Clear input | Resets search results |
+| Arrow keys (in dropdown) | Navigate between results |
+| Click result | Selects and applies the result |
+| Click outside | Closes dropdown |
+| Escape | Closes dropdown |
+
+
+## Usage Guidelines
+
+<CardGroup cols={2}>
+  <Card title="✓ Do" icon="check" color="#16A34A">
+    - Provide clear placeholder text (e.g., "Search...")
+    - Use a search icon to indicate purpose
+    - Support keyboard input and navigation
+    - Allow users to clear the search easily
+    - Group dropdown results logically
+  </Card>
+  <Card title="✗ Don't" icon="xmark" color="#DC2626">
+    - Don't replace labels with placeholder text only
+    - Don't hide search results without feedback
+    - Don't overload search fields with too many controls
+    - Don't display too many results at once
+    - Don't use for non-search input purposes
+  </Card>
+</CardGroup>
+
+
+## Design Tokens
+
+<Tabs>
+  <Tab title="Search Field">
+    | Token | Value |
+    |-------|-------|
+    | `search-field-height-lg` | 48px |
+    | `search-field-height-md` | 44px |
+    | `search-field-height-sm` | 36px |
+    | `search-field-border-radius` | 8px |
+    | `search-field-border-color` | #D1D5DB |
+    | `search-field-focus-ring` | #2396FB |
+    | `search-field-disabled-opacity` | 0.4 |
+  </Tab>
+  <Tab title="Dropdown Cell">
+    | Token | Value |
+    |-------|-------|
+    | `search-cell-height-lg` | 70px |
+    | `search-cell-height-md` | 62px |
+    | `search-cell-height-sm` | 54px |
+    | `search-cell-hover-bg` | #F5F5F5 |
+    | `search-cell-pressed-bg` | #EBEBEB |
+    | `search-cell-blue-accent` | #2396FB |
+  </Tab>
+  <Tab title="Dropdown List">
+    | Token | Value |
+    |-------|-------|
+    | `search-list-border-radius` | 8px |
+    | `search-list-shadow` | 0 4px 12px rgba(0,0,0,0.12) |
+    | `search-list-border-color` | #E5E7EB |
+  </Tab>
+</Tabs>
+

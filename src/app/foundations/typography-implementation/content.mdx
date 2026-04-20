@@ -1,0 +1,59 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Accessibility
+
+
+  <Accordion title="Contrast Requirements" icon="eye">
+    **WCAG 2.1 Level AA**
+    - Normal text (&lt; 18px): **4.5:1** contrast ratio minimum
+    - Large text (≥ 18px or ≥ 14px bold): **3:1** contrast ratio minimum
+
+    All typography color tokens in TARMAC are pre-validated against these thresholds for both light and dark modes. Disabled states are intentionally below contrast thresholds to signal non-interactivity.
+  </Accordion>
+  <Accordion title="Minimum Font Sizes" icon="text-height">
+    - **Body text**: 16px (B1) minimum for primary content
+    - **Secondary text**: 14px (B2) minimum for labels and supporting content
+    - **Captions**: 12px (C1) minimum for metadata and helper text
+    - **Constrained UI**: 10px (C2) only when absolutely necessary
+
+    Always use `rem` units so text scales with user browser preferences.
+  </Accordion>
+  <Accordion title="Line Height and Spacing" icon="arrows-up-down">
+    - Body text: line height ≥ **1.45×** (WCAG 1.4.12)
+    - Paragraph spacing: at least **1.5×** the font size between paragraphs
+    - Letter spacing: never negative for body or caption text
+
+    These rules ensure readability for users with dyslexia and low vision.
+  </Accordion>
+  <Accordion title="Semantic HTML" icon="code">
+    Always use proper heading elements (`h1`–`h5`) rather than styled `div` or `span` elements. Screen readers rely on heading structure for navigation.
+
+    ```html
+    <!-- Correct -->
+    <h1>Page Title</h1>
+    <h2>Section Heading</h2>
+    <p>Body paragraph with <strong>emphasis</strong>.</p>
+
+    <!-- Incorrect -->
+    <div class="h1">Page Title</div>
+    <span style="font-size: 34px">Section Heading</span>
+    ```
+  </Accordion>
+  <Accordion title="Zoom and Reflow" icon="magnifying-glass-plus">
+    - All text must remain readable at **200% browser zoom**
+    - Text must reflow within the viewport — no horizontal scrolling
+    - Avoid fixed-width containers that clip text at larger zoom levels
+    - Use relative units (`rem`, `em`) instead of `px` for font sizes
+  </Accordion>
+
+
+
+<CardGroup cols={2}>
+  <Card title="Typography Overview" icon="font" href="/foundations/typography">
+    Typeface, font weights, type scale, and usage guidelines.
+  </Card>
+  <Card title="Type Styles Reference" icon="text-height" href="/foundations/typography-styles">
+    Display, heading, body, caption styles with specs, line height, letter spacing, and color tokens.
+  </Card>
+</CardGroup>

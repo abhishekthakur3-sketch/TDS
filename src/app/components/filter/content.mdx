@@ -1,0 +1,125 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+The Filter system provides structured data filtering across web and mobile platforms. It includes Filter Inputs (trigger buttons), Filter List Cells (selectable options), Filter Lists (grouped options), Filter Dropdowns (collapsed/expanded selectors), and a Filter Set Bottom Sheet for mobile. Together they enable users to refine data views efficiently.
+
+<CardGroup cols={3}>
+  <Card title="5 Sub-Components" icon="cubes">
+    Input, List Cell, List, Dropdown, Bottom Sheet
+  </Card>
+  <Card title="6 Input States" icon="circle-dot">
+    Default, Hover, Active, Focused, Disabled, Ghost
+  </Card>
+  <Card title="2 Sizes" icon="expand">
+    Large (44px), Small (40px)
+  </Card>
+</CardGroup>
+
+
+## Playground
+
+<Tabs>
+  <Tab title="Filter Input">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'32px', textAlign:'center', minHeight:'300px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+      <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Filter Input — 6 states x 2 sizes (Large, Small)<br/>Replace with /assets/components/filter/filter-input.png</div>
+    </div>
+  </Tab>
+  <Tab title="Filter List Cell">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'32px', textAlign:'center', minHeight:'200px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+      <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Filter List Cell — Default, Hover, Active, Disabled x 2 sizes<br/>Replace with /assets/components/filter/filter-list-cell.png</div>
+    </div>
+  </Tab>
+  <Tab title="Filter List">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'32px', textAlign:'center', minHeight:'300px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+      <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Filter List — 2 to 6 items in Large and Small sizes<br/>Replace with /assets/components/filter/filter-list.png</div>
+    </div>
+  </Tab>
+  <Tab title="Filter Dropdown">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'32px', textAlign:'center', minHeight:'200px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+      <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Filter Dropdown — Collapsed, Expanded, Active in Large and Small<br/>Replace with /assets/components/filter/filter-dropdown.png</div>
+    </div>
+  </Tab>
+  <Tab title="Mobile Bottom Sheet">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'32px', textAlign:'center', minHeight:'300px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+      <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Filter Set Bottom Sheet and Mobile Filter Sets (5 tab selections)<br/>Replace with /assets/components/filter/filter-mobile.png</div>
+    </div>
+  </Tab>
+</Tabs>
+
+
+## Filter Input States
+
+| State | Description |
+|-------|-------------|
+| Default | Neutral, ready for interaction |
+| Hover | Pointer over the input |
+| Active | Filter has active selections |
+| Focused | Keyboard focus active |
+| Disabled | Filter unavailable |
+| Ghost | Skeleton/loading state |
+
+
+## Filter Dropdown Variants
+
+| Variant | Description |
+|---------|-------------|
+| Collapsed | Input visible, list hidden |
+| Expanded | Input visible, list open below |
+| Active | Filter has active selections applied |
+
+
+## Sizes
+
+| Size | Input Height | Cell Height | Usage |
+|------|-------------|-------------|-------|
+| Large | 44px | 44px | Standard filter bars, prominent filters |
+| Small | 40px | 40px | Compact layouts, dense filter rows |
+
+
+## Usage Guidelines
+
+<CardGroup cols={2}>
+  <Card title="Do" icon="check" color="#16A34A">
+    - Use filters for narrowing large data sets
+    - Keep filter labels short and descriptive
+    - Show active filter count or selection
+    - Use bottom sheet for mobile filter experiences
+    - Allow clearing all filters easily
+  </Card>
+  <Card title="Don't" icon="xmark" color="#DC2626">
+    - Don't overload with too many filter options
+    - Don't hide critical filters behind secondary menus
+    - Don't use filters for navigation purposes
+    - Don't mix filter and sort controls without clear separation
+    - Don't use filters when the data set is small
+  </Card>
+</CardGroup>
+
+
+## Design Tokens
+
+<Tabs>
+  <Tab title="Input">
+    | Token | Value |
+    |-------|-------|
+    | `filter-input-height-lg` | 44px |
+    | `filter-input-height-sm` | 40px |
+    | `filter-input-border-radius` | 8px |
+    | `filter-input-border-color` | #D1D5DB |
+    | `filter-input-active-bg` | #000000 |
+    | `filter-input-active-text` | #FFFFFF |
+  </Tab>
+  <Tab title="List">
+    | Token | Value |
+    |-------|-------|
+    | `filter-cell-height-lg` | 44px |
+    | `filter-cell-height-sm` | 40px |
+    | `filter-cell-hover-bg` | #F5F5F5 |
+    | `filter-cell-active-bg` | #000000 |
+    | `filter-cell-active-text` | #FFFFFF |
+    | `filter-list-shadow` | 0 4px 12px rgba(0,0,0,0.12) |
+  </Tab>
+</Tabs>
+

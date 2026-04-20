@@ -1,0 +1,111 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+Borders help define structure, separation, and hierarchy across the interface. They guide the eye, reinforce component states, and provide clarity without overwhelming the layout. In this system, borders are intentionally minimal — used to support content rather than compete with it.
+
+The border scale includes stroke widths from 0.5px to 4px, with semantic types (success, error, warning, link) and states (default, hovered, pressed, disabled) for consistent meaning across components.
+
+<CardGroup cols={3}>
+  <Card title="5 Stroke Widths" icon="ruler">
+    From ultra-subtle (0.5px) to high-emphasis (4px)
+  </Card>
+  <Card title="4 Semantic Types" icon="palette">
+    Success, Error, Warning, and Link/Info borders
+  </Card>
+  <Card title="4 States" icon="toggle-on">
+    Default, Hovered, Pressed, and Disabled
+  </Card>
+</CardGroup>
+
+
+## Stroke Tokens
+
+| Token | Value | Purpose |
+|-------|-------|---------|
+| `stroke.small` | 0.5px | Ultra-subtle separators, table grids, low-emphasis dividers |
+| `stroke.default` | 1px | Default border for UI components and containers |
+| `stroke.medium` | 1.5px | High-emphasis interactive states, active boundaries, focus outlines |
+| `stroke.large` | 2px | Strong structural separation, important emphasis elements |
+| `stroke.xlarge` | 4px | Rare use — hero, overlays, high-priority interaction or identity elements |
+
+
+## Semantic Border Types
+
+Four semantic border types, each applied consistently across components:
+
+| Type | Purpose | Example Usage |
+|------|---------|---------------|
+| Success | Positive confirmation | Validated inputs, success alerts, confirmed selections |
+| Error | Critical validation or failure | Error inputs, failed submissions, destructive actions |
+| Warning | Cautionary or attention-required | Warning alerts, expiring items, limit-approaching states |
+| Link / Info | Informative or navigational emphasis | Focus rings, info callouts, active navigation |
+
+Each semantic type adapts across light and dark modes, with tonal steps for disabled → primary → secondary → tertiary usage.
+
+
+## Component Mapping
+
+| Component | Token | Value | Notes |
+|-----------|-------|-------|-------|
+| Input (default) | `stroke.default` | 1px | Neutral border |
+| Input (focus) | `stroke.medium` | 1.5px | Info/link color |
+| Input (error) | `stroke.medium` | 1.5px | Error color |
+| Button (outlined) | `stroke.default` | 1px | Neutral border |
+| Card | `stroke.small` | 0.5px | Subtle container edge |
+| Table grid | `stroke.small` | 0.5px | Low-emphasis grid lines |
+| Modal | `stroke.large` | 2px | Structural frame |
+| Tab (active) | `stroke.medium` | 1.5px | Bottom border indicator |
+| Alert | `stroke.default` | 1px | Semantic color border |
+
+
+## Accessibility
+
+Borders improve usability by:
+
+- Reinforcing visual grouping and separating layers
+- Improving contrast where shadows are insufficient
+- Supporting scannability in dense layouts
+- Guiding focus across workflows and interactive elements
+
+Thin but clear borders reduce cognitive load — especially in complex operational UI — ensuring users never have to guess structure.
+
+
+## Developer Handoff
+
+<CodeGroup>
+```css CSS Variables
+/* Border stroke tokens */
+--stroke-small: 0.5px;
+--stroke-default: 1px;
+--stroke-medium: 1.5px;
+--stroke-large: 2px;
+--stroke-xlarge: 4px;
+```
+
+```tsx TypeScript
+export const stroke = {
+  small: '0.5px',
+  default: '1px',
+  medium: '1.5px',
+  large: '2px',
+  xlarge: '4px',
+} as const;
+```
+
+```tsx Usage
+// Input with default border
+<Input style={{ border: 'var(--stroke-default) solid var(--border-neutral-primary)' }} />
+
+// Focus ring
+<Input style={{ border: 'var(--stroke-medium) solid var(--border-info-primary)' }} />
+
+// Card with subtle border
+<Card style={{ border: 'var(--stroke-small) solid var(--border-neutral-secondary)' }} />
+```
+</CodeGroup>
+
+<Card title="Next: Radius" icon="arrow-right" href="/foundations/radius">
+  Learn how corner rounding tokens work in TARMAC
+</Card>

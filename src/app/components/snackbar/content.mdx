@@ -1,0 +1,191 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+Snackbars are lightweight feedback components used to inform users about system actions, updates, or outcomes. They appear temporarily and typically disappear automatically after a short duration. Unlike alerts, snackbars do not permanently occupy space in the layout — they provide quick contextual feedback while allowing users to continue interacting with the interface.
+
+<CardGroup cols={3}>
+  <Card title="6 Variants" icon="palette">
+    Black, White, Info, Success, Error, Warning
+  </Card>
+  <Card title="2 Styles" icon="layer-group">
+    Filled and Outlined
+  </Card>
+  <Card title="3 Sizes" icon="expand">
+    Large, Medium, Small
+  </Card>
+</CardGroup>
+
+
+## Playground
+
+<Tabs>
+  <Tab title="Variants">
+    <div style={{display:'flex', flexDirection:'column', gap:'10px', padding:'24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div style={{background:'#000', borderRadius:'8px', padding:'12px 16px', display:'flex', alignItems:'center', gap:'10px', width:'100%'}}><span style={{color:'#FFF', fontSize:'13px', flex:1}}>Changes saved successfully.</span><span style={{color:'rgba(255,255,255,0.6)', fontSize:'12px'}}>Undo</span><span style={{color:'rgba(255,255,255,0.5)', fontSize:'14px'}}>✕</span></div>
+      <div style={{background:'#FFF', border:'1px solid #E0E0E0', borderRadius:'8px', padding:'12px 16px', display:'flex', alignItems:'center', gap:'10px', width:'100%'}}><span style={{fontSize:'13px', flex:1}}>Item moved to archive.</span><span style={{color:'#2396FB', fontSize:'12px'}}>Undo</span><span style={{opacity:0.4, fontSize:'14px'}}>✕</span></div>
+      <div style={{background:'#2396FB', borderRadius:'8px', padding:'12px 16px', display:'flex', alignItems:'center', gap:'10px', width:'100%'}}><span style={{color:'#FFF'}}>ℹ</span><span style={{color:'#FFF', fontSize:'13px', flex:1}}>New version available. Refresh to update.</span><span style={{color:'rgba(255,255,255,0.5)', fontSize:'14px'}}>✕</span></div>
+      <div style={{background:'#1BA86E', borderRadius:'8px', padding:'12px 16px', display:'flex', alignItems:'center', gap:'10px', width:'100%'}}><span style={{color:'#FFF'}}>✓</span><span style={{color:'#FFF', fontSize:'13px', flex:1}}>Order placed successfully.</span><span style={{color:'rgba(255,255,255,0.5)', fontSize:'14px'}}>✕</span></div>
+      <div style={{background:'#DC143C', borderRadius:'8px', padding:'12px 16px', display:'flex', alignItems:'center', gap:'10px', width:'100%'}}><span style={{color:'#FFF'}}>✕</span><span style={{color:'#FFF', fontSize:'13px', flex:1}}>Failed to send message. Try again.</span><span style={{color:'rgba(255,255,255,0.6)', fontSize:'12px'}}>Retry</span><span style={{color:'rgba(255,255,255,0.5)', fontSize:'14px'}}>✕</span></div>
+      <div style={{background:'#CF9F02', borderRadius:'8px', padding:'12px 16px', display:'flex', alignItems:'center', gap:'10px', width:'100%'}}><span style={{color:'#FFF'}}>⚠</span><span style={{color:'#FFF', fontSize:'13px', flex:1}}>Connection unstable. Some features may be limited.</span><span style={{color:'rgba(255,255,255,0.5)', fontSize:'14px'}}>✕</span></div>
+    </div>
+  </Tab>
+  <Tab title="Styles">
+    <div style={{display:'flex', flexDirection:'column', gap:'16px', padding:'24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div><div style={{fontSize:'11px', opacity:0.5, marginBottom:'6px'}}>Filled</div><div style={{background:'#2396FB', borderRadius:'8px', padding:'12px 16px', display:'flex', alignItems:'center', gap:'10px', width:'100%'}}><span style={{color:'#FFF'}}>ℹ</span><span style={{color:'#FFF', fontSize:'13px', flex:1}}>Update available.</span><span style={{color:'rgba(255,255,255,0.5)', fontSize:'14px'}}>✕</span></div></div>
+      <div><div style={{fontSize:'11px', opacity:0.5, marginBottom:'6px'}}>Outlined</div><div style={{background:'#FFF', border:'1px solid #2396FB', borderRadius:'8px', padding:'12px 16px', display:'flex', alignItems:'center', gap:'10px', width:'100%'}}><span style={{color:'#2396FB'}}>ℹ</span><span style={{color:'#2396FB', fontSize:'13px', flex:1}}>Update available.</span><span style={{color:'#2396FB', opacity:0.5, fontSize:'14px'}}>✕</span></div></div>
+    </div>
+  </Tab>
+  <Tab title="With Actions">
+    <div style={{display:'flex', flexDirection:'column', gap:'10px', padding:'24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div style={{background:'#000', borderRadius:'8px', padding:'10px 16px', display:'flex', alignItems:'center', gap:'10px', width:'100%'}}><span style={{color:'#FFF', fontSize:'13px', flex:1}}>Item deleted.</span><div style={{display:'flex', gap:'4px'}}><span style={{color:'rgba(255,255,255,0.8)', fontSize:'12px', padding:'4px 10px', background:'rgba(255,255,255,0.15)', borderRadius:'4px'}}>Undo</span></div><span style={{color:'rgba(255,255,255,0.5)', fontSize:'14px'}}>✕</span></div>
+      <div style={{background:'#DC143C', borderRadius:'8px', padding:'10px 16px', display:'flex', alignItems:'center', gap:'10px', width:'100%'}}><span style={{color:'#FFF'}}>✕</span><span style={{color:'#FFF', fontSize:'13px', flex:1}}>Upload failed.</span><div style={{display:'flex', gap:'4px'}}><span style={{color:'#FFF', fontSize:'12px', padding:'4px 10px', background:'rgba(255,255,255,0.2)', borderRadius:'4px'}}>Retry</span><span style={{color:'#DC143C', fontSize:'12px', padding:'4px 10px', background:'#FFF', borderRadius:'4px'}}>Details</span></div></div>
+    </div>
+  </Tab>
+  <Tab title="Sizes">
+    <div style={{display:'flex', flexDirection:'column', gap:'16px', padding:'24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div><div style={{fontSize:'11px', opacity:0.5, marginBottom:'6px'}}>Large</div><div style={{background:'#000', borderRadius:'8px', padding:'14px 16px', display:'flex', alignItems:'center', gap:'10px', width:'100%'}}><span style={{color:'#FFF', fontSize:'14px', flex:1}}>Changes saved.</span><span style={{color:'rgba(255,255,255,0.5)', fontSize:'14px'}}>✕</span></div></div>
+      <div><div style={{fontSize:'11px', opacity:0.5, marginBottom:'6px'}}>Medium</div><div style={{background:'#000', borderRadius:'8px', padding:'10px 14px', display:'flex', alignItems:'center', gap:'10px', width:'100%'}}><span style={{color:'#FFF', fontSize:'13px', flex:1}}>Changes saved.</span><span style={{color:'rgba(255,255,255,0.5)', fontSize:'13px'}}>✕</span></div></div>
+      <div><div style={{fontSize:'11px', opacity:0.5, marginBottom:'6px'}}>Small</div><div style={{background:'#000', borderRadius:'6px', padding:'8px 12px', display:'flex', alignItems:'center', gap:'8px', maxWidth:'360px'}}><span style={{color:'#FFF', fontSize:'12px', flex:1}}>Changes saved.</span><span style={{color:'rgba(255,255,255,0.5)', fontSize:'12px'}}>✕</span></div></div>
+    </div>
+  </Tab>
+  <Tab title="Dual Text">
+    <div style={{display:'flex', flexDirection:'column', gap:'10px', padding:'24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div style={{background:'#1BA86E', borderRadius:'8px', padding:'14px 16px', display:'flex', alignItems:'flex-start', gap:'10px', width:'100%'}}><span style={{color:'#FFF', marginTop:'2px'}}>✓</span><div style={{flex:1}}><div style={{color:'#FFF', fontSize:'13px', fontWeight:600}}>Order confirmed</div><div style={{color:'rgba(255,255,255,0.8)', fontSize:'12px', marginTop:'2px'}}>Your order #4521 has been placed successfully.</div></div><span style={{color:'rgba(255,255,255,0.5)', fontSize:'14px'}}>✕</span></div>
+      <div style={{background:'#DC143C', borderRadius:'8px', padding:'14px 16px', display:'flex', alignItems:'flex-start', gap:'10px', width:'100%'}}><span style={{color:'#FFF', marginTop:'2px'}}>✕</span><div style={{flex:1}}><div style={{color:'#FFF', fontSize:'13px', fontWeight:600}}>Payment failed</div><div style={{color:'rgba(255,255,255,0.8)', fontSize:'12px', marginTop:'2px'}}>Card declined. Please try another method.</div></div><span style={{color:'rgba(255,255,255,0.6)', fontSize:'12px'}}>Retry</span></div>
+    </div>
+  </Tab>
+</Tabs>
+
+<Info>Snackbars auto-dismiss after 3–5 seconds. Include a dismiss icon for manual close. Extend duration when CTAs are present.</Info>
+
+
+
+## Anatomy
+
+{/* 🎨 DESIGNER: Replace with snackbar anatomy diagram from Figma (node: 1823:38280) */}
+<div style={{background:'#F5F5F5', borderRadius:'12px', padding:'48px', marginBottom:'16px', textAlign:'center', minHeight:'200px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+  <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Snackbar Anatomy Diagram — Replace with /assets/components/snackbar/snackbar-anatomy.png</div>
+</div>
+
+| # | Element | Required | Description |
+|---|---------|----------|-------------|
+| 1 | Container | Yes | Main surface with background, border-radius, shadow |
+| 2 | Leading Icon | No | Reinforces message type (✓, ✕, ⚠, ℹ) |
+| 3 | Primary Text | Yes | Main feedback message |
+| 4 | CTA Button (primary) | No | Action to respond (Undo, Retry) |
+| 5 | CTA Button (secondary) | No | Secondary action (Details, View) |
+| 6 | Trailing Icon | No | Dismiss/close action |
+
+
+## Styles
+
+| Style | Visual | Use When |
+|-------|--------|----------|
+| Filled | Solid background, white text | Important notifications, strong emphasis |
+| Outlined | Border + transparent background, colored text | Subtle feedback, softer visual weight |
+
+
+## Sizes
+
+| Size | Height | Padding | Usage |
+|------|--------|---------|-------|
+| Large | 52px | 14px 16px | Desktop, spacious layouts |
+| Medium | 44px | 10px 14px | Default — most interfaces |
+| Small | 36px | 8px 12px | Mobile, compact layouts |
+
+
+## Snackbar vs Alert vs Toast
+
+| Aspect | Snackbar | Alert (Inline) | Toast |
+|--------|---------|---------------|-------|
+| Position | Bottom-center overlay | Inline within layout | Corner overlay |
+| Duration | Auto-dismiss (3–5s) | Persistent | Auto-dismiss (3–5s) |
+| Interaction | Optional CTA + dismiss | Optional CTA + dismiss | Dismiss only |
+| Use when | Action confirmation, undo | Contextual feedback near content | System notifications |
+| Stacking | 1 at a time (queued) | Multiple inline | Multiple stacked |
+
+
+## Accessibility
+
+| Requirement | Guideline |
+|-------------|-----------|
+| Role | Use `role="status"` with `aria-live="polite"` |
+| Timing | Minimum 5 seconds visible; longer with CTAs |
+| Screen reader | Message announced automatically via live region |
+| Keyboard | CTA buttons focusable; Escape to dismiss |
+| Contrast | Text ≥ 4.5:1 against snackbar background |
+| Motion | Respect `prefers-reduced-motion` — disable slide animation |
+| Focus | Don't steal focus from current task |
+
+
+## Developer Handoff
+
+<CodeGroup>
+```tsx API
+interface SnackbarProps {
+  variant?: 'black' | 'white' | 'info' | 'success' | 'error' | 'warning';
+  style?: 'filled' | 'outlined';
+  type?: 'single' | 'dual';
+  size?: 'lg' | 'md' | 'sm';
+  icon?: ReactNode;
+  title?: string;
+  description?: string;
+  actions?: SnackbarAction[];
+  dismissible?: boolean;
+  duration?: number;
+  position?: 'bottom-center' | 'top-center';
+  onDismiss?: () => void;
+}
+
+interface SnackbarAction {
+  label: string;
+  onClick: () => void;
+  variant?: 'primary' | 'secondary';
+}
+```
+
+```tsx Usage
+// Success confirmation
+<Snackbar variant="success" icon={<CheckIcon />}>
+  Order placed successfully.
+</Snackbar>
+
+// With undo action
+<Snackbar variant="black" actions={[{ label: 'Undo', onClick: handleUndo }]} dismissible>
+  Item deleted.
+</Snackbar>
+
+// Error with retry
+<Snackbar variant="error" icon={<ErrorIcon />} actions={[{ label: 'Retry', onClick: handleRetry }]}>
+  Failed to send message.
+</Snackbar>
+
+// Dual text
+<Snackbar variant="success" title="Order confirmed" description="Your order #4521 has been placed." />
+
+// Outlined style
+<Snackbar variant="info" style="outlined">
+  New version available.
+</Snackbar>
+
+// Custom duration
+<Snackbar variant="warning" duration={8000}>
+  Connection unstable.
+</Snackbar>
+```
+
+```tsx ARIA
+// Proper live region implementation
+<div role="status" aria-live="polite" aria-atomic="true">
+  {visible && (
+    <div className="snackbar">
+      Order placed successfully.
+      <button onClick={handleUndo}>Undo</button>
+      <button onClick={handleDismiss} aria-label="Dismiss">✕</button>
+    </div>
+  )}
+</div>
+```
+</CodeGroup>

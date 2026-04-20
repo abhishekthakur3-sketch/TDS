@@ -1,0 +1,87 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+These guidelines provide actionable rules for designers and developers working with TARMAC. Every component in the system is built to meet WCAG 2.1 Level AA, but proper usage is essential to maintain accessibility in your application.
+
+<CardGroup cols={2}>
+  <Card title="For Designers" icon="pen-ruler">
+    Color contrast, touch targets, focus states, content hierarchy
+  </Card>
+  <Card title="For Developers" icon="code">
+    Semantic HTML, ARIA attributes, keyboard support, testing
+  </Card>
+</CardGroup>
+
+
+## Developer Guidelines
+
+### Semantic HTML
+
+Always use the correct HTML element for its purpose:
+
+```tsx
+// Correct
+<button onClick={handleClick}>Save</button>
+<a href="/settings">Settings</a>
+<nav aria-label="Main navigation">...</nav>
+
+// Incorrect
+<div onClick={handleClick}>Save</div>
+<span onClick={navigate}>Settings</span>
+<div class="nav">...</div>
+```
+
+### ARIA Usage Rules
+
+| Rule | Details |
+|------|---------|
+| First rule of ARIA | Don't use ARIA if native HTML can do the job |
+| Required attributes | Always include required ARIA attributes for roles |
+| State management | Update `aria-expanded`, `aria-selected`, `aria-checked` dynamically |
+| Labels | Every interactive element needs an accessible name |
+| Live regions | Use `aria-live` for dynamic content updates |
+
+### Keyboard Support
+
+| Rule | Details |
+|------|---------|
+| All interactive elements | Must be reachable via Tab key |
+| Custom widgets | Implement arrow key navigation per WAI-ARIA patterns |
+| Focus visible | Never remove `:focus-visible` outlines |
+| Focus trapping | Trap focus in modals, restore on close |
+| Skip links | Provide "Skip to main content" link |
+
+### Form Accessibility
+
+| Rule | Details |
+|------|---------|
+| Labels | Every input needs a visible, associated `label` |
+| Errors | Use `aria-invalid` and `aria-describedby` for error messages |
+| Required fields | Use `aria-required="true"` plus visual indicator |
+| Grouping | Use `fieldset`/`legend` for related inputs |
+| Error focus | Move focus to first error on form submission failure |
+
+
+## Common Mistakes
+
+<CardGroup cols={2}>
+  <Card title="Do" icon="check" color="#16A34A">
+    - Use semantic HTML elements
+    - Provide text alternatives for images
+    - Ensure keyboard navigation works
+    - Test with screen readers
+    - Use TARMAC design tokens for colors
+    - Include visible focus indicators
+  </Card>
+  <Card title="Don't" icon="xmark" color="#DC2626">
+    - Don't use `div` or `span` for interactive elements
+    - Don't remove focus outlines with `outline: none`
+    - Don't use `tabindex` values greater than 0
+    - Don't auto-play audio or video
+    - Don't use title attribute as the only accessible name
+    - Don't rely on hover-only interactions
+  </Card>
+</CardGroup>
+

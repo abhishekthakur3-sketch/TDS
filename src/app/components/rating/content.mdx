@@ -1,0 +1,109 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+The Rating component communicates qualitative feedback through a familiar star-based pattern. It enables users to quickly understand ratings or provide input in an intuitive way. The system is composed of Rating Star (the individual unit) and Rating Set (a group of stars representing a value). It supports fractional ratings and works across both display and input use cases.
+
+<CardGroup cols={3}>
+  <Card title="3 Star Variants" icon="star-half-stroke">
+    Full, Half, Empty
+  </Card>
+  <Card title="11 Rating Values" icon="hashtag">
+    0 to 5 in 0.5 increments
+  </Card>
+  <Card title="3 Sizes" icon="expand">
+    Large (20px), Medium (16px), Small (14px)
+  </Card>
+</CardGroup>
+
+
+## Playground
+
+<Tabs>
+  <Tab title="Rating Stars">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'32px', textAlign:'center', minHeight:'160px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+      <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Rating Stars — Full, Half, Empty variants in Large, Medium, Small sizes<br/>Replace with /assets/components/rating/rating-stars.png</div>
+    </div>
+  </Tab>
+  <Tab title="Rating Sets">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'32px', textAlign:'center', minHeight:'300px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+      <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Rating Sets — All 11 values (0 to 5) across 3 sizes<br/>Replace with /assets/components/rating/rating-sets.png</div>
+    </div>
+  </Tab>
+</Tabs>
+
+
+## Sub-Components
+
+| Component | Description |
+|-----------|-------------|
+| Rating Star | Individual star unit with Full, Half, or Empty fill state |
+| Rating Set | Collection of 5 stars representing a complete rating value |
+
+
+## Sizes
+
+| Size | Star Dimension | Set Width | Usage |
+|------|---------------|-----------|-------|
+| Large | 20px | 100px | Product detail pages, prominent reviews |
+| Medium | 16px | 80px | List items, cards, compact reviews |
+| Small | 14px | 70px | Dense layouts, metadata rows |
+
+
+## Anatomy - Rating Set
+
+{/* 🎨 DESIGNER: Replace with rating set anatomy from Figma */}
+<div style={{background:'#F5F5F5', borderRadius:'12px', padding:'48px', marginBottom:'16px', textAlign:'center', minHeight:'120px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+  <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Rating Set Anatomy — Replace with /assets/components/rating/rating-set-anatomy.png</div>
+</div>
+
+| # | Element | Description |
+|---|---------|-------------|
+| 1–5 | Rating Stars | Five star instances, each with independent fill state |
+
+
+## Usage Guidelines
+
+<CardGroup cols={2}>
+  <Card title="Do" icon="check" color="#16A34A">
+    - Use a consistent number of stars (5)
+    - Provide clear visual distinction between fill states
+    - Include text labels for accessibility
+    - Use half stars only when meaningful
+    - Pair with numeric value if precision is important
+  </Card>
+  <Card title="Don't" icon="xmark" color="#DC2626">
+    - Don't mix different rating scales within the same product
+    - Don't rely only on star visuals without context
+    - Don't make interactive areas too small
+    - Don't overcomplicate with too many states
+    - Don't use ratings for non-feedback purposes
+  </Card>
+</CardGroup>
+
+
+## Design Tokens
+
+<Tabs>
+  <Tab title="Sizing">
+    | Token | Value |
+    |-------|-------|
+    | `rating-star-size-lg` | 20px |
+    | `rating-star-size-md` | 16px |
+    | `rating-star-size-sm` | 14px |
+    | `rating-set-gap` | 0px |
+    | `rating-set-width-lg` | 100px |
+    | `rating-set-width-md` | 80px |
+    | `rating-set-width-sm` | 70px |
+  </Tab>
+  <Tab title="Colors">
+    | Token | Value |
+    |-------|-------|
+    | `rating-star-filled` | #F5A623 |
+    | `rating-star-empty` | #D1D5DB |
+    | `rating-star-half-fill` | #F5A623 |
+    | `rating-star-half-empty` | #D1D5DB |
+  </Tab>
+</Tabs>
+

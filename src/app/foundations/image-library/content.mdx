@@ -1,0 +1,78 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+The image library supports storytelling, scale, and realism across the product ecosystem. Images are used to ground digital experiences in the real world — reflecting movement, infrastructure, people, and operations.
+
+All images are generated using Google Gemini, enabling consistent style, controlled composition, and scalable creation while staying aligned with brand intent and visual direction. Images should feel authentic, operational, and purposeful — never generic or stock-like.
+
+<CardGroup cols={3}>
+  <Card title="5 Categories" icon="images">
+    Vehicles, People, Warehouse, Riders, Illustrative
+  </Card>
+  <Card title="AI-Generated" icon="wand-magic-sparkles">
+    Created with Google Gemini for consistent style and scalability
+  </Card>
+  <Card title="Prompt-Driven" icon="terminal">
+    Standardized templates ensure brand-aligned output
+  </Card>
+</CardGroup>
+
+
+## Core Prompt Templates
+
+All images are generated using structured prompt templates to ensure consistency.
+
+
+  <Accordion title="Contextual Environment">
+    Used to establish setting and scale.
+
+    Template: *"A realistic [environment] showing [infrastructure or location], with [environmental details such as weather, time of day, or surroundings]. The scene feels grounded, operational, and authentic."*
+
+    Example: *"A realistic highway environment with multiple delivery trucks moving across long stretches of road, subtle motion blur, overcast sky, and industrial surroundings."*
+  </Accordion>
+  <Accordion title="Subject-Focused">
+    Used when the subject must be clearly readable.
+
+    Template: *"A close-up / medium shot of [primary subject], clearly visible, with realistic proportions and detail, placed in a real operational environment."*
+
+    Example: *"A delivery truck parked at a logistics hub, clearly branded, realistic lighting, and sharp detail."*
+  </Accordion>
+  <Accordion title="Action and Motion">
+    Used to convey speed, flow, and progress.
+
+    Template: *"A dynamic scene showing [subject] in motion, with natural movement cues such as motion blur, directional lighting, or perspective depth."*
+
+    Example: *"A delivery vehicle moving at speed on an urban road at dusk, light trails visible, motion blur emphasizing movement and efficiency."*
+  </Accordion>
+  <Accordion title="People and Operations">
+    Used to humanize the system.
+
+    Template: *"A realistic depiction of [person/role] performing [task] in a real operational environment, candid and natural, not posed or staged."*
+
+    Example: *"A warehouse worker sorting parcels on a conveyor belt, wearing safety gear, natural lighting, candid moment."*
+  </Accordion>
+  <Accordion title="Mood and Lighting">
+    Used to control emotional tone.
+
+    Template: *"The scene uses [lighting type] with a [warm/cool/neutral] tone, creating a [calm / focused / energetic] mood."*
+
+    Example: *"Soft industrial lighting with cool tones, creating a focused and efficient atmosphere."*
+  </Accordion>
+  <Accordion title="Composition">
+    Used to ensure layout compatibility.
+
+    Template: *"Composed using a [wide / aerial / centered / asymmetric] layout, with clear foreground and background separation, leaving space for UI overlays."*
+
+    Example: *"Wide-angle composition with the subject centered and negative space on the right for UI content."*
+  </Accordion>
+
+
+
+## Example Full Prompt
+
+<Info>
+  "A realistic logistics warehouse interior with multiple workers sorting parcels on conveyor belts. Natural industrial lighting, neutral color tones, candid action-focused scene. Wide-angle composition with clear depth and negative space. Photorealistic, grounded, and operational. No text or abstract elements."
+</Info>
+

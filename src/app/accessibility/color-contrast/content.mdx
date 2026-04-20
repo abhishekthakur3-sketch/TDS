@@ -1,0 +1,47 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+Proper color contrast ensures text and UI elements are readable for all users, including those with low vision or color blindness. All TARMAC color token combinations meet WCAG 2.1 Level AA standards.
+
+
+## TARMAC Color Combinations
+
+All TARMAC design token combinations are pre-validated for contrast:
+
+### Text on Backgrounds
+
+| Foreground | Background | Ratio | Level |
+|------------|------------|-------|-------|
+| neutral-900 (#0D0D0D) | white | 19.4:1 | AAA |
+| neutral-700 (#454545) | white | 9.7:1 | AAA |
+| neutral-600 (#808080) | white | 3.9:1 | AA Large |
+| body/primary (#2B2B2B) | white | 14.7:1 | AAA |
+| caption/primary (#454545) | white | 9.7:1 | AAA |
+| body/disabled (#CDCBCB) | white | 1.5:1 | Fail |
+
+<Warning>
+  Disabled text intentionally has low contrast to indicate non-interactive state. Never use disabled color tokens for active content.
+</Warning>
+
+### Interactive Elements
+
+| Element | Colors | Ratio |
+|---------|--------|-------|
+| Primary Button | #0D0D0D on white | 19.4:1 |
+| Focus Ring | rgba(35, 150, 251, 0.4) | 3:1 against white |
+| Error State | #DC2626 on white | 4.6:1 |
+| Success State | #16A34A on white | 3.4:1 |
+
+
+## Testing Tools
+
+| Tool | Type | Use For |
+|------|------|---------|
+| axe DevTools | Browser extension | Automated contrast checking |
+| WAVE | Browser extension | Visual contrast analysis |
+| WebAIM Contrast Checker | Online tool | Manual ratio calculation |
+| Color Oracle | Desktop app | Color blindness simulation |
+| Stark | Figma plugin | Design-time contrast checking |
+

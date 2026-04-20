@@ -1,0 +1,71 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+Comprehensive accessibility testing combines automated tools, manual checks, and real user testing. No single method catches everything — use all three for full coverage.
+
+<CardGroup cols={3}>
+  <Card title="Automated" icon="robot">
+    Catches ~30% of issues: missing alt text, contrast, ARIA errors
+  </Card>
+  <Card title="Manual" icon="hand">
+    Catches ~50% of issues: keyboard flow, focus order, screen reader experience
+  </Card>
+  <Card title="User Testing" icon="users">
+    Catches ~20% of issues: real-world usability with assistive tech
+  </Card>
+</CardGroup>
+
+
+## Manual Testing
+
+### Keyboard Testing
+
+| Test | How | Pass Criteria |
+|------|-----|---------------|
+| Tab navigation | Press Tab through entire page | All interactive elements reachable |
+| Focus visibility | Tab and observe | Clear focus ring on every element |
+| Focus order | Tab and check sequence | Matches visual layout |
+| Activation | Press Enter/Space on controls | Buttons, links, toggles respond |
+| Escape | Press Escape on overlays | Modals and dropdowns close |
+| Arrow keys | Navigate tabs, menus, radios | Composite widgets respond |
+| Skip link | Tab once from page top | Skip link appears and works |
+
+### Screen Reader Testing
+
+| Test | How | Pass Criteria |
+|------|-----|---------------|
+| Content reading | Navigate with screen reader | All visible text announced |
+| Interactive labels | Focus buttons, links, inputs | Clear accessible names announced |
+| Form fields | Navigate form | Labels, required state, errors announced |
+| Dynamic content | Trigger toasts, status changes | Updates announced via live regions |
+| Landmarks | Use landmark navigation | Header, nav, main, footer present |
+| Headings | Use heading navigation | Logical H1-H6 hierarchy |
+
+### Visual Testing
+
+| Test | How | Pass Criteria |
+|------|-----|---------------|
+| Text contrast | Use contrast checker tool | 4.5:1 for normal text, 3:1 for large |
+| Color blindness | Use Color Oracle or similar | Information not conveyed by color alone |
+| Text scaling | Zoom browser to 200% | Content remains usable, no overflow |
+| High contrast | Enable OS high contrast mode | All content visible and usable |
+| Reduced motion | Enable prefers-reduced-motion | Animations disabled or reduced |
+
+
+## Recommended Tools
+
+| Category | Tool | Platform |
+|----------|------|----------|
+| Automated | axe DevTools | Browser extension |
+| Automated | Lighthouse | Chrome DevTools |
+| Automated | jest-axe | Node.js test runner |
+| Screen Reader | NVDA | Windows (free) |
+| Screen Reader | JAWS | Windows (commercial) |
+| Screen Reader | VoiceOver | macOS/iOS (built-in) |
+| Screen Reader | TalkBack | Android (built-in) |
+| Color | WebAIM Contrast Checker | Online |
+| Color | Color Oracle | Desktop app |
+| Color | Stark | Figma plugin |
+

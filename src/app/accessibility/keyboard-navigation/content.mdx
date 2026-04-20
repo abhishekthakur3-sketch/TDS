@@ -1,0 +1,72 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+All TARMAC components are fully keyboard accessible, following established WAI-ARIA interaction patterns. Users should be able to navigate, interact with, and operate every component without a mouse.
+
+
+## Component Keyboard Patterns
+
+<Tabs>
+  <Tab title="Buttons & Links">
+    | Key | Action |
+    |-----|--------|
+    | Tab | Focus the button/link |
+    | Enter | Activate the button/link |
+    | Space | Activate the button (not links) |
+  </Tab>
+  <Tab title="Inputs & Forms">
+    | Key | Action |
+    |-----|--------|
+    | Tab | Move between form fields |
+    | Enter | Submit form (when focused on submit button) |
+    | Space | Toggle checkbox |
+    | Arrow Up/Down | Change radio selection, adjust slider |
+    | Home/End | Move cursor to start/end of text input |
+  </Tab>
+  <Tab title="Modals & Dialogs">
+    | Key | Action |
+    |-----|--------|
+    | Tab | Cycle through focusable elements (trapped) |
+    | Shift + Tab | Cycle backward (trapped) |
+    | Escape | Close the modal |
+    | Enter | Activate focused button |
+  </Tab>
+  <Tab title="Menus & Dropdowns">
+    | Key | Action |
+    |-----|--------|
+    | Enter / Space | Open dropdown |
+    | Arrow Down | Move to next option |
+    | Arrow Up | Move to previous option |
+    | Home | Jump to first option |
+    | End | Jump to last option |
+    | Enter | Select highlighted option |
+    | Escape | Close dropdown |
+  </Tab>
+  <Tab title="Tabs & Navigation">
+    | Key | Action |
+    |-----|--------|
+    | Tab | Focus the tab list |
+    | Arrow Left/Right | Navigate between tabs |
+    | Enter / Space | Activate the focused tab |
+    | Home | Focus first tab |
+    | End | Focus last tab |
+  </Tab>
+</Tabs>
+
+
+## Focus Order
+
+Focus order must follow the visual reading order of the page:
+
+1. Skip link (hidden until focused)
+2. Header / top navigation
+3. Main content area (top to bottom, left to right)
+4. Sidebar (if present)
+5. Footer
+
+<Info>
+  Use the Tab key to navigate through your page and verify the order feels logical. If focus jumps unexpectedly, check your DOM order and avoid positive `tabindex` values.
+</Info>
+

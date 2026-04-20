@@ -1,0 +1,194 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+A grid system is the invisible structural framework that organizes layout, spacing, and alignment across your product. It ensures consistency, predictability, and rhythm — making interfaces feel balanced, intuitive, and easy to scan. A strong grid acts like a "traffic system" for UI elements: guiding where components should sit, how they scale, and how they respond across breakpoints.
+
+<CardGroup cols={3}>
+  <Card title="For Designers" icon="pen-ruler">
+    Use Figma grid styles mapped to these specs. Align all elements to the defined column structure — never eyeball placement.
+  </Card>
+  <Card title="For Developers" icon="code">
+    Reference grid tokens and breakpoint values. Build layouts using the 12-column (desktop) or 4-column (mobile) system with consistent gutters and margins.
+  </Card>
+  <Card title="For Product" icon="users">
+    Ensures predictable, scannable layouts across all viewports — from compact POS terminals to wide enterprise dashboards.
+  </Card>
+</CardGroup>
+
+## Grid Usage Guidelines
+
+Choosing the right grid configuration depends on the content type, density, and user task. Use this decision framework to select the appropriate layout.
+
+<Tabs>
+  <Tab title="When to Use Fluid vs Fixed">
+    | Scenario | Grid Type | Reason |
+    |----------|-----------|--------|
+    | Dashboards & analytics | Fluid | Maximize data visibility across screen widths |
+    | Forms & data entry | Fixed (narrow) | Constrain width for comfortable reading and input |
+    | Marketing / landing pages | Fixed (wide) | Control line length and visual composition |
+    | Data tables & lists | Fluid | Tables need horizontal space to avoid truncation |
+    | Settings / configuration | Fixed (narrow) | Focused, single-task workflows benefit from constraints |
+    | Multi-panel workflows | Fluid | Side panels + content need proportional scaling |
+  </Tab>
+  <Tab title="Column Strategy by Context">
+    | Context | Desktop Columns | Mobile Columns | Notes |
+    |---------|----------------|----------------|-------|
+    | Full-width dashboard | 12 | 4 | Cards span 3-4 cols each on desktop |
+    | Form with sidebar | 8 (form) + 4 (sidebar) | 4 (stacked) | Sidebar collapses below form on mobile |
+    | Data table | 12 | 4 (horizontal scroll) | Tables maintain structure, scroll horizontally |
+    | Article / documentation | 8 (content) + 4 (TOC) | 4 (TOC hidden) | Table of contents hides on mobile |
+    | Modal / dialog | 6-8 (centered) | 4 (full width) | Modals use a subset of the grid |
+    | Login / auth screens | 4-6 (centered) | 4 | Narrow, focused layout |
+  </Tab>
+</Tabs>
+
+
+## Types of Grid
+
+<Tabs>
+  <Tab title="Fluid Grid">
+    A fluid grid stretches across the screen to fill all available space. Columns and content scale and resize proportionally with the viewport.
+
+    **When to use:**
+    - Responsive layouts that need to adapt to any screen width
+    - Content-heavy pages where maximizing reading area matters
+    - Dashboards and data-dense interfaces
+
+    <Info>Fluid grids are the default for most TARMAC layouts. They ensure content fills the available space while maintaining column proportions.</Info>
+  </Tab>
+  <Tab title="Fixed Grid">
+    A fixed grid applies an ideal maximum width to page containers. Content is centered within the viewport, and the grid does not stretch beyond its defined max-width.
+
+    **Variants:**
+    - **Fixed Narrow** — For focused reading experiences and forms
+    - **Fixed Wide** — For content-rich layouts with sidebars
+
+    **When to use:**
+    - Marketing and landing pages where line length control matters
+    - Form-heavy workflows that benefit from constrained width
+    - Screens where content readability is more important than space utilization
+
+    <Info>On viewports wider than 1440px, the TARMAC grid locks to a 1280px centered container to prevent eye-strain from overly long line lengths.</Info>
+  </Tab>
+</Tabs>
+
+## Column Span & Offset
+
+<Tabs>
+  <Tab title="Column Span">
+    Column span defines how many columns a content block occupies. Spans range from 2 to 12 columns on desktop, allowing flexible layout compositions.
+
+    <div style={{background:'#F5F5F5',borderRadius:'12px',padding:'20px',marginBottom:'16px'}}>
+      <div style={{display:'flex',flexDirection:'column',gap:'8px'}}>
+        <div style={{height:'32px',background:'rgba(237,27,54,0.2)',borderRadius:'4px',width:'100%'}} />
+        <div style={{display:'flex',gap:'8px'}}>
+          <div style={{height:'32px',background:'rgba(35,150,251,0.2)',borderRadius:'4px',flex:1}} />
+          <div style={{height:'32px',background:'rgba(35,150,251,0.2)',borderRadius:'4px',flex:1}} />
+        </div>
+        <div style={{display:'flex',gap:'8px'}}>
+          <div style={{height:'32px',background:'rgba(27,168,110,0.2)',borderRadius:'4px',flex:1}} />
+          <div style={{height:'32px',background:'rgba(27,168,110,0.2)',borderRadius:'4px',flex:1}} />
+          <div style={{height:'32px',background:'rgba(27,168,110,0.2)',borderRadius:'4px',flex:1}} />
+        </div>
+        <div style={{display:'flex',gap:'8px'}}>
+          <div style={{height:'32px',background:'rgba(207,159,2,0.2)',borderRadius:'4px',flex:1}} />
+          <div style={{height:'32px',background:'rgba(207,159,2,0.2)',borderRadius:'4px',flex:1}} />
+          <div style={{height:'32px',background:'rgba(207,159,2,0.2)',borderRadius:'4px',flex:1}} />
+          <div style={{height:'32px',background:'rgba(207,159,2,0.2)',borderRadius:'4px',flex:1}} />
+        </div>
+        <div style={{display:'flex',gap:'8px'}}>
+          <div style={{height:'32px',background:'rgba(124,58,237,0.2)',borderRadius:'4px',flex:1}} />
+          <div style={{height:'32px',background:'rgba(124,58,237,0.2)',borderRadius:'4px',flex:1}} />
+          <div style={{height:'32px',background:'rgba(124,58,237,0.2)',borderRadius:'4px',flex:1}} />
+          <div style={{height:'32px',background:'rgba(124,58,237,0.2)',borderRadius:'4px',flex:1}} />
+          <div style={{height:'32px',background:'rgba(124,58,237,0.2)',borderRadius:'4px',flex:1}} />
+          <div style={{height:'32px',background:'rgba(124,58,237,0.2)',borderRadius:'4px',flex:1}} />
+        </div>
+      </div>
+      <div style={{display:'flex',justifyContent:'space-between',marginTop:'8px',fontSize:'11px',color:'#888'}}>
+        <span>Span 12</span><span>Span 6 + 6</span><span>Span 4 + 4 + 4</span><span>Span 3 × 4</span><span>Span 2 × 6</span>
+      </div>
+    </div>
+
+    | Span | Desktop Width (approx.) | Common Use |
+    |------|------------------------|------------|
+    | 2 cols | ~16% | Sidebar icons, small widgets |
+    | 3 cols | ~25% | Side panels, navigation |
+    | 4 cols | ~33% | Cards, form sections |
+    | 6 cols | ~50% | Split layouts, two-column content |
+    | 8 cols | ~66% | Main content with sidebar |
+    | 12 cols | 100% | Full-width sections, heroes |
+  </Tab>
+  <Tab title="Offset">
+    Offset adds empty space by skipping columns before a content block. This creates visual balance and asymmetric layouts without adding empty containers.
+
+    <div style={{background:'#F5F5F5',borderRadius:'12px',padding:'20px',marginBottom:'16px'}}>
+      <div style={{display:'flex',flexDirection:'column',gap:'8px'}}>
+        <div style={{display:'flex',gap:'0'}}>
+          <div style={{flex:2}} />
+          <div style={{height:'32px',background:'rgba(237,27,54,0.2)',borderRadius:'4px',flex:10}} />
+        </div>
+        <div style={{display:'flex',gap:'0'}}>
+          <div style={{flex:4}} />
+          <div style={{height:'32px',background:'rgba(35,150,251,0.2)',borderRadius:'4px',flex:8}} />
+        </div>
+        <div style={{display:'flex',gap:'0'}}>
+          <div style={{flex:6}} />
+          <div style={{height:'32px',background:'rgba(27,168,110,0.2)',borderRadius:'4px',flex:6}} />
+        </div>
+        <div style={{display:'flex',gap:'0'}}>
+          <div style={{flex:8}} />
+          <div style={{height:'32px',background:'rgba(207,159,2,0.2)',borderRadius:'4px',flex:4}} />
+        </div>
+        <div style={{display:'flex',gap:'0'}}>
+          <div style={{flex:10}} />
+          <div style={{height:'32px',background:'rgba(124,58,237,0.2)',borderRadius:'4px',flex:2}} />
+        </div>
+      </div>
+      <div style={{display:'flex',flexDirection:'column',gap:'2px',marginTop:'8px',fontSize:'11px',color:'#888'}}>
+        <span>Span 10, Offset 2</span>
+        <span>Span 8, Offset 4</span>
+        <span>Span 6, Offset 6</span>
+        <span>Span 4, Offset 8</span>
+        <span>Span 2, Offset 10</span>
+      </div>
+    </div>
+
+    **Use offsets to:**
+    - Center content within the grid
+    - Create visual breathing room
+    - Align content blocks with other sections on the page
+    - Build asymmetric but intentional layouts
+
+    <Warning>Avoid excessive offsets that push content too far from the viewport edge. Users should not have to scan across large empty areas to find content.</Warning>
+  </Tab>
+</Tabs>
+
+
+## General Principles
+
+<CardGroup cols={2}>
+  <Card title="Consistency over complexity" icon="equals">
+    Apply the same visual logic across all surfaces. A predictable grid reduces cognitive load for both users and builders.
+  </Card>
+  <Card title="Content-first alignment" icon="align-left">
+    Grids support meaning — they don't compete with it. Layout decisions should serve the content hierarchy, not override it.
+  </Card>
+  <Card title="Predictable navigation zones" icon="compass">
+    Users should always know where to look. Consistent placement of navigation, content, and actions builds spatial memory.
+  </Card>
+  <Card title="Scalable spacing system" icon="ruler-combined">
+    Built from TARMAC spacing tokens. Grid gutters, margins, and offsets reference the same scale used across all components.
+  </Card>
+  <Card title="Clarity at operational scale" icon="binoculars">
+    Interfaces must remain readable in real-world environments — from compact POS terminals to wide enterprise dashboards.
+  </Card>
+  <Card title="Grid stability" icon="lock">
+    Layouts should not jump, shift, or realign unexpectedly. Transitions between breakpoints and navigation states must feel smooth and intentional.
+  </Card>
+</CardGroup>
+
+<Warning>Never break the grid to "make something fit." If content doesn't align to the grid, revisit the content structure or component sizing — not the grid itself.</Warning>
+

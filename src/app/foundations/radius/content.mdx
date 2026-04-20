@@ -1,0 +1,101 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+Radius defines the corner rounding system across the TARMAC Design System. It establishes how shape, geometry, and softness are applied to components, creating a consistent visual character that feels functional, human, and approachable.
+
+Rounded corners help differentiate interaction layers, signal affordance, and improve scalability, while maintaining structural clarity across tools and workflows.
+
+<CardGroup cols={3}>
+  <Card title="7 Tokens" icon="shapes">
+    From sharp (0px) to fully circular (999px), covering every component need
+  </Card>
+  <Card title="Semantic Naming" icon="tag">
+    Token names like `radius.medium` communicate intent, not just values
+  </Card>
+  <Card title="Proportional Scale" icon="ruler">
+    Larger elements use larger radii to maintain visual balance
+  </Card>
+</CardGroup>
+
+
+## Radius Tokens
+
+| Token | Value | Purpose |
+|-------|-------|---------|
+| `radius.none` | 0px | Full sharp ends — no rounding |
+| `radius.small` | 2px | Small detail elements: badges, checkboxes, status indicators, keyboard hints |
+| `radius.default` | 4px | Labels, tags, timestamps, tooltips, compact buttons, small imagery |
+| `radius.medium` | 8px | Buttons, inputs, selects, navigation items, cards, panels, dropdown menus, floating UI |
+| `radius.large` | 12px | Large layout containers: modals, tables, dashboards, in-page sections |
+| `radius.xlarge` | 16px | Rich media containers and immersive content |
+| `radius.max` | 999px | Fully circular elements: avatars, user tokens, reaction icons |
+
+
+## Usage by Context
+
+| Context | Examples | Token | Value | Character |
+|---------|----------|-------|-------|-----------|
+| Small details | Badges, checkboxes, status dots | `radius.small` | 2px | Tight, precise |
+| Interactive components | Buttons, inputs, selects, dropdowns | `radius.medium` | 8px | Approachable, tappable |
+| Layout containers | Cards, panels, modals, dashboards | `radius.large` | 12px | Structural, grouped |
+| Circular elements | Avatars, pills, reaction icons | `radius.max` | 999px | Fully round |
+
+
+## Accessibility
+
+Consistent corner rounding supports accessibility by:
+
+- Helping users distinguish interactive elements from static content through shape
+- Improving perceptual grouping — rounded containers feel cohesive
+- Reducing visual harshness in dense, data-heavy interfaces
+- Reinforcing recognition patterns — repeated shapes build familiarity faster
+
+
+## Developer Handoff
+
+<CodeGroup>
+```css CSS Variables
+/* Radius tokens */
+--radius-none: 0px;
+--radius-small: 2px;
+--radius-default: 4px;
+--radius-medium: 8px;
+--radius-large: 12px;
+--radius-xlarge: 16px;
+--radius-max: 999px;
+```
+
+```tsx TypeScript
+// Radius token values
+export const radius = {
+  none: '0px',
+  small: '2px',
+  default: '4px',
+  medium: '8px',
+  large: '12px',
+  xlarge: '16px',
+  max: '999px',
+} as const;
+```
+
+```tsx Usage
+// Button with medium radius
+<Button style={{ borderRadius: 'var(--radius-medium)' }}>
+  Submit
+</Button>
+
+// Avatar with max radius (circular)
+<Avatar style={{ borderRadius: 'var(--radius-max)' }} />
+
+// Card with large radius
+<Card style={{ borderRadius: 'var(--radius-large)' }}>
+  Dashboard content
+</Card>
+```
+</CodeGroup>
+
+<Card title="Next: Elevation" icon="arrow-right" href="/foundations/elevation">
+  Learn how elevation and shadow tokens work in TARMAC
+</Card>

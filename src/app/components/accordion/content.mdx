@@ -1,0 +1,201 @@
+import { CardGroup, Card, Tabs, Tab, Info, Warning, Accordion, AccordionGroup, CodeGroup, Steps, Step } from '@/components/mdx';
+
+
+## Overview
+
+Accordions are interactive disclosure components used to organize content into expandable sections. They reduce visual clutter by displaying only section headers initially, allowing users to progressively reveal content when needed. Accordions are commonly used in settings panels, FAQs, content summaries, and form sections.
+
+<CardGroup cols={3}>
+  <Card title="2 Sizes" icon="expand">
+    Large and Small
+  </Card>
+  <Card title="2 Header Types" icon="heading">
+    Single Text and Dual Text
+  </Card>
+  <Card title="1–5 Sections" icon="layer-group">
+    Configurable section count per group
+  </Card>
+</CardGroup>
+
+
+## Playground
+
+<Tabs>
+  <Tab title="Collapsed">
+    <div style={{display:'flex', flexDirection:'column', gap:'1px', padding:'24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div style={{background:'#FFF', padding:'14px 16px', display:'flex', alignItems:'center', justifyContent:'space-between', borderBottom:'1px solid #E5E5E5'}}><span style={{fontSize:'14px', fontWeight:500}}>Shipping information</span><span style={{fontSize:'12px', opacity:0.4}}>▼</span></div>
+      <div style={{background:'#FFF', padding:'14px 16px', display:'flex', alignItems:'center', justifyContent:'space-between', borderBottom:'1px solid #E5E5E5'}}><span style={{fontSize:'14px', fontWeight:500}}>Payment details</span><span style={{fontSize:'12px', opacity:0.4}}>▼</span></div>
+      <div style={{background:'#FFF', padding:'14px 16px', display:'flex', alignItems:'center', justifyContent:'space-between'}}><span style={{fontSize:'14px', fontWeight:500}}>Order summary</span><span style={{fontSize:'12px', opacity:0.4}}>▼</span></div>
+    </div>
+  </Tab>
+  <Tab title="Expanded">
+    <div style={{display:'flex', flexDirection:'column', gap:'1px', padding:'24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div style={{background:'#FFF', borderBottom:'1px solid #E5E5E5'}}>
+        <div style={{padding:'14px 16px', display:'flex', alignItems:'center', justifyContent:'space-between'}}><span style={{fontSize:'14px', fontWeight:500}}>Shipping information</span><span style={{fontSize:'12px', opacity:0.4}}>▲</span></div>
+        <div style={{padding:'0 16px 14px', fontSize:'13px', opacity:0.6, lineHeight:1.5}}>Standard delivery takes 3–5 business days. Express delivery is available for select locations at an additional cost.</div>
+      </div>
+      <div style={{background:'#FFF', padding:'14px 16px', display:'flex', alignItems:'center', justifyContent:'space-between', borderBottom:'1px solid #E5E5E5'}}><span style={{fontSize:'14px', fontWeight:500}}>Payment details</span><span style={{fontSize:'12px', opacity:0.4}}>▼</span></div>
+      <div style={{background:'#FFF', padding:'14px 16px', display:'flex', alignItems:'center', justifyContent:'space-between'}}><span style={{fontSize:'14px', fontWeight:500}}>Order summary</span><span style={{fontSize:'12px', opacity:0.4}}>▼</span></div>
+    </div>
+  </Tab>
+  <Tab title="With Optional Elements">
+    <div style={{display:'flex', flexDirection:'column', gap:'1px', padding:'24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div style={{background:'#FFF', padding:'14px 16px', display:'flex', alignItems:'center', gap:'10px', borderBottom:'1px solid #E5E5E5'}}><span style={{fontSize:'14px'}}>📦</span><span style={{fontSize:'14px', fontWeight:500, flex:1}}>Shipping</span><span style={{background:'#1BA86E', color:'#FFF', fontSize:'10px', padding:'2px 8px', borderRadius:'4px'}}>Active</span><span style={{fontSize:'12px', opacity:0.4}}>▼</span></div>
+      <div style={{background:'#FFF', padding:'14px 16px', display:'flex', alignItems:'center', gap:'10px', borderBottom:'1px solid #E5E5E5'}}><span style={{fontSize:'14px'}}>💳</span><span style={{fontSize:'14px', fontWeight:500, flex:1}}>Payment</span><span style={{background:'#CF9F02', color:'#FFF', fontSize:'10px', padding:'2px 8px', borderRadius:'4px'}}>Pending</span><span style={{fontSize:'12px', opacity:0.4}}>▼</span></div>
+      <div style={{background:'#FFF', padding:'14px 16px', display:'flex', alignItems:'center', gap:'10px'}}><span style={{fontSize:'14px'}}>📋</span><span style={{fontSize:'14px', fontWeight:500, flex:1}}>Summary</span><span style={{fontSize:'12px', opacity:0.5}}>3 items</span><span style={{fontSize:'12px', opacity:0.4}}>▼</span></div>
+    </div>
+  </Tab>
+  <Tab title="Sizes">
+    <div style={{display:'flex', flexDirection:'column', gap:'24px', padding:'24px', background:'#F5F5F5', borderRadius:'12px', width:'100%'}}>
+      <div><div style={{fontSize:'11px', opacity:0.5, marginBottom:'6px'}}>Large</div><div style={{background:'#FFF', padding:'14px 16px', display:'flex', alignItems:'center', justifyContent:'space-between', border:'1px solid #E5E5E5', borderRadius:'4px'}}><span style={{fontSize:'14px', fontWeight:500}}>Section header</span><span style={{fontSize:'12px', opacity:0.4}}>▼</span></div></div>
+      <div><div style={{fontSize:'11px', opacity:0.5, marginBottom:'6px'}}>Small</div><div style={{background:'#FFF', padding:'10px 12px', display:'flex', alignItems:'center', justifyContent:'space-between', border:'1px solid #E5E5E5', borderRadius:'4px'}}><span style={{fontSize:'13px', fontWeight:500}}>Section header</span><span style={{fontSize:'11px', opacity:0.4}}>▼</span></div></div>
+    </div>
+  </Tab>
+</Tabs>
+
+<Info>Accordions can allow multiple sections expanded simultaneously or restrict to one at a time — configure based on use case.</Info>
+
+
+
+## Anatomy — Header
+
+{/* 🎨 DESIGNER: Replace with accordion header anatomy from Figma */}
+<div style={{background:'#F5F5F5', borderRadius:'12px', padding:'48px', marginBottom:'16px', textAlign:'center', minHeight:'160px', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
+  <div style={{opacity:0.4, fontSize:'14px'}}>🖼️ Accordion Header Anatomy — Replace with /assets/components/accordion/accordion-header-anatomy.png</div>
+</div>
+
+| # | Element | Required | Description |
+|---|---------|----------|-------------|
+| 1 | Container | Yes | Header surface with padding and border |
+| 2 | Leading Icon | No | Icon before text for visual context |
+| 3 | Primary Text | Yes | Section title |
+| 4 | Badge | No | Status label or metadata |
+| 5 | Status Indicator | No | Visual dot for state/category |
+| 6 | Status Text | No | Supporting count or status text |
+| 7 | Trailing Icon | Yes | Chevron indicating expand/collapse state |
+
+
+## Sizes
+
+| Size | Header Height | Padding | Usage |
+|------|--------------|---------|-------|
+| Large | 48px | 14px 16px | Desktop, spacious layouts |
+| Small | 44px | 10px 12px | Mobile, compact layouts |
+
+
+## States
+
+| State | Visual | Behavior |
+|-------|--------|----------|
+| Collapsed | Chevron pointing down, content hidden | Default state |
+| Expanded | Chevron pointing up, content visible | Section is open |
+| Hover | Subtle background tint on header | Indicates interactivity |
+| Focused | 2px focus ring on header | Keyboard navigation |
+| Disabled | 40% opacity, non-interactive | Section unavailable |
+
+
+## Section Count
+
+| Count | Use Case |
+|-------|----------|
+| 1 | Single collapsible section (rare) |
+| 2 | Binary content grouping |
+| 3 | Common — settings, FAQ, checkout |
+| 4 | Detailed configuration panels |
+| 5 | Maximum recommended per group |
+
+<Warning>Avoid more than 5 accordion sections in a single group. If content requires more, consider tabs or separate pages.</Warning>
+
+
+## Accessibility
+
+| Requirement | Guideline |
+|-------------|-----------|
+| Keyboard | Enter/Space to toggle; Arrow keys to navigate between headers |
+| ARIA | `aria-expanded="true/false"` on header button |
+| Role | Header uses `<button>`, content uses `role="region"` |
+| Labelling | Content region linked via `aria-labelledby` to header |
+| Focus | Visible focus ring on header during keyboard navigation |
+| Screen reader | Announces expanded/collapsed state on toggle |
+
+
+## Developer Handoff
+
+<CodeGroup>
+```tsx API
+interface AccordionProps {
+  size?: 'lg' | 'sm';
+  allowMultiple?: boolean;
+  defaultExpanded?: string[];
+  children: ReactNode;
+}
+
+interface AccordionItemProps {
+  id: string;
+  title: string;
+  subtitle?: string;
+  icon?: ReactNode;
+  badge?: ReactNode;
+  statusText?: string;
+  disabled?: boolean;
+  children: ReactNode;
+}
+```
+
+```tsx Usage
+// Basic accordion
+<Accordion>
+  <AccordionItem id="shipping" title="Shipping information">
+    Standard delivery takes 3–5 business days.
+  </AccordionItem>
+  <AccordionItem id="payment" title="Payment details">
+    We accept credit cards, debit cards, and UPI.
+  </AccordionItem>
+  <AccordionItem id="summary" title="Order summary">
+    3 items in your cart totaling ₹2,450.
+  </AccordionItem>
+</Accordion>
+
+// With optional elements
+<Accordion size="lg" allowMultiple>
+  <AccordionItem id="ship" title="Shipping" icon={<BoxIcon />} badge={<Badge variant="success">Active</Badge>}>
+    Content here...
+  </AccordionItem>
+  <AccordionItem id="pay" title="Payment" icon={<CardIcon />} badge={<Badge variant="warning">Pending</Badge>}>
+    Content here...
+  </AccordionItem>
+</Accordion>
+
+// Single expand mode
+<Accordion allowMultiple={false} defaultExpanded={['faq-1']}>
+  <AccordionItem id="faq-1" title="What is the return policy?">
+    You can return items within 30 days.
+  </AccordionItem>
+  <AccordionItem id="faq-2" title="How do I track my order?">
+    Use the tracking link sent to your email.
+  </AccordionItem>
+</Accordion>
+```
+
+```tsx ARIA
+// Proper semantic implementation
+<div>
+  <h3>
+    <button
+      aria-expanded="true"
+      aria-controls="section-1-content"
+      id="section-1-header"
+    >
+      Shipping information
+    </button>
+  </h3>
+  <div
+    role="region"
+    id="section-1-content"
+    aria-labelledby="section-1-header"
+  >
+    Standard delivery takes 3–5 business days.
+  </div>
+</div>
+```
+</CodeGroup>
