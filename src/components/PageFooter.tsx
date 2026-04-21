@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const allPages = [
   { label: 'Overview', href: '/about/overview' },
@@ -90,26 +91,18 @@ export function PageFooter() {
   const next = idx < allPages.length - 1 ? allPages[idx + 1] : null;
 
   return (
-    <footer className="ml-[calc(var(--sidebar-width)+32px)] mr-[240px] xl:mr-[280px] max-w-3xl px-8 pb-16">
-      {/* Prev / Next */}
+    <footer className="max-w-4xl mx-auto px-6 sm:px-8 pb-16">
       {(prev || next) && (
-        <div
-          className="grid grid-cols-2 gap-4 mb-12 pt-8 border-t"
-          style={{ borderColor: 'var(--color-outline)' }}
-        >
+        <div className="grid grid-cols-2 gap-4 mb-12 pt-8 border-t border-neutral-200 dark:border-neutral-800">
           {prev ? (
             <Link
               href={prev.href}
-              className="group p-4 rounded-xl border transition-all hover:shadow-sm"
-              style={{ borderColor: 'var(--color-outline)' }}
+              className="group p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 hover:shadow-sm transition-all"
             >
-              <span className="text-xs" style={{ color: 'var(--color-on-surface-variant)' }}>
-                ← Previous
+              <span className="flex items-center gap-1 text-xs text-neutral-400 dark:text-neutral-500 mb-1">
+                <ChevronLeft size={12} /> Previous
               </span>
-              <span
-                className="block text-sm font-semibold mt-1"
-                style={{ color: 'var(--color-on-surface)' }}
-              >
+              <span className="block text-sm font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-tarmac-red dark:group-hover:text-red-400 transition-colors">
                 {prev.label}
               </span>
             </Link>
@@ -119,16 +112,12 @@ export function PageFooter() {
           {next ? (
             <Link
               href={next.href}
-              className="group p-4 rounded-xl border text-right transition-all hover:shadow-sm"
-              style={{ borderColor: 'var(--color-outline)' }}
+              className="group p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 text-right hover:shadow-sm transition-all"
             >
-              <span className="text-xs" style={{ color: 'var(--color-on-surface-variant)' }}>
-                Up next →
+              <span className="flex items-center justify-end gap-1 text-xs text-neutral-400 dark:text-neutral-500 mb-1">
+                Up next <ChevronRight size={12} />
               </span>
-              <span
-                className="block text-sm font-semibold mt-1"
-                style={{ color: 'var(--color-on-surface)' }}
-              >
+              <span className="block text-sm font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-tarmac-red dark:group-hover:text-red-400 transition-colors">
                 {next.label}
               </span>
             </Link>
@@ -138,53 +127,39 @@ export function PageFooter() {
         </div>
       )}
 
-      {/* Delhivery footer */}
-      <div
-        className="rounded-2xl border p-8"
-        style={{
-          background: 'var(--color-surface-container-low)',
-          borderColor: 'var(--color-outline)',
-        }}
-      >
+      <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/30 p-8">
         <div className="flex items-start justify-between flex-wrap gap-8">
           <div className="max-w-sm">
             <div className="flex items-center gap-2 mb-3">
-              <svg width="20" height="20" viewBox="0 0 28 28" fill="none">
-                <rect width="28" height="28" rx="6" fill="#ED1B36" />
-                <rect x="6" y="6" width="16" height="3.5" fill="#FFF" />
-                <rect x="6" y="6" width="3.5" height="16" fill="#FFF" />
-              </svg>
-              <span className="font-bold text-sm" style={{ color: 'var(--color-on-surface)' }}>
-                TARMAC Design System
-              </span>
+              <div className="w-5 h-5 bg-tarmac-red rounded flex items-center justify-center">
+                <span className="text-white font-bold text-[10px]">T</span>
+              </div>
+              <span className="font-bold text-sm text-neutral-900 dark:text-neutral-100">TARMAC Design System</span>
             </div>
-            <p className="text-xs leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
-              TARMAC is Delhivery's unified design system — the single source of truth for design decisions, UI components, and interaction patterns. Built to scale across all Delhivery products.
+            <p className="text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
+              Delhivery's unified design system — the single source of truth for design decisions, UI components, and interaction patterns.
             </p>
           </div>
           <div className="flex gap-12 text-xs">
             <div>
-              <p className="font-semibold mb-2" style={{ color: 'var(--color-on-surface)' }}>Delhivery</p>
-              <ul className="space-y-1.5" style={{ color: 'var(--color-on-surface-variant)' }}>
-                <li><a href="https://www.delhivery.com" target="_blank" rel="noopener noreferrer" className="hover:underline">delhivery.com</a></li>
-                <li><a href="https://www.delhivery.com/about-us" target="_blank" rel="noopener noreferrer" className="hover:underline">About Us</a></li>
-                <li><a href="https://www.delhivery.com/careers" target="_blank" rel="noopener noreferrer" className="hover:underline">Careers</a></li>
+              <p className="font-semibold mb-2 text-neutral-900 dark:text-neutral-100">Delhivery</p>
+              <ul className="space-y-1.5 text-neutral-500 dark:text-neutral-400">
+                <li><a href="https://www.delhivery.com" target="_blank" rel="noopener noreferrer" className="hover:text-tarmac-red dark:hover:text-red-400 transition-colors">delhivery.com</a></li>
+                <li><a href="https://www.delhivery.com/about-us" target="_blank" rel="noopener noreferrer" className="hover:text-tarmac-red dark:hover:text-red-400 transition-colors">About Us</a></li>
+                <li><a href="https://www.delhivery.com/careers" target="_blank" rel="noopener noreferrer" className="hover:text-tarmac-red dark:hover:text-red-400 transition-colors">Careers</a></li>
               </ul>
             </div>
             <div>
-              <p className="font-semibold mb-2" style={{ color: 'var(--color-on-surface)' }}>Resources</p>
-              <ul className="space-y-1.5" style={{ color: 'var(--color-on-surface-variant)' }}>
-                <li><a href="https://tarmac-storybook-dev.pntrzz.com/storybook/" target="_blank" rel="noopener noreferrer" className="hover:underline">Storybook</a></li>
-                <li><a href="https://github.com/abhishekthakur3-sketch/TDS" target="_blank" rel="noopener noreferrer" className="hover:underline">GitHub</a></li>
-                <li><a href="https://www.figma.com/design/fPg3J4ckTHzyIQp8PrqDjT" target="_blank" rel="noopener noreferrer" className="hover:underline">Figma</a></li>
+              <p className="font-semibold mb-2 text-neutral-900 dark:text-neutral-100">Resources</p>
+              <ul className="space-y-1.5 text-neutral-500 dark:text-neutral-400">
+                <li><a href="https://tarmac-storybook-dev.pntrzz.com/storybook/" target="_blank" rel="noopener noreferrer" className="hover:text-tarmac-red dark:hover:text-red-400 transition-colors">Storybook</a></li>
+                <li><a href="https://github.com/abhishekthakur3-sketch/TDS" target="_blank" rel="noopener noreferrer" className="hover:text-tarmac-red dark:hover:text-red-400 transition-colors">GitHub</a></li>
+                <li><a href="https://www.figma.com/design/fPg3J4ckTHzyIQp8PrqDjT" target="_blank" rel="noopener noreferrer" className="hover:text-tarmac-red dark:hover:text-red-400 transition-colors">Figma</a></li>
               </ul>
             </div>
           </div>
         </div>
-        <div
-          className="mt-6 pt-4 border-t text-[11px]"
-          style={{ borderColor: 'var(--color-outline)', color: 'var(--color-on-surface-variant)' }}
-        >
+        <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800 text-[11px] text-neutral-400 dark:text-neutral-500">
           © {new Date().getFullYear()} Delhivery Ltd. All rights reserved.
         </div>
       </div>

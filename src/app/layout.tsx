@@ -1,33 +1,22 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import { TopBar } from '@/components/TopBar';
-import { Sidebar } from '@/components/Sidebar';
-import { GeometricPattern } from '@/components/GeometricPattern';
+import { AppShell } from '@/components/AppShell';
 
 export const metadata: Metadata = {
   title: 'TARMAC Design System',
-  description: 'Design system documentation for Delhivery',
+  description: 'Design system documentation for Delhivery — foundations, components, patterns & accessibility.',
   icons: {
     icon: '/favicon.png',
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const basePath = process.env.NODE_ENV === 'production' ? '/TDS' : '';
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href={`${basePath}/favicon.png`} type="image/png" />
-      </head>
-      <body>
+      <body className="bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 antialiased">
         <ThemeProvider>
-          <GeometricPattern />
-          <TopBar />
-          <div className="relative z-10 flex pt-[var(--topbar-offset)]">
-            <Sidebar />
-            <main className="flex-1">{children}</main>
-          </div>
+          <AppShell>{children}</AppShell>
         </ThemeProvider>
       </body>
     </html>

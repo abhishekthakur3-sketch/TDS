@@ -62,13 +62,8 @@ interface ComponentPageProps {
 export function ComponentPage({ name, description, slug, children }: ComponentPageProps) {
   const storyId = slug ? storybookIds[slug] : null;
 
-  // iframe.html with specific story ID — this renders ONLY that component
-  const iframeUrl = storyId
-    ? `${STORYBOOK_BASE}/iframe.html?args=&id=${storyId}&viewMode=story`
-    : `${STORYBOOK_BASE}/iframe.html?args=&id=tarmac-tds-button--playground&viewMode=story`;
-
-  // Full storybook link for "Open in Storybook"
-  const fullUrl = storyId
+  // Use the same URL format as tarmac-design.github.io
+  const embedUrl = storyId
     ? `${STORYBOOK_BASE}/?path=/story/${storyId}`
     : STORYBOOK_BASE;
 
@@ -80,8 +75,8 @@ export function ComponentPage({ name, description, slug, children }: ComponentPa
         style={{ borderColor: 'var(--color-outline)' }}
       >
         <iframe
-          src={iframeUrl}
-          style={{ width: '100%', height: '400px', border: 'none', background: '#fff' }}
+          src={embedUrl}
+          style={{ width: '100%', height: '500px', border: 'none' }}
           title={`${name} — TARMAC Storybook`}
           allow="clipboard-write"
         />
@@ -96,7 +91,7 @@ export function ComponentPage({ name, description, slug, children }: ComponentPa
             Interactive preview — {name} component
           </span>
           <a
-            href={fullUrl}
+            href={embedUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-medium hover:underline"
