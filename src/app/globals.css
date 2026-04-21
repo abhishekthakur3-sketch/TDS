@@ -2,94 +2,234 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
   --sidebar-width: 260px;
-  --header-height: 56px;
-  --content-max-width: 768px;
+  --topbar-height: 56px;
+  --topbar-offset: 80px; /* topbar height + top margin + gap */
+  --color-surface: #FFFFFF;
+  --color-surface-dim: #FAFAFA;
+  --color-surface-container: #F5F5F5;
+  --color-surface-container-low: #F8F8F8;
+  --color-surface-container-high: #EFEFEF;
+  --color-surface-variant: #E6E6E6;
+  --color-on-surface: #0D0D0D;
+  --color-on-surface-variant: #666666;
+  --color-primary: #ED1B36;
+  --color-on-primary: #FFFFFF;
+  --color-primary-container: #FEF2F2;
+  --color-secondary: #2396FB;
+  --color-on-secondary: #FFFFFF;
+  --color-success: #1BA86E;
+  --color-warning: #CF9F02;
+  --color-error: #DC143C;
+  --color-outline: #E6E6E6;
+  --color-outline-variant: #D4D4D4;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+
+[data-theme='dark'] {
+  --color-surface: #0D0D0D;
+  --color-surface-dim: #1A1A1A;
+  --color-surface-container: #1A1A1A;
+  --color-surface-container-low: #141414;
+  --color-surface-container-high: #262626;
+  --color-surface-variant: #333333;
+  --color-on-surface: #F2F2F2;
+  --color-on-surface-variant: #999999;
+  --color-primary: #F06158;
+  --color-on-primary: #FFFFFF;
+  --color-primary-container: #3D1418;
+  --color-secondary: #6E97F2;
+  --color-on-secondary: #FFFFFF;
+  --color-success: #38C596;
+  --color-warning: #F8BE5D;
+  --color-error: #F06158;
+  --color-outline: #333333;
+  --color-outline-variant: #404040;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Noto Sans', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #a3a3a3; }
+::-webkit-scrollbar-thumb { background: var(--color-outline); border-radius: 3px; }
 
-/* ─── MDX Prose ─── */
-.mdx-content h1 {
-  @apply text-3xl font-bold tracking-tight text-neutral-900 mb-2;
-}
 .mdx-content h2 {
-  @apply text-xl font-semibold tracking-tight text-neutral-900 mt-12 mb-4 pb-3 border-b border-neutral-200;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-outline);
+  color: var(--color-on-surface);
 }
 .mdx-content h3 {
-  @apply text-lg font-semibold text-neutral-900 mt-8 mb-3;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-on-surface);
 }
 .mdx-content h4 {
-  @apply text-base font-semibold text-neutral-800 mt-6 mb-2;
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-on-surface);
 }
 .mdx-content p {
-  @apply text-[15px] text-neutral-600 leading-7 mb-4;
+  color: var(--color-on-surface-variant);
+  line-height: 1.7;
+  margin-bottom: 1rem;
 }
-.mdx-content > ul {
-  @apply list-disc pl-5 mb-5 space-y-1.5 text-[15px] text-neutral-600 leading-7;
+.mdx-content ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-on-surface-variant);
 }
-.mdx-content > ol {
-  @apply list-decimal pl-5 mb-5 space-y-1.5 text-[15px] text-neutral-600 leading-7;
+.mdx-content ul li { margin-bottom: 0.25rem; }
+.mdx-content ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-on-surface-variant);
 }
-.mdx-content li {
-  @apply leading-7;
-}
-.mdx-content strong {
-  @apply font-semibold text-neutral-800;
-}
-
-/* Tables */
 .mdx-content table {
-  @apply w-full text-sm mb-8 border-collapse;
+  width: 100%;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+  border-collapse: collapse;
 }
 .mdx-content thead th {
-  @apply text-left py-2.5 px-3 text-xs font-semibold uppercase tracking-wider text-neutral-500 border-b border-neutral-200 bg-neutral-50/50;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface-container);
+  border-bottom: 2px solid var(--color-outline);
+  font-weight: 600;
+  color: var(--color-on-surface);
 }
 .mdx-content tbody td {
-  @apply py-2.5 px-3 border-b border-neutral-100 text-neutral-600 text-[13px];
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-outline);
+  color: var(--color-on-surface-variant);
 }
-.mdx-content tbody tr:last-child td {
-  @apply border-b-0;
+.mdx-content tbody tr:hover {
+  background: var(--color-surface-container-low);
 }
-
-/* Code */
 .mdx-content code {
-  @apply bg-neutral-100 text-neutral-800 px-1.5 py-0.5 rounded text-[13px] font-mono;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  background: var(--color-surface-container);
+  color: var(--color-primary);
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-family: monospace;
 }
 .mdx-content pre {
-  @apply bg-[#1e1e2e] text-neutral-200 p-4 rounded-xl mb-6 overflow-x-auto text-[13px] leading-6 border border-neutral-800;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  background: var(--color-surface-dim);
+  border: 1px solid var(--color-outline);
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
 }
 .mdx-content pre code {
-  @apply bg-transparent text-inherit p-0 text-[13px];
+  background: transparent;
+  color: var(--color-on-surface);
+  padding: 0;
 }
-
-/* Links */
 .mdx-content a {
-  @apply text-neutral-900 underline decoration-neutral-300 underline-offset-2 hover:decoration-neutral-900 transition-colors;
+  color: var(--color-secondary);
 }
-
-/* Dividers */
+.mdx-content a:hover { text-decoration: underline; }
 .mdx-content hr {
-  @apply my-10 border-neutral-200;
+  margin: 2rem 0;
+  border-color: var(--color-outline);
+}
+.mdx-content blockquote {
+  border-left: 3px solid var(--color-primary);
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  background: var(--color-primary-container);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--color-on-surface-variant);
+}
+.mdx-content strong {
+  color: var(--color-on-surface);
 }
 
-/* Blockquotes */
-.mdx-content blockquote {
-  @apply border-l-2 border-neutral-300 pl-4 py-1 my-4 text-neutral-500 italic;
+/* ===== Hover Glow Effects ===== */
+a.glow-hover,
+.glow-hover {
+  position: relative;
+  transition: all 0.3s ease;
+}
+a.glow-hover::after,
+.glow-hover::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--color-primary) 15%, transparent) 0%,
+    transparent 70%
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+a.glow-hover:hover::after,
+.glow-hover:hover::after {
+  opacity: 1;
+}
+
+/* Sidebar link glow */
+aside nav a:hover {
+  background: color-mix(in srgb, var(--color-primary) 6%, transparent) !important;
+}
+
+/* Card glow on hover */
+.card-glow {
+  transition: all 0.3s ease;
+}
+.card-glow:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 30%, transparent) !important;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 8%, transparent),
+              0 0 40px color-mix(in srgb, var(--color-primary) 4%, transparent);
+}
+
+/* Top nav link glow */
+header nav a:hover {
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent) !important;
+}
+
+/* Button glow */
+.btn-glow:hover {
+  box-shadow: 0 0 16px color-mix(in srgb, var(--color-primary) 25%, transparent);
+}
+
+/* Content area centered between sidebar and TOC */
+.content-area {
+  margin-left: 216px;
+  margin-right: 216px;
+}
+.content-area > div {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
 }

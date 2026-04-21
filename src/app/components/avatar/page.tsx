@@ -1,22 +1,26 @@
 'use client';
-
-import { MdxProvider } from '@/components/MdxProvider';
-import AvatarContent from './content.mdx';
+import { ComponentPage } from '@/components/ComponentPage';
 
 export default function AvatarPage() {
   return (
-    <div className="max-w-4xl mx-auto px-8 py-12">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-3">Avatar</h1>
-        <p className="text-lg text-neutral-600">
-          Avatars represent users or entities with images, initials, or icons.
-        </p>
-      </div>
-      <div className="mdx-content">
-        <MdxProvider>
-          <AvatarContent />
-        </MdxProvider>
-      </div>
-    </div>
+    <ComponentPage name="Avatar" description="Avatars represent users or entities with images, initials, or icons." slug="avatar">
+      <h2>Sizes</h2>
+      <table>
+        <thead><tr><th>Size</th><th>Pixels</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>XSmall</td><td>24px</td><td>Compact lists, inline mentions</td></tr>
+          <tr><td>Small</td><td>32px</td><td>Comments, chat bubbles</td></tr>
+          <tr><td>Medium</td><td>40px</td><td>Default, cards, headers</td></tr>
+          <tr><td>Large</td><td>48px</td><td>Profile sections</td></tr>
+          <tr><td>XLarge</td><td>64px</td><td>Profile pages, hero sections</td></tr>
+        </tbody>
+      </table>
+      <h2>Variants</h2>
+      <ul>
+        <li><strong>Image</strong> — User photo or uploaded image</li>
+        <li><strong>Initials</strong> — First letter(s) of the user's name</li>
+        <li><strong>Icon</strong> — Generic user icon as fallback</li>
+      </ul>
+    </ComponentPage>
   );
 }
