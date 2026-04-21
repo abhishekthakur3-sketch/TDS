@@ -91,7 +91,14 @@ export function PageFooter() {
   const next = idx < allPages.length - 1 ? allPages[idx + 1] : null;
 
   return (
-    <footer className="max-w-3xl mx-auto px-6 sm:px-8 xl:mr-56 pb-16">
+    <footer
+      className="pb-16 px-8"
+      style={{
+        marginLeft: 'calc(var(--sidebar-width) + 32px)',
+        marginRight: '240px',
+      }}
+    >
+      <div className="max-w-3xl mx-auto">
       {/* Prev / Next navigation */}
       {(prev || next) && (
         <div
@@ -191,6 +198,7 @@ export function PageFooter() {
         >
           © {new Date().getFullYear()} Delhivery Ltd. All rights reserved.
         </div>
+      </div>
       </div>
     </footer>
   );
