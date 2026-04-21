@@ -9,45 +9,31 @@ const storybookPaths: Record<string, string> = {
   button: 'tarmac-tds-button--playground',
   checkbox: 'tarmac-tds-checkbox--playground',
   radio: 'tarmac-tds-radio--playground',
-  input: 'tarmac-tds-input--playground',
-  'input-area': 'tarmac-tds-textarea--playground',
-  dropdown: 'tarmac-tds-dropdown--playground',
-  search: 'tarmac-tds-search--playground',
-  shimmer: 'tarmac-tds-shimmer--playground',
-  scroll: 'tarmac-tds-scroll--playground',
-  header: 'tarmac-tds-header--playground',
-  footer: 'tarmac-tds-footer--playground',
+  input: 'tarmac-tds-input-field--playground',
+  'input-area': 'tarmac-tds-text-area--playground',
+  dropdown: 'tarmac-tds-dropdown--list-playground',
+  search: 'tarmac-tds-search-dropdown--playground',
   rating: 'tarmac-tds-rating--playground',
-  'file-upload': 'tarmac-tds-fileupload--playground',
-  'date-time-picker': 'tarmac-tds-datetimepicker--playground',
-  filter: 'tarmac-tds-filter--playground',
-  'dialog-box': 'tarmac-tds-dialog--playground',
-  list: 'tarmac-tds-list--playground',
+  'file-upload': 'atoms-upload--playground',
+  'date-time-picker': 'tarmac-tds-datepicker--playground',
+  'dialog-box': 'tarmac-tds-dialog-box--playground',
   popups: 'tarmac-tds-popup--playground',
-  'side-drawer': 'tarmac-tds-sidedrawer--playground',
-  'bottom-sheet': 'tarmac-tds-bottomsheet--playground',
-  navigation: 'tarmac-tds-navigation--playground',
-  cards: 'tarmac-tds-card--playground',
+  cards: 'tarmac-tds-card--card-playground',
   badge: 'tarmac-tds-badge--playground',
-  tags: 'tarmac-tds-tag--playground',
   pills: 'tarmac-tds-pill--playground',
   alert: 'tarmac-tds-alert--playground',
-  'progress-bar': 'tarmac-tds-progressbar--playground',
+  'progress-bar': 'tarmac-tds-progressbar--playground-with-text',
   snackbar: 'tarmac-tds-snackbar--playground',
-  accordion: 'tarmac-tds-accordion--playground',
-  coachmarks: 'tarmac-tds-coachmark--playground',
-  tabs: 'tarmac-tds-tabs--playground',
+  tabs: 'tarmac-tds-chip--playground',
   breadcrumbs: 'tarmac-tds-breadcrumbs--playground',
   toggle: 'tarmac-tds-toggle--playground',
-  'status-indicator': 'tarmac-tds-statusindicator--playground',
   links: 'tarmac-tds-link--playground',
   slider: 'tarmac-tds-slider--playground',
-  stepper: 'tarmac-tds-stepper--playground',
   spinner: 'tarmac-tds-spinner--playground',
   pagination: 'tarmac-tds-pagination--playground',
-  tooltip: 'tarmac-tds-tooltip--playground',
-  'audio-player': 'tarmac-tds-audioplayer--playground',
-  'otp-fields': 'tarmac-tds-otpfield--playground',
+  tooltip: 'tarmac-tds-tooltip--ct-as-playground',
+  'otp-fields': 'tarmac-tds-otp-fields--playground',
+  tags: 'tarmac-tds-chip--playground',
 };
 
 interface ComponentPageProps {
@@ -59,19 +45,28 @@ interface ComponentPageProps {
 
 export function ComponentPage({ name, description, slug, children }: ComponentPageProps) {
   const storyPath = slug ? storybookPaths[slug] : undefined;
-  const sbBase = 'https://tarmac-storybook-dev.pntrzz.com/storybook/';
+  const sbBase = 'https://tarmac-storybook-dev.pntrzz.com/storybook';
   const sbUrl = storyPath
-    ? `${sbBase}iframe.html?id=${storyPath}&viewMode=story&embed=true`
-    : sbBase;
+    ? `${sbBase}/sb/iframe.html?id=${storyPath}&viewMode=story`
+    : undefined;
+
+  const fullStorybookUrl = storyPath
+    ? `https://tarmac-storybook-dev.pntrzz.com/storybook/?path=/story/${storyPath}`
+    : 'https://tarmac-storybook-dev.pntrzz.com/storybook/';
 
   return (
     <PageShell title={name} description={description}>
-      <h2>Live Demo</h2>
-      <StorybookEmbed
-        url={sbUrl}
-        height={400}
-        title={`${name} — TARMAC Storybook`}
-      />
+      {sbUrl && (
+        <>
+          <h2>Live Demo</h2>
+          <StorybookEmbed
+            url={sbUrl}
+            storybookUrl={fullStorybookUrl}
+            height={420}
+            title={`${name} — TARMAC Storybook`}
+          />
+        </>
+      )}
       {children}
     </PageShell>
   );
