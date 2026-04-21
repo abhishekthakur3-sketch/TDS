@@ -2,12 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --sidebar-width: 260px;
-  --topbar-height: 56px;
-  --topbar-offset: 80px; /* topbar height + top margin + gap */
+  --sidebar-width: 288px;
+  --topbar-height: 64px;
+  --topbar-offset: 80px;
+
+  /* Semantic color tokens */
   --color-surface: #FFFFFF;
   --color-surface-dim: #FAFAFA;
   --color-surface-container: #F5F5F5;
@@ -15,7 +17,7 @@
   --color-surface-container-high: #EFEFEF;
   --color-surface-variant: #E6E6E6;
   --color-on-surface: #0D0D0D;
-  --color-on-surface-variant: #666666;
+  --color-on-surface-variant: #555555;
   --color-primary: #ED1B36;
   --color-on-primary: #FFFFFF;
   --color-primary-container: #FEF2F2;
@@ -26,6 +28,7 @@
   --color-error: #DC143C;
   --color-outline: #E6E6E6;
   --color-outline-variant: #D4D4D4;
+  --color-border-focus: #2396FB;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
@@ -33,7 +36,7 @@
   --radius-full: 9999px;
 }
 
-[data-theme='dark'] {
+.dark {
   --color-surface: #0D0D0D;
   --color-surface-dim: #1A1A1A;
   --color-surface-container: #1A1A1A;
@@ -42,170 +45,168 @@
   --color-surface-variant: #333333;
   --color-on-surface: #F2F2F2;
   --color-on-surface-variant: #999999;
-  --color-primary: #F06158;
-  --color-on-primary: #FFFFFF;
+  --color-primary: #FF6B7A;
+  --color-on-primary: #0D0D0D;
   --color-primary-container: #3D1418;
-  --color-secondary: #6E97F2;
+  --color-secondary: #60B5FF;
   --color-on-secondary: #FFFFFF;
   --color-success: #38C596;
   --color-warning: #F8BE5D;
   --color-error: #F06158;
-  --color-outline: #333333;
+  --color-outline: #2B2B2B;
   --color-outline-variant: #404040;
+  --color-border-focus: #60B5FF;
 }
 
 body {
-  font-family: 'Noto Sans', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background: var(--color-surface);
   color: var(--color-on-surface);
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--color-outline); border-radius: 3px; }
+/* Selection */
+::selection {
+  background-color: rgba(237, 27, 54, 0.15);
+  color: inherit;
+}
 
+/* Custom scrollbar */
+.scrollbar-thin::-webkit-scrollbar,
+::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 3px;
+}
+.dark .scrollbar-thin::-webkit-scrollbar-thumb,
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ─── MDX Prose ─── */
 .mdx-content h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
+  @apply text-2xl font-bold mt-12 mb-4 pb-3;
   border-bottom: 1px solid var(--color-outline);
   color: var(--color-on-surface);
 }
 .mdx-content h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
+  @apply text-xl font-semibold mt-8 mb-3;
   color: var(--color-on-surface);
 }
 .mdx-content h4 {
-  font-size: 1.125rem;
-  font-weight: 500;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  @apply text-base font-semibold mt-6 mb-2;
   color: var(--color-on-surface);
 }
 .mdx-content p {
+  @apply leading-relaxed mb-4 text-[15px];
   color: var(--color-on-surface-variant);
-  line-height: 1.7;
-  margin-bottom: 1rem;
 }
 .mdx-content ul {
-  list-style: disc;
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
+  @apply list-disc pl-6 mb-4 space-y-1.5 text-[15px];
   color: var(--color-on-surface-variant);
 }
-.mdx-content ul li { margin-bottom: 0.25rem; }
 .mdx-content ol {
-  list-style: decimal;
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
+  @apply list-decimal pl-6 mb-4 space-y-1.5 text-[15px];
   color: var(--color-on-surface-variant);
 }
+.mdx-content li strong,
+.mdx-content strong {
+  color: var(--color-on-surface);
+}
+
+/* Tables */
 .mdx-content table {
-  width: 100%;
-  font-size: 0.875rem;
-  margin-bottom: 1.5rem;
-  border-collapse: collapse;
+  @apply w-full text-sm mb-6 border-collapse;
 }
 .mdx-content thead th {
-  text-align: left;
-  padding: 0.75rem 1rem;
+  @apply text-left py-3 px-4 font-semibold text-xs uppercase tracking-wider;
   background: var(--color-surface-container);
   border-bottom: 2px solid var(--color-outline);
-  font-weight: 600;
   color: var(--color-on-surface);
 }
 .mdx-content tbody td {
-  padding: 0.75rem 1rem;
+  @apply py-3 px-4;
   border-bottom: 1px solid var(--color-outline);
   color: var(--color-on-surface-variant);
 }
 .mdx-content tbody tr:hover {
   background: var(--color-surface-container-low);
 }
+
+/* Code */
 .mdx-content code {
+  @apply px-1.5 py-0.5 rounded-md text-[13px] font-mono font-medium;
   background: var(--color-surface-container);
   color: var(--color-primary);
-  padding: 0.125rem 0.375rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  font-family: monospace;
 }
 .mdx-content pre {
+  @apply p-5 rounded-2xl mb-6 overflow-x-auto text-sm;
   background: var(--color-surface-dim);
   border: 1px solid var(--color-outline);
-  padding: 1.25rem;
-  border-radius: var(--radius-md);
-  margin-bottom: 1.5rem;
-  overflow-x: auto;
-  font-size: 0.875rem;
 }
 .mdx-content pre code {
+  @apply p-0;
   background: transparent;
   color: var(--color-on-surface);
-  padding: 0;
 }
+
+/* Links */
 .mdx-content a {
   color: var(--color-secondary);
 }
-.mdx-content a:hover { text-decoration: underline; }
+.mdx-content a:hover {
+  text-decoration: underline;
+}
+
+/* Misc */
 .mdx-content hr {
-  margin: 2rem 0;
+  @apply my-10;
   border-color: var(--color-outline);
 }
 .mdx-content blockquote {
+  @apply pl-4 py-2 my-4;
   border-left: 3px solid var(--color-primary);
-  padding: 0.75rem 1rem;
-  margin: 1rem 0;
   background: var(--color-primary-container);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   color: var(--color-on-surface-variant);
 }
-.mdx-content strong {
-  color: var(--color-on-surface);
+
+/* ─── Animations ─── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== Hover Glow Effects ===== */
-a.group:hover,
-.hover-glow:hover {
-  box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 15%, transparent),
-              0 0 40px color-mix(in srgb, var(--color-primary) 5%, transparent);
-  border-color: color-mix(in srgb, var(--color-primary) 30%, transparent) !important;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
 }
 
-/* Sidebar link hover */
-aside nav a:hover {
-  background: color-mix(in srgb, var(--color-primary) 6%, transparent) !important;
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Top nav link hover */
-header nav a:hover {
-  background: color-mix(in srgb, var(--color-primary) 8%, transparent) !important;
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
 }
 
-/* Card hover glow */
-.mdx-content a[href]:not(p a):hover,
-footer a.group:hover {
-  box-shadow: 0 0 16px color-mix(in srgb, var(--color-primary) 12%, transparent);
+/* Stagger children */
+.stagger-children > * {
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out forwards;
 }
-
-/* Button hover glow */
-a[style*="background:var(--color-primary)"]:hover,
-a[style*="background: var(--color-primary)"]:hover {
-  box-shadow: 0 0 24px color-mix(in srgb, var(--color-primary) 30%, transparent);
-  filter: brightness(1.1);
-  transition: box-shadow 0.3s ease, filter 0.2s ease;
-}
-
-/* Prev/Next card hover */
-footer a.group:hover {
-  box-shadow: 0 0 20px color-mix(in srgb, var(--color-secondary) 15%, transparent);
-  border-color: color-mix(in srgb, var(--color-secondary) 30%, transparent) !important;
-}
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 60ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 120ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 180ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 240ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 300ms; }

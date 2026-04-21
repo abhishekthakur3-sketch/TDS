@@ -1,9 +1,7 @@
 'use client';
 
 import { PageShell } from '@/components/PageShell';
-import { StorybookEmbed } from '@/components/mdx';
 
-// Map component slugs to their exact Storybook story IDs
 const storybookIds: Record<string, string> = {
   avatar: 'tarmac-tds-avatar--playground',
   button: 'tarmac-tds-button--playground',
@@ -61,8 +59,6 @@ interface ComponentPageProps {
 
 export function ComponentPage({ name, description, slug, children }: ComponentPageProps) {
   const storyId = slug ? storybookIds[slug] : null;
-
-  // Use the same URL format as tarmac-design.github.io
   const embedUrl = storyId
     ? `${STORYBOOK_BASE}/?path=/story/${storyId}`
     : STORYBOOK_BASE;
@@ -70,32 +66,22 @@ export function ComponentPage({ name, description, slug, children }: ComponentPa
   return (
     <PageShell title={name} description={description}>
       <h2>Live Demo</h2>
-      <div
-        className="rounded-xl overflow-hidden border mb-6"
-        style={{ borderColor: 'var(--color-outline)' }}
-      >
+      <div className="rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 mb-6">
         <iframe
           src={embedUrl}
           style={{ width: '100%', height: '500px', border: 'none' }}
           title={`${name} — TARMAC Storybook`}
           allow="clipboard-write"
         />
-        <div
-          className="flex items-center justify-between px-4 py-3 border-t"
-          style={{
-            background: 'var(--color-surface-container)',
-            borderColor: 'var(--color-outline)',
-          }}
-        >
-          <span className="text-xs" style={{ color: 'var(--color-on-surface-variant)' }}>
+        <div className="flex items-center justify-between px-4 py-3 bg-neutral-50 dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
+          <span className="text-xs text-neutral-500 dark:text-neutral-400">
             Interactive preview — {name} component
           </span>
           <a
             href={embedUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-medium hover:underline"
-            style={{ color: 'var(--color-secondary)' }}
+            className="text-xs font-medium text-tarmac-blue dark:text-blue-400 hover:underline"
           >
             Open in Storybook ↗
           </a>

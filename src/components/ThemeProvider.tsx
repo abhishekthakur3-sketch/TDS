@@ -1,16 +1,27 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 
-const ThemeContext = createContext<{
+interface ThemeContextType {
   theme: Theme;
-  toggle: () => void;
-}>({ theme: 'light', toggle: () => {} });
+  toggleTheme: () => void;
+}
 
-export function useTheme() {
-  return useContext(ThemeContext);
+const ThemeContext = createContext<ThemeContextType>({
+  theme: 'light',
+  toggleTheme: () => {},
+});
+
+export const useTheme = () => useContext(ThemeContext);
+
+function applyTheme(theme: Theme) {
+  const root = document.documentElement;
+  // Tailwind dark mode
+  root.classList.toggle('dark', theme === 'dark');
+  // CSS variable fallback
+  root.setAttribute('data-theme', theme);
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -19,25 +30,29 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem('tarmac-theme') as Theme;
-    if (saved) {
-      setTheme(saved);
-      document.documentElement.setAttribute('data-theme', saved);
+    const stored = localStorage.getItem('tds-theme') as Theme | null;
+    if (stored) {
+      setTheme(stored);
+      applyTheme(stored);
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setTheme('dark');
-      document.documentElement.setAttribute('data-theme', 'dark');
+      applyTheme('dark');
     }
   }, []);
 
-  const toggle = () => {
+  const toggleTheme = () => {
     const next = theme === 'light' ? 'dark' : 'light';
     setTheme(next);
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('tarmac-theme', next);
+    applyTheme(next);
+    localStorage.setItem('tds-theme', next);
   };
 
+  if (!mounted) {
+    return <div style={{ visibility: 'hidden' }}>{children}</div>;
+  }
+
   return (
-    <ThemeContext.Provider value={{ theme, toggle }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

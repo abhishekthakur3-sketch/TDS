@@ -8,12 +8,13 @@ import ButtonContent from './content.mdx';
 export default function ButtonPage() {
   return (
     <>
-      <div className="ml-[calc(var(--sidebar-width)+32px)] mr-[240px] xl:mr-[280px] max-w-3xl px-8 py-10">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-3" style={{ color: 'var(--color-on-surface)' }}>
+      <TableOfContents />
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 py-12 animate-fade-in">
+        <div className="mb-10">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3 text-neutral-900 dark:text-neutral-50">
             Button
           </h1>
-          <p style={{ color: 'var(--color-on-surface-variant)' }} className="text-lg">
+          <p className="text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-2xl">
             Buttons trigger actions and enable user interactions throughout the interface.
           </p>
         </div>
@@ -22,7 +23,6 @@ export default function ButtonPage() {
         </div>
       </div>
       <PageFooter />
-      <TableOfContents />
     </>
   );
 }

@@ -2,20 +2,12 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useTheme } from './ThemeProvider';
-import { TarmacLogoCompact } from './TarmacLogo';
+import { useTheme } from '@/components/ThemeProvider';
+import { Sun, Moon, Github, Menu, X, ExternalLink } from 'lucide-react';
 
-const topNav = [
-  { label: 'Get started', href: '/about/overview' },
-  { label: 'Foundations', href: '/foundations/colors' },
-  { label: 'Components', href: '/components/button' },
-  { label: 'Patterns', href: '/patterns/layout' },
-  { label: 'Accessibility', href: '/accessibility/overview' },
-];
-
-export function TopBar() {
+export function TopBar({ onMenuToggle, sidebarOpen }: { onMenuToggle: () => void; sidebarOpen: boolean }) {
+  const { theme, toggleTheme } = useTheme();
   const pathname = usePathname();
-  const { theme, toggle } = useTheme();
 
   const isActive = (href: string) => {
     const section = href.split('/')[1];
@@ -23,99 +15,77 @@ export function TopBar() {
   };
 
   return (
-    <header
-      className="fixed top-4 left-4 right-4 z-50 h-[var(--topbar-height)] flex items-center px-6 rounded-2xl border"
-      style={{
-        background: 'color-mix(in srgb, var(--color-surface) 70%, transparent)',
-        backdropFilter: 'blur(16px) saturate(180%)',
-        WebkitBackdropFilter: 'blur(16px) saturate(180%)',
-        borderColor: 'color-mix(in srgb, var(--color-outline) 50%, transparent)',
-      }}
-    >
-      {/* Logo */}
-      <Link href="/" className="flex items-center gap-2.5 mr-10 shrink-0">
-        <TarmacLogoCompact size={32} />
-        <div className="flex flex-col leading-tight">
-          <span
-            className="font-bold text-[13px] tracking-wide"
-            style={{ color: 'var(--color-on-surface)' }}
+    <header className="fixed top-0 left-0 right-0 h-16 z-50 border-b border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-xl">
+      <div className="flex items-center justify-between h-full px-4 lg:px-6">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={onMenuToggle}
+            className="lg:hidden p-2 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-600 dark:text-neutral-400"
+            aria-label="Toggle menu"
           >
-            <span style={{ color: '#ED1B36' }}>T</span>ARMAC
-          </span>
-          <span
-            className="text-[9px] tracking-[0.15em] uppercase font-medium"
-            style={{ color: 'var(--color-primary)' }}
-          >
-            Design System
-          </span>
+            {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="w-9 h-9 bg-tarmac-red rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+              <span className="text-white font-bold text-base">T</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="font-semibold text-sm leading-tight tracking-tight text-neutral-900 dark:text-neutral-100">TARMAC</span>
+              <span className="text-[10px] text-neutral-400 dark:text-neutral-500 tracking-[0.15em] font-medium">DESIGN SYSTEM</span>
+            </div>
+          </Link>
         </div>
-      </Link>
 
-      {/* Nav links */}
-      <nav className="hidden md:flex items-center gap-1 flex-1">
-        {topNav.map((item) => {
-          const active = isActive(item.href);
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="relative px-4 py-2 rounded-full text-sm font-medium transition-colors"
-              style={{
-                color: active ? 'var(--color-primary)' : 'var(--color-on-surface-variant)',
-                background: active ? 'var(--color-primary-container)' : 'transparent',
-              }}
-            >
-              {item.label}
-            </Link>
-          );
-        })}
-      </nav>
+        <nav className="hidden md:flex items-center gap-1">
+          <NavLink href="/about/overview" active={isActive('/about')}>About</NavLink>
+          <NavLink href="/foundations/colors" active={isActive('/foundations')}>Foundations</NavLink>
+          <NavLink href="/components/button" active={isActive('/components')}>Components</NavLink>
+          <NavLink href="/accessibility/overview" active={isActive('/accessibility')}>Accessibility</NavLink>
+        </nav>
 
-      {/* Right side */}
-      <div className="flex items-center gap-3 ml-auto">
-        {/* GitHub */}
-        <a
-          href="https://github.com/abhishekthakur3-sketch/TDS"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors"
-          style={{
-            color: 'var(--color-on-surface-variant)',
-            border: '1px solid var(--color-outline)',
-          }}
-        >
-          GitHub ↗
-        </a>
-
-        {/* Theme toggle */}
-        <button
-          onClick={toggle}
-          className="w-9 h-9 rounded-full flex items-center justify-center transition-colors"
-          style={{
-            background: 'var(--color-surface-container)',
-            color: 'var(--color-on-surface)',
-          }}
-          aria-label="Toggle theme"
-        >
-          {theme === 'light' ? (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          ) : (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="5" />
-              <line x1="12" y1="1" x2="12" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" />
-              <line x1="21" y1="12" x2="23" y2="12" />
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-            </svg>
-          )}
-        </button>
+        <div className="flex items-center gap-1">
+          <a
+            href="https://tarmac-storybook-dev.pntrzz.com/storybook/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-xl transition-colors"
+          >
+            Storybook
+            <ExternalLink size={12} />
+          </a>
+          <a
+            href="https://github.com/abhishekthakur3-sketch/TDS"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-600 dark:text-neutral-400"
+            aria-label="GitHub"
+          >
+            <Github size={18} />
+          </a>
+          <button
+            onClick={toggleTheme}
+            className="p-2.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-600 dark:text-neutral-400"
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          >
+            {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
+        </div>
       </div>
     </header>
+  );
+}
+
+function NavLink({ href, active, children }: { href: string; active: boolean; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      className={`px-3 py-2 text-sm font-medium rounded-xl transition-colors ${
+        active
+          ? 'text-tarmac-red dark:text-red-400 bg-tarmac-red/5 dark:bg-red-500/10'
+          : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+      }`}
+    >
+      {children}
+    </Link>
   );
 }
