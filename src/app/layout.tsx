@@ -14,8 +14,12 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const basePath = process.env.NODE_ENV === 'production' ? '/TDS' : '';
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href={`${basePath}/favicon.png`} type="image/png" />
+      </head>
       <body>
         <ThemeProvider>
           <GeometricPattern />

@@ -36,8 +36,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('tarmac-theme', next);
   };
 
-  if (!mounted) return <>{children}</>;
-
   return (
     <ThemeContext.Provider value={{ theme, toggle }}>
       {children}

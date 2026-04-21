@@ -43,15 +43,6 @@ export default function Home() {
     <div className="max-w-5xl mx-auto px-8 py-16">
       {/* Hero */}
       <div className="mb-16">
-        <div
-          className="inline-block px-3 py-1 rounded-full text-xs font-medium mb-6"
-          style={{
-            background: 'var(--color-primary-container)',
-            color: 'var(--color-primary)',
-          }}
-        >
-          Documentation
-        </div>
         <h1
           className="text-5xl font-bold mb-5 leading-tight"
           style={{ color: 'var(--color-on-surface)' }}
