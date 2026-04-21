@@ -222,3 +222,11 @@ header nav a:hover {
 .btn-glow:hover {
   box-shadow: 0 0 16px color-mix(in srgb, var(--color-primary) 25%, transparent);
 }
+
+/* Content area centered between sidebar and TOC */
+.content-area {
+  --left-pane: calc(var(--sidebar-width) + 16px + 24px); /* sidebar + left offset + gap */
+  --right-pane: calc(192px + 12px + 24px); /* TOC width + right offset + gap */
+  margin-left: var(--left-pane);
+  margin-right: var(--right-pane);
+}

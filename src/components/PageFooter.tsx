@@ -92,11 +92,7 @@ export function PageFooter() {
 
   return (
     <footer
-      className="pb-16 px-8"
-      style={{
-        marginLeft: 'calc(var(--sidebar-width) + 32px)',
-        marginRight: '240px',
-      }}
+      className="content-area pb-16 px-8"
     >
       <div className="max-w-3xl mx-auto">
       {/* Prev / Next navigation */}

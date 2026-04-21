@@ -16,14 +16,7 @@ export function PageShell({
   return (
     <>
       <TableOfContents />
-      {/* pl accounts for sidebar (280px), pr accounts for TOC (220px), content centered between */}
-      <div
-        className="py-10 px-8"
-        style={{
-          marginLeft: 'calc(var(--sidebar-width) + 32px)',
-          marginRight: '240px',
-        }}
-      >
+      <div className="content-area py-10 px-8">
         <div className="max-w-3xl mx-auto">
           <div className="mb-8">
             <h1

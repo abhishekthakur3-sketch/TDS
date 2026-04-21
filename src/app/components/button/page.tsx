@@ -9,13 +9,7 @@ export default function ButtonPage() {
   return (
     <>
       <TableOfContents />
-      <div
-        className="py-10 px-8"
-        style={{
-          marginLeft: 'calc(var(--sidebar-width) + 32px)',
-          marginRight: '240px',
-        }}
-      >
+      <div className="content-area py-10 px-8">
         <div className="max-w-3xl mx-auto">
           <div className="mb-8">
             <h1 className="text-3xl font-bold mb-3" style={{ color: 'var(--color-on-surface)' }}>
