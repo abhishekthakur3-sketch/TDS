@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
+/* eslint-disable @next/next/no-img-element */
 import { usePathname } from 'next/navigation';
 import { useTheme } from '@/components/ThemeProvider';
 
@@ -34,21 +34,19 @@ export function TopBar() {
     >
       {/* Logo */}
       <Link href="/" className="flex items-center mr-8 shrink-0">
-        <Image
-          src="/tarmac-logo-light.png"
+        <img
+          src="/tarmac-logo-light.svg"
           alt="TARMAC Design System"
-          width={140}
           height={36}
           className={theme === 'light' ? 'block' : 'hidden'}
-          priority
+          style={{ height: '36px', width: 'auto' }}
         />
-        <Image
-          src="/tarmac-logo-dark.png"
+        <img
+          src="/tarmac-logo-dark.svg"
           alt="TARMAC Design System"
-          width={140}
           height={36}
           className={theme === 'dark' ? 'block' : 'hidden'}
-          priority
+          style={{ height: '36px', width: 'auto' }}
         />
       </Link>
 
