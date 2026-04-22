@@ -129,14 +129,7 @@ export function Sidebar({ open, onClose }: { open?: boolean; onClose?: () => voi
   const sidebarContent = (
     <nav className="py-1">
       {sections.map((section) => (
-        <div key={section.title} className="mb-4">
-          <h3
-            className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest px-3 mb-1.5"
-            style={{ color: 'var(--color-on-surface-variant)' }}
-          >
-            <span className="text-xs">{section.icon}</span>
-            {section.title}
-          </h3>
+        <div key={section.title}>
           <ul className="space-y-0.5">
             {section.items.map((item) => {
               const isActive = pathname === item.href;
