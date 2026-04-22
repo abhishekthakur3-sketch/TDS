@@ -160,7 +160,7 @@ export function Sidebar({ open, onClose }: { open?: boolean; onClose?: () => voi
     <>
       {/* Desktop sidebar */}
       <aside
-        className="hidden lg:block fixed left-3 top-[calc(var(--topbar-offset)+4px)] w-[var(--sidebar-width)] max-h-[calc(100vh-var(--topbar-offset)-16px)] overflow-y-auto z-30 rounded-2xl border p-3"
+        className="hidden lg:block fixed left-3 top-[calc(var(--topbar-offset)+4px)] w-[var(--sidebar-width)] max-h-[calc(100vh-var(--topbar-offset)-16px)] overflow-y-auto z-30 rounded-2xl border p-3 sidebar-scroll"
         style={{
           background: 'color-mix(in srgb, var(--color-surface) 75%, transparent)',
           backdropFilter: 'blur(16px) saturate(180%)',

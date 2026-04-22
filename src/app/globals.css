@@ -66,6 +66,28 @@ body {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--color-outline); border-radius: 3px; }
 
+/* Sidebar: hide scrollbar until hover/scroll */
+.sidebar-scroll {
+  scrollbar-width: none;
+}
+.sidebar-scroll::-webkit-scrollbar {
+  width: 0;
+}
+.sidebar-scroll:hover {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-outline) transparent;
+}
+.sidebar-scroll:hover::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-scroll:hover::-webkit-scrollbar-thumb {
+  background: var(--color-outline);
+  border-radius: 2px;
+}
+.sidebar-scroll:hover::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .mdx-content h2 {
   font-size: 1.5rem;
   font-weight: 600;

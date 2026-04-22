@@ -18,7 +18,7 @@ export function PageShell({
       <div className="content-area">
         {/* Title banner */}
         <div
-          className="relative overflow-hidden rounded-2xl mx-8 mt-10 mb-8 px-8 py-10"
+          className="relative overflow-hidden rounded-2xl mx-8 mt-10 mb-8 px-8 py-14"
           style={{
             background: 'linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 8%, var(--color-surface-container-low)), color-mix(in srgb, var(--color-secondary) 6%, var(--color-surface-container-low)))',
             border: '1px solid var(--color-outline)',
