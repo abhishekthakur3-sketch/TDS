@@ -33,7 +33,7 @@ export default function Home() {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     glowRef.current.style.maskImage = `radial-gradient(300px circle at ${x}px ${y}px, black 0%, transparent 70%)`;
-    glowRef.current.style.WebkitMaskImage = `radial-gradient(300px circle at ${x}px ${y}px, black 0%, transparent 70%)`;
+    glowRef.current.style.webkitMaskImage = `radial-gradient(300px circle at ${x}px ${y}px, black 0%, transparent 70%)`;
     glowRef.current.style.opacity = '1';
   }, []);
 

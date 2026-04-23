@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Pre-Push Verify",
+  "description": "Before any shell command that includes git push, remind the agent to build first and check for conflicts",
+  "version": "1",
+  "when": {
+    "type": "preToolUse",
+    "toolTypes": [
+      "shell"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "If this command is a git push, make sure you have: 1) Fetched and rebased on latest origin/main first, 2) Run npm run build successfully. If not, do those steps before pushing."
+  }
+}
