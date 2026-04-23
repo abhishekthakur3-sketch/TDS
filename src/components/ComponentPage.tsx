@@ -1,9 +1,9 @@
 'use client';
 
+import React from 'react';
 import { PageShell } from '@/components/PageShell';
 import { StorybookEmbed } from '@/components/mdx';
 
-// Verified story IDs from /storybook/sb/index.json
 const storybookPaths: Record<string, string> = {
   accordion: 'atoms-collapse--default',
   alert: 'tarmac-tds-alert--playground',
@@ -50,6 +50,40 @@ const storybookPaths: Record<string, string> = {
   tooltip: 'tarmac-tds-tooltip--playground',
 };
 
+// Headings that belong to each tab category
+const designHeadings = ['variants', 'anatomy', 'states'];
+const usageHeadings = ['usage guidelines', 'usage', 'accessibility'];
+const codeHeadings = ['design tokens', 'developer handoff', 'code', 'implementation'];
+
+function getHeadingText(child: React.ReactNode): string {
+  if (!React.isValidElement(child)) return '';
+  if (child.type === 'h2') {
+    const text = typeof child.props.children === 'string' ? child.props.children : '';
+    return text.toLowerCase();
+  }
+  return '';
+}
+
+function splitChildrenIntoTabs(children: React.ReactNode) {
+  const childArray = React.Children.toArray(children);
+  const design: React.ReactNode[] = [];
+  const usage: React.ReactNode[] = [];
+  const code: React.ReactNode[] = [];
+  let currentBucket: React.ReactNode[] = design;
+
+  for (const child of childArray) {
+    const heading = getHeadingText(child);
+    if (heading) {
+      if (designHeadings.some(h => heading.includes(h))) currentBucket = design;
+      else if (usageHeadings.some(h => heading.includes(h))) currentBucket = usage;
+      else if (codeHeadings.some(h => heading.includes(h))) currentBucket = code;
+    }
+    currentBucket.push(child);
+  }
+
+  return { design, usage, code };
+}
+
 interface ComponentPageProps {
   name: string;
   description: string;
@@ -66,20 +100,31 @@ export function ComponentPage({ name, description, slug, children }: ComponentPa
     ? `https://tarmac-storybook-dev.pntrzz.com/storybook/?path=/story/${storyPath}`
     : 'https://tarmac-storybook-dev.pntrzz.com/storybook/';
 
-  return (
-    <PageShell title={name} description={description}>
-      {sbUrl && (
-        <>
-          <h2>Live Demo</h2>
-          <StorybookEmbed
-            url={sbUrl}
-            storybookUrl={fullStorybookUrl}
-            height={420}
-            title={`${name} — TARMAC Storybook`}
-          />
-        </>
-      )}
-      {children}
-    </PageShell>
-  );
+  const { design, usage, code } = splitChildrenIntoTabs(children);
+
+  const tabs: { label: string; content: React.ReactNode }[] = [];
+
+  if (sbUrl) {
+    tabs.push({
+      label: 'Examples',
+      content: (
+        <StorybookEmbed url={sbUrl} storybookUrl={fullStorybookUrl} height={420} title={`${name} — TARMAC Storybook`} />
+      ),
+    });
+  }
+
+  if (design.length > 0) tabs.push({ label: 'Design', content: <>{design}</> });
+  if (usage.length > 0) tabs.push({ label: 'Usage', content: <>{usage}</> });
+  if (code.length > 0) tabs.push({ label: 'Code', content: <>{code}</> });
+
+  // Fallback: if no splitting happened, put everything in one tab
+  if (tabs.length === 0 || (design.length === 0 && usage.length === 0 && code.length === 0)) {
+    return (
+      <PageShell title={name} description={description} tabs={sbUrl ? [tabs[0]] : undefined}>
+        {children}
+      </PageShell>
+    );
+  }
+
+  return <PageShell title={name} description={description} tabs={tabs}>{children}</PageShell>;
 }

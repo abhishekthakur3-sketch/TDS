@@ -3,7 +3,6 @@
 import { usePathname } from 'next/navigation';
 import { TopBar } from '@/components/TopBar';
 import { Sidebar } from '@/components/Sidebar';
-import { GeometricPattern } from '@/components/GeometricPattern';
 import { PageFooter } from '@/components/PageFooter';
 
 export function LayoutShell({ children }: { children: React.ReactNode }) {
@@ -12,13 +11,15 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <GeometricPattern />
       <TopBar />
-      <div className="relative z-10 flex pt-[var(--topbar-offset)]">
+      <div className="flex pt-16">
         {!isHome && <Sidebar />}
-        <div className="flex-1 flex flex-col min-h-[calc(100vh-var(--topbar-offset))]">
+        <div
+          className="flex-1 flex flex-col min-h-[calc(100vh-64px)]"
+          style={{ marginLeft: isHome ? 0 : 'var(--sidebar-width)' }}
+        >
           <main className="flex-1">{children}</main>
-          <PageFooter />
+          {!isHome && <PageFooter />}
         </div>
       </div>
     </>

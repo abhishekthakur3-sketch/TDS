@@ -5,9 +5,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --sidebar-width: 260px;
+  --sidebar-width: 240px;
   --topbar-height: 56px;
-  --topbar-offset: 80px; /* topbar height + top margin + gap */
   --color-surface: #FFFFFF;
   --color-surface-dim: #FAFAFA;
   --color-surface-container: #F5F5F5;
@@ -29,8 +28,6 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
 }
 
 [data-theme='dark'] {
@@ -42,7 +39,7 @@
   --color-surface-variant: #333333;
   --color-on-surface: #F2F2F2;
   --color-on-surface-variant: #999999;
-  --color-primary: #F06158;
+  --color-primary: #ED1B36;
   --color-on-primary: #FFFFFF;
   --color-primary-container: #3D1418;
   --color-secondary: #6E97F2;
@@ -62,32 +59,21 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* Scrollbar — hidden until scrolling */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--color-outline); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: transparent; border-radius: 3px; }
+html:hover::-webkit-scrollbar-thumb { background: var(--color-outline); }
+html { scrollbar-width: thin; scrollbar-color: transparent transparent; }
+html:hover { scrollbar-color: var(--color-outline) transparent; }
 
-/* Sidebar: hide scrollbar until hover/scroll */
-.sidebar-scroll {
-  scrollbar-width: none;
-}
-.sidebar-scroll::-webkit-scrollbar {
-  width: 0;
-}
-.sidebar-scroll:hover {
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-outline) transparent;
-}
-.sidebar-scroll:hover::-webkit-scrollbar {
-  width: 4px;
-}
-.sidebar-scroll:hover::-webkit-scrollbar-thumb {
-  background: var(--color-outline);
-  border-radius: 2px;
-}
-.sidebar-scroll:hover::-webkit-scrollbar-track {
-  background: transparent;
-}
+.sidebar-scroll { scrollbar-width: none; }
+.sidebar-scroll::-webkit-scrollbar { width: 0; }
+.sidebar-scroll:hover { scrollbar-width: thin; scrollbar-color: var(--color-outline) transparent; }
+.sidebar-scroll:hover::-webkit-scrollbar { width: 4px; }
+.sidebar-scroll:hover::-webkit-scrollbar-thumb { background: var(--color-outline); border-radius: 2px; }
 
+/* MDX Content */
 .mdx-content h2 {
   font-size: 1.5rem;
   font-weight: 600;
@@ -148,9 +134,7 @@ body {
   border-bottom: 1px solid var(--color-outline);
   color: var(--color-on-surface-variant);
 }
-.mdx-content tbody tr:hover {
-  background: var(--color-surface-container-low);
-}
+.mdx-content tbody tr:hover { background: var(--color-surface-container-low); }
 .mdx-content code {
   background: var(--color-surface-container);
   color: var(--color-primary);
@@ -173,14 +157,9 @@ body {
   color: var(--color-on-surface);
   padding: 0;
 }
-.mdx-content a {
-  color: var(--color-secondary);
-}
+.mdx-content a { color: var(--color-secondary); }
 .mdx-content a:hover { text-decoration: underline; }
-.mdx-content hr {
-  margin: 2rem 0;
-  border-color: var(--color-outline);
-}
+.mdx-content hr { margin: 2rem 0; border-color: var(--color-outline); }
 .mdx-content blockquote {
   border-left: 3px solid var(--color-primary);
   padding: 0.75rem 1rem;
@@ -189,69 +168,7 @@ body {
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   color: var(--color-on-surface-variant);
 }
-.mdx-content strong {
-  color: var(--color-on-surface);
-}
+.mdx-content strong { color: var(--color-on-surface); }
 
-/* ===== Hover Glow Effects ===== */
-a.glow-hover,
-.glow-hover {
-  position: relative;
-  transition: all 0.3s ease;
-}
-a.glow-hover::after,
-.glow-hover::after {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  background: radial-gradient(
-    ellipse at center,
-    color-mix(in srgb, var(--color-primary) 15%, transparent) 0%,
-    transparent 70%
-  );
-  z-index: -1;
-  pointer-events: none;
-}
-a.glow-hover:hover::after,
-.glow-hover:hover::after {
-  opacity: 1;
-}
-
-/* Sidebar link glow */
-aside nav a:hover {
-  background: color-mix(in srgb, var(--color-primary) 6%, transparent) !important;
-}
-
-/* Card glow on hover */
-.card-glow {
-  transition: all 0.3s ease;
-}
-.card-glow:hover {
-  border-color: color-mix(in srgb, var(--color-primary) 30%, transparent) !important;
-  box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 8%, transparent),
-              0 0 40px color-mix(in srgb, var(--color-primary) 4%, transparent);
-}
-
-/* Top nav link glow */
-header nav a:hover {
-  background: color-mix(in srgb, var(--color-primary) 8%, transparent) !important;
-}
-
-/* Button glow */
-.btn-glow:hover {
-  box-shadow: 0 0 16px color-mix(in srgb, var(--color-primary) 25%, transparent);
-}
-
-/* Content area centered between sidebar and TOC */
-.content-area {
-  margin-left: 216px;
-  margin-right: 216px;
-}
-.content-area > div {
-  width: 100%;
-  max-width: 720px;
-  margin: 0 auto;
-}
+/* Content area — full width */
+.content-area { width: 100%; }

@@ -2,25 +2,18 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const allPages = [
-  { label: 'Overview', href: '/about/overview' },
+  { label: 'Introduction to TARMAC', href: '/about/overview' },
   { label: 'Philosophy', href: '/about/philosophy' },
   { label: 'Brand Language', href: '/about/brand-language' },
   { label: 'Movement Metaphors', href: '/about/movement-metaphors' },
-  { label: 'Logo', href: '/about/logo' },
+  { label: 'TARMAC Logo', href: '/about/logo' },
   { label: 'Installation', href: '/getting-started/installation' },
   { label: 'Quick Start', href: '/getting-started/quick-start' },
   { label: 'Colors', href: '/foundations/colors' },
-  { label: 'Color Palette', href: '/foundations/colors-palette' },
-  { label: 'Colors Implementation', href: '/foundations/colors-implementation' },
   { label: 'Typography', href: '/foundations/typography' },
-  { label: 'Typography Styles', href: '/foundations/typography-styles' },
-  { label: 'Typography Implementation', href: '/foundations/typography-implementation' },
   { label: 'Grid System', href: '/foundations/grid-system' },
-  { label: 'Grid Advanced', href: '/foundations/grid-advanced' },
-  { label: 'Grid Implementation', href: '/foundations/grid-implementation' },
   { label: 'Iconography', href: '/foundations/iconography' },
   { label: 'Spacing', href: '/foundations/spacing' },
   { label: 'Radius', href: '/foundations/radius' },
@@ -71,124 +64,59 @@ const allPages = [
   { label: 'Scroll', href: '/components/scroll' },
   { label: 'Accordion', href: '/components/accordion' },
   { label: 'Audio Player', href: '/components/audio-player' },
-  { label: 'Layout', href: '/patterns/layout' },
-  { label: 'Forms', href: '/patterns/forms' },
-  { label: 'Accessibility Overview', href: '/accessibility/overview' },
-  { label: 'Guidelines', href: '/accessibility/guidelines' },
+  { label: 'Layout Patterns', href: '/patterns/layout' },
+  { label: 'Form Patterns', href: '/patterns/forms' },
+  { label: 'Accessibility', href: '/accessibility/overview' },
+  { label: 'Accessibility Guidelines', href: '/accessibility/guidelines' },
   { label: 'Keyboard Navigation', href: '/accessibility/keyboard-navigation' },
   { label: 'Screen Readers', href: '/accessibility/screen-readers' },
   { label: 'Color Contrast', href: '/accessibility/color-contrast' },
   { label: 'Focus Management', href: '/accessibility/focus-management' },
-  { label: 'Testing', href: '/accessibility/testing' },
+  { label: 'Accessibility Testing', href: '/accessibility/testing' },
 ];
 
 export function PageFooter() {
   const pathname = usePathname();
+  if (pathname === '/') return null;
 
   const idx = allPages.findIndex((p) => p.href === pathname);
   const prev = idx > 0 ? allPages[idx - 1] : null;
   const next = idx < allPages.length - 1 ? allPages[idx + 1] : null;
 
   return (
-    <footer className="content-area pb-16 px-8">
-      {/* Prev / Next navigation */}
-      {(prev || next) && (
-        <div
-          className="grid grid-cols-2 gap-4 mb-10 pt-8"
-          style={{ borderTop: '1px solid var(--color-outline)' }}
-        >
-          {prev ? (
-            <Link
-              href={prev.href}
-              className="group p-4 rounded-2xl border transition-all card-glow"
-              style={{ borderColor: 'var(--color-outline)' }}
-            >
-              <span
-                className="flex items-center gap-1 text-xs mb-1"
-                style={{ color: 'var(--color-on-surface-variant)' }}
+    <footer className="px-10 pb-12">
+      <div className="content-area">
+        {(prev || next) && (
+          <div className="grid grid-cols-2 gap-4 pt-8 border-t" style={{ borderColor: 'var(--color-outline)' }}>
+            {prev ? (
+              <Link href={prev.href} className="group p-4 rounded-lg border transition-colors" style={{ borderColor: 'var(--color-outline)' }}
+                onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
+                onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-outline)'}
               >
-                <ChevronLeft size={12} /> Previous
-              </span>
-              <span
-                className="block text-sm font-semibold transition-colors"
-                style={{ color: 'var(--color-on-surface)' }}
+                <span className="text-xs block mb-1" style={{ color: 'var(--color-on-surface-variant)' }}>← Previous</span>
+                <span className="text-sm font-medium" style={{ color: 'var(--color-on-surface)' }}>{prev.label}</span>
+              </Link>
+            ) : <div />}
+            {next ? (
+              <Link href={next.href} className="group p-4 rounded-lg border text-right transition-colors" style={{ borderColor: 'var(--color-outline)' }}
+                onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
+                onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-outline)'}
               >
-                {prev.label}
-              </span>
-            </Link>
-          ) : <div />}
-          {next ? (
-            <Link
-              href={next.href}
-              className="group p-4 rounded-2xl border text-right transition-all"
-              style={{ borderColor: 'var(--color-outline)' }}
-            >
-              <span
-                className="flex items-center justify-end gap-1 text-xs mb-1"
-                style={{ color: 'var(--color-on-surface-variant)' }}
-              >
-                Up next <ChevronRight size={12} />
-              </span>
-              <span
-                className="block text-sm font-semibold transition-colors"
-                style={{ color: 'var(--color-on-surface)' }}
-              >
-                {next.label}
-              </span>
-            </Link>
-          ) : <div />}
-        </div>
-      )}
+                <span className="text-xs block mb-1" style={{ color: 'var(--color-on-surface-variant)' }}>Up next →</span>
+                <span className="text-sm font-medium" style={{ color: 'var(--color-on-surface)' }}>{next.label}</span>
+              </Link>
+            ) : <div />}
+          </div>
+        )}
 
-      {/* Delhivery footer */}
-      <div
-        className="rounded-2xl border p-8"
-        style={{
-          borderColor: 'var(--color-outline)',
-          background: 'var(--color-surface-container-low)',
-        }}
-      >
-        <div className="flex items-start justify-between flex-wrap gap-8">
-          <div className="max-w-sm">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-5 h-5 bg-tarmac-red rounded flex items-center justify-center">
-                <span className="text-white font-bold text-[10px]">T</span>
-              </div>
-              <span className="font-bold text-sm" style={{ color: 'var(--color-on-surface)' }}>
-                TARMAC Design System
-              </span>
-            </div>
-            <p className="text-xs leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
-              Delhivery&apos;s unified design system — the single source of truth for design decisions, UI components, and interaction patterns.
-            </p>
+        <div className="mt-10 pt-6 border-t flex items-center justify-between" style={{ borderColor: 'var(--color-outline)' }}>
+          <span className="text-xs" style={{ color: 'var(--color-on-surface-variant)' }}>
+            © {new Date().getFullYear()} Delhivery Ltd. All rights reserved.
+          </span>
+          <div className="flex gap-4 text-xs" style={{ color: 'var(--color-on-surface-variant)' }}>
+            <a href="https://www.delhivery.com" target="_blank" rel="noopener noreferrer" className="hover:underline">delhivery.com</a>
+            <a href="https://github.com/abhishekthakur3-sketch/TDS" target="_blank" rel="noopener noreferrer" className="hover:underline">GitHub</a>
           </div>
-          <div className="flex gap-12 text-xs">
-            <div>
-              <p className="font-semibold mb-2" style={{ color: 'var(--color-on-surface)' }}>Delhivery</p>
-              <ul className="space-y-1.5" style={{ color: 'var(--color-on-surface-variant)' }}>
-                <li><a href="https://www.delhivery.com" target="_blank" rel="noopener noreferrer" className="hover:underline transition-colors">delhivery.com</a></li>
-                <li><a href="https://www.delhivery.com/about-us" target="_blank" rel="noopener noreferrer" className="hover:underline transition-colors">About Us</a></li>
-                <li><a href="https://www.delhivery.com/careers" target="_blank" rel="noopener noreferrer" className="hover:underline transition-colors">Careers</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-semibold mb-2" style={{ color: 'var(--color-on-surface)' }}>Resources</p>
-              <ul className="space-y-1.5" style={{ color: 'var(--color-on-surface-variant)' }}>
-                <li><a href="https://tarmac-storybook-dev.pntrzz.com/storybook/" target="_blank" rel="noopener noreferrer" className="hover:underline transition-colors">Storybook</a></li>
-                <li><a href="https://github.com/abhishekthakur3-sketch/TDS" target="_blank" rel="noopener noreferrer" className="hover:underline transition-colors">GitHub</a></li>
-                <li><a href="https://www.figma.com/design/fPg3J4ckTHzyIQp8PrqDjT" target="_blank" rel="noopener noreferrer" className="hover:underline transition-colors">Figma</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div
-          className="mt-6 pt-4 text-[11px]"
-          style={{
-            borderTop: '1px solid var(--color-outline)',
-            color: 'var(--color-on-surface-variant)',
-          }}
-        >
-          © {new Date().getFullYear()} Delhivery Ltd. All rights reserved.
         </div>
       </div>
     </footer>

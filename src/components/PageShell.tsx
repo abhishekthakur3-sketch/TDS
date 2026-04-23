@@ -1,54 +1,112 @@
 'use client';
 
+import { useState, useRef, useCallback } from 'react';
 import { MdxProvider } from '@/components/MdxProvider';
-import { TableOfContents } from '@/components/TableOfContents';
 
 export function PageShell({
   title,
   description,
+  tabs,
   children,
 }: {
   title: string;
   description?: string;
+  tabs?: { label: string; content: React.ReactNode }[];
   children: React.ReactNode;
 }) {
+  const allTabs = tabs && tabs.length > 0
+    ? tabs
+    : [{ label: 'Overview', content: children }];
+
+  const [activeTab, setActiveTab] = useState(0);
+  const bannerRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!bannerRef.current || !glowRef.current) return;
+    const rect = bannerRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    glowRef.current.style.maskImage = `radial-gradient(250px circle at ${x}px ${y}px, black 0%, transparent 70%)`;
+    glowRef.current.style.WebkitMaskImage = `radial-gradient(250px circle at ${x}px ${y}px, black 0%, transparent 70%)`;
+    glowRef.current.style.opacity = '1';
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    if (glowRef.current) glowRef.current.style.opacity = '0';
+  }, []);
+
   return (
-    <>
-      <TableOfContents />
-      <div className="content-area">
-        {/* Title banner */}
+    <div>
+      {/* Title banner */}
+      <div
+        ref={bannerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="relative overflow-hidden flex flex-col"
+        style={{
+          background: 'var(--color-surface-container-low)',
+          minHeight: '50vh',
+        }}
+      >
+        {/* Subtle + pattern */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
+        {/* Mouse glow on + pattern — 20% near cursor */}
         <div
-          className="relative overflow-hidden rounded-2xl mx-8 mt-10 mb-8 px-8 py-14"
+          ref={glowRef}
+          className="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-0"
           style={{
-            background: 'linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 8%, var(--color-surface-container-low)), color-mix(in srgb, var(--color-secondary) 6%, var(--color-surface-container-low)))',
-            border: '1px solid var(--color-outline)',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}
-        >
+        />
+
+        {/* Title + tabs — constrained width, left-aligned */}
+        {/* Spacer — pushes title to 60% of section */}
+        <div className="flex-[6]" />
+        <div className="relative w-[75%] mx-auto px-6">
           <h1
-            className="text-3xl sm:text-4xl font-bold tracking-tight mb-2"
+            className="text-[2rem] font-bold tracking-tight mb-2 leading-tight"
             style={{ color: 'var(--color-on-surface)' }}
           >
             {title}
           </h1>
           {description && (
-            <p
-              className="text-base sm:text-lg leading-relaxed max-w-2xl"
-              style={{ color: 'var(--color-on-surface-variant)' }}
-            >
+            <p className="text-[15px] leading-relaxed mb-6" style={{ color: 'var(--color-on-surface-variant)' }}>
               {description}
             </p>
           )}
         </div>
+        {/* Spacer below text */}
+        <div className="flex-[4]" />
 
-        <div className="px-8 pb-10">
-          <div className="max-w-3xl mx-auto">
-            <div className="mdx-content">
-              <MdxProvider>{children}</MdxProvider>
+        {/* Tabs — left aligned with title, pinned to bottom */}
+        <div className="relative w-[75%] mx-auto px-6">
+          {allTabs.length > 1 ? (
+            <div className="flex gap-0 border-b" style={{ borderColor: 'var(--color-outline)' }}>
+              {allTabs.map((tab, i) => (
+                <button
+                  key={tab.label}
+                  onClick={() => setActiveTab(i)}
+                  className="px-4 py-2.5 text-sm font-medium transition-colors relative"
+                  style={{ color: activeTab === i ? 'var(--color-primary)' : 'var(--color-on-surface-variant)' }}
+                >
+                  {tab.label}
+                  {activeTab === i && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px]" style={{ background: 'var(--color-primary)' }} />
+                  )}
+                </button>
+              ))}
             </div>
-          </div>
+          ) : null}
         </div>
       </div>
 
-    </>
+      {/* Tab content — same constrained width */}
+      <div className="w-[75%] mx-auto px-6 py-8 mdx-content">
+        <MdxProvider>{allTabs[activeTab].content}</MdxProvider>
+      </div>
+    </div>
   );
 }

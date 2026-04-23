@@ -2,11 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-interface Heading {
-  id: string;
-  text: string;
-  level: number;
-}
+interface Heading { id: string; text: string; level: number; }
 
 export function TableOfContents() {
   const [headings, setHeadings] = useState<Heading[]>([]);
@@ -16,28 +12,15 @@ export function TableOfContents() {
     const els = document.querySelectorAll('.mdx-content h2, .mdx-content h3');
     const items: Heading[] = [];
     els.forEach((el) => {
-      if (!el.id) {
-        el.id = el.textContent?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || '';
-      }
-      items.push({
-        id: el.id,
-        text: el.textContent || '',
-        level: el.tagName === 'H2' ? 2 : 3,
-      });
+      if (!el.id) el.id = el.textContent?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || '';
+      items.push({ id: el.id, text: el.textContent || '', level: el.tagName === 'H2' ? 2 : 3 });
     });
     setHeadings(items);
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-100px 0px -70% 0px' }
+      (entries) => { entries.forEach((entry) => { if (entry.isIntersecting) setActiveId(entry.target.id); }); },
+      { rootMargin: '-80px 0px -70% 0px' }
     );
-
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
@@ -45,19 +28,8 @@ export function TableOfContents() {
   if (headings.length === 0) return null;
 
   return (
-    <aside
-      className="hidden xl:block fixed right-4 top-[calc(var(--topbar-offset)+4px)] w-[200px] max-h-[calc(100vh-var(--topbar-offset)-16px)] overflow-y-auto z-30 rounded-2xl border p-4"
-      style={{
-        background: 'color-mix(in srgb, var(--color-surface) 75%, transparent)',
-        backdropFilter: 'blur(16px) saturate(180%)',
-        WebkitBackdropFilter: 'blur(16px) saturate(180%)',
-        borderColor: 'color-mix(in srgb, var(--color-outline) 50%, transparent)',
-      }}
-    >
-      <p
-        className="text-[10px] font-semibold uppercase tracking-widest mb-3"
-        style={{ color: 'var(--color-on-surface-variant)' }}
-      >
+    <aside className="hidden xl:block fixed right-4 top-[72px] w-[200px] max-h-[calc(100vh-88px)] overflow-y-auto p-4">
+      <p className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{ color: 'var(--color-on-surface-variant)' }}>
         On this page
       </p>
       <ul className="space-y-0.5">
@@ -65,10 +37,7 @@ export function TableOfContents() {
           <li key={h.id}>
             <a
               href={`#${h.id}`}
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById(h.id)?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={(e) => { e.preventDefault(); document.getElementById(h.id)?.scrollIntoView({ behavior: 'smooth' }); }}
               className={`block py-1 text-[12px] leading-snug transition-colors ${h.level === 3 ? 'pl-3' : ''}`}
               style={{
                 color: activeId === h.id ? 'var(--color-primary)' : 'var(--color-on-surface-variant)',

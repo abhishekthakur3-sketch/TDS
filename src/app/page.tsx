@@ -1,198 +1,222 @@
 'use client';
 
+/* eslint-disable @next/next/no-img-element */
+import { useRef, useCallback } from 'react';
 import Link from 'next/link';
-import {
-  Palette, Type, Layout, Layers, Accessibility, BookOpen,
-  ArrowRight, Sparkles, Zap, Shield, Box
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { useTheme } from '@/components/ThemeProvider';
 
-const sections = [
-  {
-    title: 'Foundations',
-    desc: 'Colors, typography, spacing, grid, iconography — the building blocks.',
-    icon: Palette,
-    href: '/foundations/colors',
-  },
-  {
-    title: 'Components',
-    desc: '43+ production-ready UI components with live Storybook demos.',
-    icon: Box,
-    href: '/components/button',
-  },
-  {
-    title: 'Patterns',
-    desc: 'Layout and form composition patterns for consistent UIs.',
-    icon: Layout,
-    href: '/patterns/layout',
-  },
-  {
-    title: 'Accessibility',
-    desc: 'WCAG guidelines, keyboard nav, screen readers, and testing.',
-    icon: Accessibility,
-    href: '/accessibility/overview',
-  },
-  {
-    title: 'Getting Started',
-    desc: 'Installation, quick start, and integration guides.',
-    icon: BookOpen,
-    href: '/getting-started/installation',
-  },
-  {
-    title: 'Tokens',
-    desc: 'Design tokens as CSS variables and JS constants.',
-    icon: Layers,
-    href: '/foundations/colors-implementation',
-  },
+const foundations = [
+  { title: 'Colors', desc: 'A 3-layer color architecture — Core, Semantic, and Usage tokens.', href: '/foundations/colors' },
+  { title: 'Typography', desc: 'Noto Sans type system with clear hierarchy for readability.', href: '/foundations/typography' },
+  { title: 'Iconography', desc: 'Consistent icon system — 24px default, 1.5px stroke weight.', href: '/foundations/iconography' },
+  { title: 'Grid', desc: 'Responsive 12-column grid with breakpoint-aware layouts.', href: '/foundations/grid-system' },
 ];
 
-const features = [
-  {
-    icon: Sparkles,
-    title: 'Figma Library',
-    desc: 'Complete component library with variants, auto-layout, and design tokens.',
-  },
-  {
-    icon: Zap,
-    title: 'React Components',
-    desc: 'TypeScript-first with built-in accessibility and theming support.',
-  },
-  {
-    icon: Shield,
-    title: 'Accessible',
-    desc: 'WCAG 2.1 AA compliant with keyboard navigation and screen reader support.',
-  },
+const systemCards = [
+  { title: 'Foundations', desc: 'Colors, typography, spacing, grid, iconography — the building blocks.', href: '/foundations/colors' },
+  { title: 'Components', desc: '43+ production-ready UI components with live Storybook demos.', href: '/components/button' },
+  { title: 'Accessibility', desc: 'WCAG guidelines, keyboard nav, screen readers, and testing.', href: '/accessibility/overview' },
+  { title: 'Patterns', desc: 'Layout and form composition patterns for consistent UIs.', href: '/patterns/layout' },
+  { title: 'Tokens', desc: 'Design tokens as CSS variables and JS constants.', href: '/foundations/colors-implementation' },
+  { title: 'Get started', desc: 'Installation, quick start, and integration guides.', href: '/about/overview' },
 ];
 
 export default function Home() {
+  const { theme } = useTheme();
+  const heroRef = useRef<HTMLElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!heroRef.current || !glowRef.current) return;
+    const rect = heroRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    glowRef.current.style.maskImage = `radial-gradient(300px circle at ${x}px ${y}px, black 0%, transparent 70%)`;
+    glowRef.current.style.WebkitMaskImage = `radial-gradient(300px circle at ${x}px ${y}px, black 0%, transparent 70%)`;
+    glowRef.current.style.opacity = '1';
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    if (glowRef.current) glowRef.current.style.opacity = '0';
+  }, []);
+
   return (
-    <div className="animate-fade-in">
-      {/* Hero */}
-      <section className="relative overflow-hidden">
+    <div>
+      {/* Hero — Delhivery Red */}
+      <section
+        ref={heroRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="relative overflow-hidden"
+        style={{ background: theme === 'dark' ? '#B71525' : '#ED1B36', minHeight: '100vh', display: 'flex', alignItems: 'center' }}
+      >
+        {/* Subtle geometric pattern */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
+        <div className="absolute inset-0 opacity-[0.04]" style={{
+          backgroundImage: `radial-gradient(circle at 20% 50%, rgba(255,255,255,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2) 0%, transparent 40%)`,
+        }} />
+        {/* Mouse glow — 20% near cursor */}
         <div
-          className="absolute inset-0"
+          ref={glowRef}
+          className="absolute inset-0 pointer-events-none transition-opacity duration-300"
           style={{
-            background: 'linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 4%, transparent), transparent 60%, color-mix(in srgb, var(--color-secondary) 4%, transparent))',
+            opacity: 0,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}
         />
-        <div className="relative max-w-4xl mx-auto px-6 sm:px-8 pt-14 pb-16">
-          <h1
-            className="text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight mb-5 leading-[1.1]"
-            style={{ color: 'var(--color-on-surface)' }}
-          >
-            Build consistent
-            <br />
-            <span style={{ color: '#ED1B36' }}>
-              Delhivery experiences
-            </span>
+        <div className="relative max-w-5xl mx-auto px-8 py-28 w-full">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-[1.08] text-white">
+            Build great experiences<br />
+            with <span className="opacity-90">TARMAC</span>
           </h1>
-          <p
-            className="text-base sm:text-lg max-w-2xl leading-relaxed mb-8"
-            style={{ color: 'var(--color-on-surface-variant)' }}
-          >
-            TARMAC Design System is the single source of truth for design decisions, UI components, and interaction patterns across Delhivery products.
+          <p className="text-lg sm:text-xl max-w-2xl leading-relaxed mb-10 text-white/80">
+            Delhivery&apos;s unified design system — the single source of truth for design decisions, UI components, and interaction patterns.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
               href="/about/overview"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors"
-              style={{
-                background: 'var(--color-on-surface)',
-                color: 'var(--color-surface)',
-              }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-colors bg-white text-[#ED1B36]"
             >
-              Get Started
-              <ArrowRight size={15} />
+              Get started <ArrowRight size={16} />
             </Link>
             <Link
               href="/components/button"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold border transition-colors"
-              style={{
-                borderColor: 'var(--color-outline)',
-                color: 'var(--color-on-surface-variant)',
-              }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-colors border border-white/30 text-white hover:bg-white/10"
             >
-              Browse Components
+              Browse components
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Features strip */}
-      <section
-        className="border-y"
-        style={{
-          borderColor: 'var(--color-outline)',
-          background: 'var(--color-surface-container-low)',
-        }}
-      >
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 stagger-children">
-            {features.map((f) => (
-              <div key={f.title} className="flex gap-3.5">
-                <div
-                  className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
-                  style={{ background: 'var(--color-primary-container)' }}
-                >
-                  <f.icon size={18} style={{ color: 'var(--color-primary)' }} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[13px] mb-0.5" style={{ color: 'var(--color-on-surface)' }}>
-                    {f.title}
-                  </h3>
-                  <p className="text-[13px] leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
-                    {f.desc}
-                  </p>
-                </div>
-              </div>
+      {/* Foundation highlights — like Atlassian's Color/Typography/Iconography/Grid strip */}
+      <section className="border-b" style={{ borderColor: 'var(--color-outline)' }}>
+        <div className="max-w-5xl mx-auto px-8 py-10">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {foundations.map((f) => (
+              <Link
+                key={f.title}
+                href={f.href}
+                className="group p-5 rounded-2xl border transition-all duration-200 hover:shadow-md"
+                style={{ borderColor: 'var(--color-outline)' }}
+              >
+                <h3 className="font-semibold text-sm mb-1.5" style={{ color: 'var(--color-on-surface)' }}>{f.title}</h3>
+                <p className="text-xs leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>{f.desc}</p>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Section cards */}
-      <section className="max-w-4xl mx-auto px-6 sm:px-8 py-14">
-        <div className="mb-8">
-          <h2 className="text-xl font-bold mb-1.5" style={{ color: 'var(--color-on-surface)' }}>
-            Explore the system
+      {/* Discover the system — card grid like Atlassian */}
+      <section>
+        <div className="max-w-5xl mx-auto px-8 py-16">
+          <h2 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-on-surface)' }}>
+            Discover the system
           </h2>
-          <p className="text-sm" style={{ color: 'var(--color-on-surface-variant)' }}>
+          <p className="text-sm mb-8" style={{ color: 'var(--color-on-surface-variant)' }}>
             Everything you need to design and build with TARMAC.
           </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 stagger-children">
-          {sections.map((s) => (
-            <Link
-              key={s.title}
-              href={s.href}
-              className="group relative p-5 rounded-2xl border transition-all duration-200 card-glow"
-              style={{ borderColor: 'var(--color-outline)' }}
-            >
-              <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center mb-3"
-                style={{ background: 'var(--color-primary-container)' }}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {systemCards.map((s) => (
+              <Link
+                key={s.title}
+                href={s.href}
+                className="group relative p-6 rounded-2xl border transition-all duration-200 hover:shadow-md"
+                style={{ borderColor: 'var(--color-outline)' }}
               >
-                <s.icon size={18} style={{ color: 'var(--color-primary)' }} />
-              </div>
-              <h3
-                className="font-semibold text-[15px] mb-1 transition-colors"
-                style={{ color: 'var(--color-on-surface)' }}
-              >
-                {s.title}
-              </h3>
-              <p className="text-[13px] leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
-                {s.desc}
-              </p>
-              <ArrowRight
-                size={14}
-                className="absolute top-5 right-5 transition-all group-hover:translate-x-0.5"
-                style={{ color: 'var(--color-outline-variant)' }}
-              />
-            </Link>
-          ))}
+                <h3 className="font-semibold text-[15px] mb-1.5" style={{ color: 'var(--color-on-surface)' }}>{s.title}</h3>
+                <p className="text-[13px] leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>{s.desc}</p>
+                <ArrowRight size={14} className="absolute top-6 right-6 transition-all group-hover:translate-x-0.5" style={{ color: 'var(--color-outline-variant)' }} />
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
+      {/* What TARMAC provides */}
+      <section className="border-t" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface-container-low)' }}>
+        <div className="max-w-5xl mx-auto px-8 py-16">
+          <h2 className="text-2xl font-bold mb-8" style={{ color: 'var(--color-on-surface)' }}>
+            What TARMAC provides
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl border" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface)' }}>
+              <div className="text-2xl mb-3">🎨</div>
+              <h3 className="font-semibold text-sm mb-2" style={{ color: 'var(--color-on-surface)' }}>Figma Library</h3>
+              <p className="text-[13px] leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
+                Complete component library with variants, auto-layout, and design tokens baked in.
+              </p>
+            </div>
+            <div className="p-6 rounded-2xl border" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface)' }}>
+              <div className="text-2xl mb-3">⚛️</div>
+              <h3 className="font-semibold text-sm mb-2" style={{ color: 'var(--color-on-surface)' }}>React Components</h3>
+              <p className="text-[13px] leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
+                TypeScript-first with built-in accessibility, theming support, and comprehensive docs.
+              </p>
+            </div>
+            <div className="p-6 rounded-2xl border" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface)' }}>
+              <div className="text-2xl mb-3">♿</div>
+              <h3 className="font-semibold text-sm mb-2" style={{ color: 'var(--color-on-surface)' }}>Accessible</h3>
+              <p className="text-[13px] leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
+                WCAG 2.1 AA compliant with keyboard navigation and screen reader support.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* Footer */}
+      <footer className="border-t" style={{ borderColor: 'var(--color-outline)' }}>
+        <div className="max-w-5xl mx-auto px-8 py-10">
+          <div className="flex flex-wrap justify-between gap-8">
+            <div className="max-w-sm">
+              <div className="mb-3">
+                <img
+                  src="/tarmac-logo-light.svg"
+                  alt="TARMAC Design System"
+                  className={theme === 'light' ? 'block' : 'hidden'}
+                  style={{ height: '20px', width: 'auto' }}
+                />
+                <img
+                  src="/tarmac-logo-dark.svg"
+                  alt="TARMAC Design System"
+                  className={theme === 'dark' ? 'block' : 'hidden'}
+                  style={{ height: '20px', width: 'auto' }}
+                />
+              </div>
+              <p className="text-xs leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
+                Delhivery&apos;s unified design system — the single source of truth for design decisions, UI components, and interaction patterns.
+              </p>
+            </div>
+            <div className="flex gap-10 text-xs">
+              <div>
+                <p className="font-semibold mb-2" style={{ color: 'var(--color-on-surface)' }}>Design system</p>
+                <ul className="space-y-1.5" style={{ color: 'var(--color-on-surface-variant)' }}>
+                  <li><Link href="/about/overview" className="hover:underline">Get started</Link></li>
+                  <li><Link href="/foundations/colors" className="hover:underline">Foundations</Link></li>
+                  <li><Link href="/components/button" className="hover:underline">Components</Link></li>
+                  <li><Link href="/accessibility/overview" className="hover:underline">Accessibility</Link></li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold mb-2" style={{ color: 'var(--color-on-surface)' }}>Resources</p>
+                <ul className="space-y-1.5" style={{ color: 'var(--color-on-surface-variant)' }}>
+                  <li><a href="https://www.delhivery.com" target="_blank" rel="noopener noreferrer" className="hover:underline">delhivery.com</a></li>
+                  <li><a href="https://github.com/abhishekthakur3-sketch/TDS" target="_blank" rel="noopener noreferrer" className="hover:underline">GitHub</a></li>
+                  <li><a href="https://www.figma.com/design/fPg3J4ckTHzyIQp8PrqDjT" target="_blank" rel="noopener noreferrer" className="hover:underline">Figma</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 pt-4 border-t text-xs" style={{ borderColor: 'var(--color-outline)', color: 'var(--color-on-surface-variant)' }}>
+            © {new Date().getFullYear()} Delhivery Ltd. All rights reserved.
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
