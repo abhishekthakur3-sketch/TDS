@@ -64,7 +64,7 @@ export function PageShell({
 
         {/* Spacer — pushes title to vertical center */}
         <div className="flex-1" />
-        <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="relative w-full px-5 sm:w-[75%] sm:mx-auto sm:px-6">
           <h1
             className="text-2xl sm:text-3xl lg:text-[2.5rem] font-bold tracking-tight mb-2 leading-tight"
             style={{ color: 'var(--color-on-surface)' }}
@@ -81,7 +81,7 @@ export function PageShell({
         <div className="flex-1" />
 
         {/* Tabs — left aligned with title, pinned to bottom */}
-        <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 overflow-x-auto">
+        <div className="relative w-full px-5 sm:w-[75%] sm:mx-auto sm:px-6 overflow-x-auto">
           {allTabs.length > 1 ? (
             <div className="flex gap-0 border-b" style={{ borderColor: 'var(--color-outline)' }}>
               {allTabs.map((tab, i) => (
@@ -103,7 +103,7 @@ export function PageShell({
       </div>
 
       {/* Tab content — same constrained width */}
-      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 mdx-content">
+      <div className="w-full px-5 sm:w-[75%] sm:mx-auto sm:px-6 py-6 sm:py-8 mdx-content">
         <MdxProvider>{allTabs[activeTab].content}</MdxProvider>
       </div>
     </div>
