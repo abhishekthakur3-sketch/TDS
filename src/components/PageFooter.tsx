@@ -84,7 +84,7 @@ export function PageFooter() {
   const next = idx < allPages.length - 1 ? allPages[idx + 1] : null;
 
   return (
-    <footer className="px-10 pb-12">
+    <footer className="px-5 sm:px-10 pb-12">
       <div className="content-area">
         {(prev || next) && (
           <div className="grid grid-cols-2 gap-4 pt-8 border-t" style={{ borderColor: 'var(--color-outline)' }}>

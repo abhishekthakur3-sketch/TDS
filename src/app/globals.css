@@ -172,3 +172,11 @@ html:hover { scrollbar-color: var(--color-outline) transparent; }
 
 /* Content area — full width */
 .content-area { width: 100%; }
+
+/* Mobile responsive */
+html, body { overflow-x: hidden; }
+
+@media (max-width: 768px) {
+  .mdx-content table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .mdx-content pre { font-size: 0.8rem; padding: 1rem; }
+}

@@ -142,8 +142,8 @@ export default function Home() {
           ref={canvasRef}
           className="absolute inset-0 pointer-events-none z-10"
         />
-        <div className="relative max-w-5xl mx-auto px-8 py-28 w-full z-20">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-[1.08]"
+        <div className="relative max-w-5xl mx-auto px-5 sm:px-8 py-20 sm:py-28 w-full z-20">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-[1.08]"
             style={{ color: theme === 'dark' ? '#FFFFFF' : '#0D0D0D' }}>
             Build great experiences<br />
             with <span style={{ color: '#ED1B36' }}>TARMAC</span>
@@ -176,8 +176,8 @@ export default function Home() {
 
       {/* Foundation highlights — like Atlassian's Color/Typography/Iconography/Grid strip */}
       <section className="border-b" style={{ borderColor: 'var(--color-outline)' }}>
-        <div className="max-w-5xl mx-auto px-8 py-10">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {foundations.map((f) => (
               <Link
                 key={f.title}
@@ -195,7 +195,7 @@ export default function Home() {
 
       {/* Discover the system — card grid like Atlassian */}
       <section>
-        <div className="max-w-5xl mx-auto px-8 py-16">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-16">
           <h2 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-on-surface)' }}>
             Discover the system
           </h2>
@@ -221,7 +221,7 @@ export default function Home() {
 
       {/* What TARMAC provides */}
       <section className="border-t" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface-container-low)' }}>
-        <div className="max-w-5xl mx-auto px-8 py-16">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-16">
           <h2 className="text-2xl font-bold mb-8" style={{ color: 'var(--color-on-surface)' }}>
             What TARMAC provides
           </h2>
@@ -253,7 +253,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t" style={{ borderColor: 'var(--color-outline)' }}>
-        <div className="max-w-5xl mx-auto px-8 py-10">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-10">
           <div className="flex flex-wrap justify-between gap-8">
             <div className="max-w-sm">
               <div className="mb-3">
