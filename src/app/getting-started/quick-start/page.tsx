@@ -1,12 +1,15 @@
 'use client';
 import { PageShell } from '@/components/PageShell';
 import { CardGroup, Card } from '@/components/mdx';
+import { ImagePlaceholder } from '@/components/ImagePlaceholder';
 
 export default function QuickStartPage() {
   return (
     <PageShell title="Quick Start" description="After installing TARMAC, you're ready to build.">
       <h2>Overview</h2>
       <p>After installing TARMAC, you're ready to build. This guide walks you through your first component and a simple form.</p>
+
+      <ImagePlaceholder label="Quick start — Your first TARMAC component" path="/assets/images/quick-start-preview.png" height={240} />
 
       <h2>Build a Login Form</h2>
       <p>Combine multiple components to create a functional form:</p>

@@ -174,15 +174,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Foundation highlights — like Atlassian's Color/Typography/Iconography/Grid strip */}
-      <section className="border-b" style={{ borderColor: 'var(--color-outline)' }}>
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-10">
+      {/* Foundation highlights */}
+      <section>
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {foundations.map((f) => (
               <Link
                 key={f.title}
                 href={f.href}
-                className="group p-5 rounded-2xl border transition-all duration-200 hover:shadow-md"
+                className="group p-5 rounded-2xl border transition-all duration-200 hover:shadow-md card-hover"
                 style={{ borderColor: 'var(--color-outline)' }}
               >
                 <h3 className="font-semibold text-sm mb-1.5" style={{ color: 'var(--color-on-surface)' }}>{f.title}</h3>
@@ -193,9 +193,12 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="max-w-5xl mx-auto px-5 sm:px-8 my-0"><hr className="my-0" style={{ borderColor: 'var(--color-outline)', borderWidth: 0, borderTopWidth: '1px' }} /></div>
+
       {/* Discover the system — card grid like Atlassian */}
       <section>
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-16">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-12">
           <h2 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-on-surface)' }}>
             Discover the system
           </h2>
@@ -207,7 +210,7 @@ export default function Home() {
               <Link
                 key={s.title}
                 href={s.href}
-                className="group relative p-6 rounded-2xl border transition-all duration-200 hover:shadow-md"
+                className="group relative p-6 rounded-2xl border transition-all duration-200 hover:shadow-md card-hover"
                 style={{ borderColor: 'var(--color-outline)' }}
               >
                 <h3 className="font-semibold text-[15px] mb-1.5" style={{ color: 'var(--color-on-surface)' }}>{s.title}</h3>
@@ -220,8 +223,8 @@ export default function Home() {
       </section>
 
       {/* What TARMAC provides */}
-      <section className="border-t" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface-container-low)' }}>
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-16">
+      <section style={{ background: 'var(--color-surface-container-low)' }}>
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-12">
           <h2 className="text-2xl font-bold mb-8" style={{ color: 'var(--color-on-surface)' }}>
             What TARMAC provides
           </h2>
@@ -252,8 +255,8 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t" style={{ borderColor: 'var(--color-outline)' }}>
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-10">
+      <footer>
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-12">
           <div className="flex flex-wrap justify-between gap-8">
             <div className="max-w-sm">
               <div className="mb-3">

@@ -1,5 +1,6 @@
 'use client';
 import { PageShell } from '@/components/PageShell';
+import { ImagePlaceholder } from '@/components/ImagePlaceholder';
 
 export default function MovementMetaphorsPage() {
   return (
@@ -8,6 +9,8 @@ export default function MovementMetaphorsPage() {
       <p>
         Motion in TARMAC is a functional tool that guides users, provides feedback, and creates a sense of quality. Every animation serves a purpose — it's never decorative. The movement metaphors are drawn directly from the physical world of logistics — road markings, junctions, signage, and the kinetic energy of delivery itself.
       </p>
+
+      <ImagePlaceholder label="Movement metaphors — How motion communicates in TARMAC" path="/assets/images/movement-metaphors-hero.png" height={260} />
 
       <h2>Nexus</h2>
       <div className="p-6 rounded-xl border mb-6" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface-container-low)' }}>
@@ -86,6 +89,9 @@ export default function MovementMetaphorsPage() {
       </div>
 
       <h2>Motion Tokens</h2>
+
+      <ImagePlaceholder label="Animation principles — Easing curves and timing" path="/assets/images/animation-principles.png" height={220} />
+
       <pre><code>{`const motion = {
   duration: {
     fast: '150ms',
