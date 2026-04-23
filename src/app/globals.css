@@ -231,3 +231,23 @@ html, body { overflow-x: hidden; }
 [data-theme='dark'] .card-hover:hover {
   box-shadow: 0 8px 30px rgba(237, 27, 54, 0.12), 0 2px 8px rgba(0,0,0,0.4);
 }
+
+/* Sidebar Atlassian-style hover & active */
+.sidebar-link {
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+[data-theme='light'] .sidebar-link:hover,
+:root .sidebar-link:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+[data-theme='dark'] .sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+.sidebar-link-active {
+  background: rgba(237, 27, 54, 0.1) !important;
+  color: #ED1B36 !important;
+  font-weight: 600 !important;
+}
