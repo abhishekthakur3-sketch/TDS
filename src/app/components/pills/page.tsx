@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function PillsPage() {
   return (
@@ -50,6 +51,7 @@ export default function PillsPage() {
         <li>Use pills instead of checkboxes for visual filter bars</li>
         <li>Do not use pills for navigation — use tabs instead</li>
       </ul>
+      <DoDont slug="pills" doItems={["Use for filtering or categorizing content", "Keep labels short (1-2 words)", "Show selected state clearly"]} dontItems={["Use pills for actions — use buttons", "Use more than 2 lines of pills", "Mix pills with different interaction patterns"]} />
 
       <h2>Accessibility</h2>
       <table>

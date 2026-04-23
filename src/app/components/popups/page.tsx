@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function PopupsPage() {
   return (
@@ -52,6 +53,7 @@ export default function PopupsPage() {
         <li>Avoid deeply nested sub-menus (max 2 levels)</li>
         <li>Do not use popups for critical information — use dialogs instead</li>
       </ul>
+      <DoDont slug="popups" doItems={["Position near the trigger element", "Dismiss on outside click or Escape key", "Keep content focused and brief"]} dontItems={["Use popups for critical information", "Nest popups inside popups", "Block the entire page with a popup"]} />
 
       <h2>Accessibility</h2>
       <table>

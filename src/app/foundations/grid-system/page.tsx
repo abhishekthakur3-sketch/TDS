@@ -1,5 +1,6 @@
 'use client';
 import { PageShell } from '@/components/PageShell';
+import { DoDont } from '@/components/mdx';
 
 export default function GridSystemPage() {
   return (
@@ -41,6 +42,19 @@ export default function GridSystemPage() {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--spacing-24);
 }`}</code></pre>
+
+      <h2>Do&apos;s &amp; Don&apos;ts</h2>
+      <DoDont slug="grid-system"         doItems={[
+          "Use the 12-column grid for page layouts",
+          "Follow breakpoint definitions for responsive design",
+          "Use consistent gutters and margins",
+        ]}
+        dontItems={[
+          "Break out of the grid without good reason",
+          "Use fixed widths instead of grid columns",
+          "Ignore mobile breakpoints",
+        ]}
+      />
 
       <h2>Implementation</h2>
       <h3>CSS Grid</h3>

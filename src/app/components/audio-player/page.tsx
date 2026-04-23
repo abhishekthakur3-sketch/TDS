@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function AudioPlayerPage() {
   return (
@@ -54,6 +55,7 @@ export default function AudioPlayerPage() {
         <li>Support keyboard shortcuts (Space for play/pause, arrows for seek)</li>
         <li>Do not auto-play audio — let users initiate playback</li>
       </ul>
+      <DoDont slug="audio-player" doItems={["Provide visible playback controls", "Show progress and duration clearly", "Support keyboard controls for accessibility"]} dontItems={["Auto-play audio without user consent", "Hide the mute/volume control", "Use for background music on web pages"]} />
 
       <h2>Accessibility</h2>
       <table>

@@ -232,8 +232,8 @@ export default function Home() {
                 className="group p-5 rounded-2xl border transition-all duration-200 hover:shadow-md card-hover"
                 style={{ borderColor: 'var(--color-outline)' }}
               >
-                <h3 className="font-semibold text-sm mb-1.5" style={{ color: 'var(--color-on-surface)' }}>{f.title}</h3>
-                <p className="text-xs leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>{f.desc}</p>
+                <h3 className="font-semibold text-base mb-1.5" style={{ color: 'var(--color-on-surface)' }}>{f.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>{f.desc}</p>
               </Link>
             ))}
           </div>
@@ -246,10 +246,10 @@ export default function Home() {
       {/* Discover the system — card grid like Atlassian */}
       <section>
         <div className="max-w-5xl mx-auto px-5 sm:px-8 py-12">
-          <h2 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-on-surface)' }}>
+          <h2 className="text-3xl font-bold mb-2" style={{ color: 'var(--color-on-surface)' }}>
             Discover the system
           </h2>
-          <p className="text-sm mb-8" style={{ color: 'var(--color-on-surface-variant)' }}>
+          <p className="text-base mb-8" style={{ color: 'var(--color-on-surface-variant)' }}>
             Everything you need to design and build with TARMAC.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -260,42 +260,192 @@ export default function Home() {
                 className="group relative p-6 rounded-2xl border transition-all duration-200 hover:shadow-md card-hover"
                 style={{ borderColor: 'var(--color-outline)' }}
               >
-                <h3 className="font-semibold text-[15px] mb-1.5" style={{ color: 'var(--color-on-surface)' }}>{s.title}</h3>
-                <p className="text-[13px] leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>{s.desc}</p>
+                <h3 className="font-semibold text-base mb-1.5" style={{ color: 'var(--color-on-surface)' }}>{s.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>{s.desc}</p>
                 <ArrowRight size={14} className="absolute top-6 right-6 transition-all group-hover:translate-x-0.5" style={{ color: 'var(--color-outline-variant)' }} />
               </Link>
+            ))}
+          </div>
+
+          {/* Divider */}
+          <hr className="my-12" style={{ borderColor: 'var(--color-outline)', borderWidth: 0, borderTopWidth: '1px' }} />
+
+          {/* What TARMAC provides */}
+          <h2 className="text-3xl font-bold mb-8" style={{ color: 'var(--color-on-surface)' }}>
+            What TARMAC provides
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl border" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface-container)' }}>
+              <div className="text-2xl mb-3">🎨</div>
+              <h3 className="font-semibold text-base mb-2" style={{ color: 'var(--color-on-surface)' }}>Figma Library</h3>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
+                Complete component library with variants, auto-layout, and design tokens baked in.
+              </p>
+            </div>
+            <div className="p-6 rounded-2xl border" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface-container)' }}>
+              <div className="text-2xl mb-3">⚛️</div>
+              <h3 className="font-semibold text-base mb-2" style={{ color: 'var(--color-on-surface)' }}>React Components</h3>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
+                TypeScript-first with built-in accessibility, theming support, and comprehensive docs.
+              </p>
+            </div>
+            <div className="p-6 rounded-2xl border" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface-container)' }}>
+              <div className="text-2xl mb-3">♿</div>
+              <h3 className="font-semibold text-base mb-2" style={{ color: 'var(--color-on-surface)' }}>Accessible</h3>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
+                WCAG 2.1 AA compliant with keyboard navigation and screen reader support.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team section */}
+      <section style={{ background: 'var(--color-surface-container-low)' }}>
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-16">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: 'var(--color-on-surface)' }}>
+            Designing the future of delivery
+          </h2>
+          <p className="text-base mb-10" style={{ color: 'var(--color-on-surface-variant)' }}>
+            Meet the team crafting every pixel and interaction behind TARMAC — Delhivery&apos;s design system.
+          </p>
+          {/* Team photo */}
+          <div
+            className="rounded-2xl overflow-hidden border-2 mx-auto"
+            style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface-container)' }}
+          >
+            <img
+              src="/assets/images/team-photo.jpg"
+              alt="TARMAC Design System Team"
+              className="w-full object-cover transition-all duration-500 grayscale hover:grayscale-0"
+              style={{ minHeight: '420px' }}
+              onError={(e) => {
+                const target = e.currentTarget;
+                target.style.display = 'none';
+                const parent = target.parentElement;
+                if (parent && !parent.querySelector('.placeholder-icon')) {
+                  const placeholder = document.createElement('div');
+                  placeholder.className = 'placeholder-icon flex flex-col items-center justify-center w-full gap-3';
+                  placeholder.style.cssText = 'min-height: 420px; padding: 2rem;';
+                  placeholder.innerHTML = `
+                    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color: var(--color-outline-variant)">
+                      <circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M21 21v-1a4 4 0 0 0-3-3.87"/><path d="M13 21v-2a5 5 0 0 0-10 0v2"/>
+                    </svg>
+                    <span style="font-size: 12px; color: var(--color-outline-variant)">Team photo</span>
+                    <span style="font-size: 10px; color: var(--color-outline-variant); font-family: monospace">/assets/images/team-photo.jpg</span>
+                  `;
+                  parent.appendChild(placeholder);
+                }
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Life at Delhivery — fun activities grid */}
+      <section>
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-16">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: 'var(--color-on-surface)' }}>
+            Life at Delhivery
+          </h2>
+          <p className="text-base mb-10 max-w-2xl" style={{ color: 'var(--color-on-surface-variant)' }}>
+            We work hard and have fun doing it. Here&apos;s a glimpse of our journey together.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto">
+            {[
+              { src: '/assets/images/fun-1.jpg', caption: 'Product Offsite' },
+              { src: '/assets/images/fun-2.jpg', caption: 'Team Meetup' },
+              { src: '/assets/images/fun-3.jpg', caption: 'Design Workshop' },
+              { src: '/assets/images/fun-4.jpg', caption: 'Offsite Vibes' },
+              { src: '/assets/images/fun-5.jpg', caption: 'Team Bonding' },
+              { src: '/assets/images/fun-6.jpg', caption: 'Behind the Scenes' },
+            ].map((item) => (
+              <div
+                key={item.src}
+                className="group relative rounded-2xl overflow-hidden border-2 aspect-square"
+                style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface-container)' }}
+              >
+                <img
+                  src={item.src}
+                  alt={item.caption}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent && !parent.querySelector('.placeholder-icon')) {
+                      const placeholder = document.createElement('div');
+                      placeholder.className = 'placeholder-icon flex flex-col items-center justify-center w-full h-full gap-2';
+                      placeholder.innerHTML = `
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color: var(--color-outline-variant)">
+                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span style="font-size: 11px; color: var(--color-outline-variant)">${item.caption}</span>
+                        <span style="font-size: 9px; color: var(--color-outline-variant); font-family: monospace">${item.src}</span>
+                      `;
+                      parent.appendChild(placeholder);
+                    }
+                  }}
+                />
+                {/* Caption overlay */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 px-4 py-3 text-left"
+                  style={{ background: 'linear-gradient(transparent, rgba(0,0,0,0.7))' }}
+                >
+                  <span className="text-sm font-semibold text-white">{item.caption}</span>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* What TARMAC provides */}
+      {/* Design Leadership — Arpith quote */}
       <section style={{ background: 'var(--color-surface-container-low)' }}>
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-12">
-          <h2 className="text-2xl font-bold mb-8" style={{ color: 'var(--color-on-surface)' }}>
-            What TARMAC provides
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl border" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface)' }}>
-              <div className="text-2xl mb-3">🎨</div>
-              <h3 className="font-semibold text-sm mb-2" style={{ color: 'var(--color-on-surface)' }}>Figma Library</h3>
-              <p className="text-[13px] leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
-                Complete component library with variants, auto-layout, and design tokens baked in.
-              </p>
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-16">
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            {/* Photo */}
+            <div className="shrink-0 group">
+              <div
+                className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden border-2"
+                style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface-container)' }}
+              >
+                <img
+                  src="/assets/images/arpith-portrait.jpg"
+                  alt="Arpith — Head of Design, Delhivery"
+                  className="w-full h-full object-cover transition-all duration-500 grayscale group-hover:grayscale-0"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent && !parent.querySelector('.placeholder-icon')) {
+                      const placeholder = document.createElement('div');
+                      placeholder.className = 'placeholder-icon flex flex-col items-center justify-center w-full h-full gap-2';
+                      placeholder.innerHTML = `
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color: var(--color-outline-variant)">
+                          <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/>
+                        </svg>
+                        <span style="font-size: 10px; color: var(--color-outline-variant); font-family: monospace">/assets/images/arpith-portrait.jpg</span>
+                      `;
+                      parent.appendChild(placeholder);
+                    }
+                  }}
+                />
+              </div>
             </div>
-            <div className="p-6 rounded-2xl border" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface)' }}>
-              <div className="text-2xl mb-3">⚛️</div>
-              <h3 className="font-semibold text-sm mb-2" style={{ color: 'var(--color-on-surface)' }}>React Components</h3>
-              <p className="text-[13px] leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
-                TypeScript-first with built-in accessibility, theming support, and comprehensive docs.
-              </p>
-            </div>
-            <div className="p-6 rounded-2xl border" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface)' }}>
-              <div className="text-2xl mb-3">♿</div>
-              <h3 className="font-semibold text-sm mb-2" style={{ color: 'var(--color-on-surface)' }}>Accessible</h3>
-              <p className="text-[13px] leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
-                WCAG 2.1 AA compliant with keyboard navigation and screen reader support.
-              </p>
+            {/* Quote */}
+            <div className="flex-1">
+              <div className="text-4xl font-bold mb-4" style={{ color: 'var(--color-on-surface)', opacity: 0.15 }}>&ldquo;</div>
+              <blockquote
+                className="text-xl sm:text-2xl md:text-[1.75rem] font-bold leading-snug mb-6 -mt-6"
+                style={{ color: 'var(--color-on-surface)' }}
+              >
+                A design system isn&apos;t just a library of components — it&apos;s a shared language that unites design and engineering to deliver consistent, delightful experiences at scale.
+              </blockquote>
+              <div>
+                <p className="font-semibold text-base" style={{ color: 'var(--color-on-surface)' }}>Arpith</p>
+                <p className="text-sm" style={{ color: 'var(--color-on-surface-variant)' }}>Head of Design, Delhivery</p>
+              </div>
             </div>
           </div>
         </div>
@@ -311,23 +461,23 @@ export default function Home() {
                   src="/tarmac-logo-light.svg"
                   alt="TARMAC Design System"
                   className={theme === 'light' ? 'block' : 'hidden'}
-                  style={{ height: '20px', width: 'auto' }}
+                  style={{ height: '24px', width: 'auto' }}
                 />
                 <img
                   src="/tarmac-logo-dark.svg"
                   alt="TARMAC Design System"
                   className={theme === 'dark' ? 'block' : 'hidden'}
-                  style={{ height: '20px', width: 'auto' }}
+                  style={{ height: '24px', width: 'auto' }}
                 />
               </div>
-              <p className="text-xs leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>
                 Delhivery&apos;s unified design system — the single source of truth for design decisions, UI components, and interaction patterns.
               </p>
             </div>
-            <div className="flex gap-10 text-xs">
+            <div className="flex gap-10 text-sm">
               <div>
-                <p className="font-semibold mb-2" style={{ color: 'var(--color-on-surface)' }}>Design system</p>
-                <ul className="space-y-1.5" style={{ color: 'var(--color-on-surface-variant)' }}>
+                <p className="font-semibold mb-3" style={{ color: 'var(--color-on-surface)' }}>Design system</p>
+                <ul className="space-y-2" style={{ color: 'var(--color-on-surface-variant)' }}>
                   <li><Link href="/about/overview" className="hover:underline">Get started</Link></li>
                   <li><Link href="/foundations/colors" className="hover:underline">Foundations</Link></li>
                   <li><Link href="/components/button" className="hover:underline">Components</Link></li>
@@ -335,8 +485,8 @@ export default function Home() {
                 </ul>
               </div>
               <div>
-                <p className="font-semibold mb-2" style={{ color: 'var(--color-on-surface)' }}>Resources</p>
-                <ul className="space-y-1.5" style={{ color: 'var(--color-on-surface-variant)' }}>
+                <p className="font-semibold mb-3" style={{ color: 'var(--color-on-surface)' }}>Resources</p>
+                <ul className="space-y-2" style={{ color: 'var(--color-on-surface-variant)' }}>
                   <li><a href="https://www.delhivery.com" target="_blank" rel="noopener noreferrer" className="hover:underline">delhivery.com</a></li>
                   <li><a href="https://github.com/abhishekthakur3-sketch/TDS" target="_blank" rel="noopener noreferrer" className="hover:underline">GitHub</a></li>
                   <li><a href="https://www.figma.com/design/fPg3J4ckTHzyIQp8PrqDjT" target="_blank" rel="noopener noreferrer" className="hover:underline">Figma</a></li>
@@ -344,7 +494,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="mt-8 pt-4 border-t text-xs" style={{ borderColor: 'var(--color-outline)', color: 'var(--color-on-surface-variant)' }}>
+          <div className="mt-8 pt-4 border-t text-sm" style={{ borderColor: 'var(--color-outline)', color: 'var(--color-on-surface-variant)' }}>
             © {new Date().getFullYear()} Delhivery Ltd. All rights reserved.
           </div>
         </div>

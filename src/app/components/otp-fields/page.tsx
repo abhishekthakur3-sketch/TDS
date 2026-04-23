@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function OTPFieldsPage() {
   return (
@@ -53,6 +54,7 @@ export default function OTPFieldsPage() {
         <li>Show a resend option with a cooldown timer</li>
         <li>Do not mask OTP digits — they are already temporary</li>
       </ul>
+      <DoDont slug="otp-fields" doItems={["Auto-focus the first field on mount", "Auto-advance to the next field on input", "Support paste of the full OTP code"]} dontItems={["Mask OTP digits — they're already temporary", "Use more than 6 fields", "Disable backspace navigation between fields"]} />
 
       <h2>Accessibility</h2>
       <table>

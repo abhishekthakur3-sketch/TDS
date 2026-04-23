@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function NavigationPage() {
   return (
@@ -54,6 +55,7 @@ export default function NavigationPage() {
         <li>Use bottom navigation for mobile with 3-5 items</li>
         <li>Do not hide primary navigation behind a hamburger menu on desktop</li>
       </ul>
+      <DoDont slug="navigation" doItems={["Highlight the current/active page clearly", "Keep navigation items to 7 or fewer at the top level", "Support keyboard navigation"]} dontItems={["Hide primary navigation behind a hamburger on desktop", "Use icons without labels", "Change navigation structure between pages"]} />
 
       <h2>Accessibility</h2>
       <table>

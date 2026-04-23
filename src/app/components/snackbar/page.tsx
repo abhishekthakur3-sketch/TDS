@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function SnackbarPage() {
   return (
@@ -49,6 +50,7 @@ export default function SnackbarPage() {
         <li>Place snackbars at the bottom center of the screen</li>
         <li>Do not use snackbars for critical errors — use alerts or dialogs instead</li>
       </ul>
+      <DoDont slug="snackbar" doItems={["Use for brief, non-critical feedback", "Auto-dismiss after 4-6 seconds", "Position at the bottom of the screen"]} dontItems={["Use for errors that need user action — use alerts", "Stack more than 2 snackbars", "Use snackbars for permanent messages"]} />
 
       <h2>Accessibility</h2>
       <table>

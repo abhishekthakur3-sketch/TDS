@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function SideDrawerPage() {
   return (
@@ -50,6 +51,7 @@ export default function SideDrawerPage() {
         <li>Trap focus inside the drawer when it is open</li>
         <li>Do not use drawers for critical decisions — use dialogs instead</li>
       </ul>
+      <DoDont slug="side-drawer" doItems={["Use for secondary navigation or detail panels", "Include a close button and overlay dismiss", "Animate smoothly from the edge"]} dontItems={["Use drawers for primary content", "Open drawers without user action", "Stack multiple drawers"]} />
 
       <h2>Accessibility</h2>
       <table>

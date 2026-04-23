@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function TagsPage() {
   return (
@@ -49,6 +50,7 @@ export default function TagsPage() {
         <li>Limit the number of visible tags (show "+N more" for overflow)</li>
         <li>Do not use tags for status — use status indicators instead</li>
       </ul>
+      <DoDont slug="tags" doItems={["Use for categorization and metadata", "Allow removal with a clear close button", "Keep tag text concise"]} dontItems={["Use tags for actions — use buttons", "Use more than 3 lines of tags", "Mix removable and non-removable tags without distinction"]} />
 
       <h2>Accessibility</h2>
       <table>

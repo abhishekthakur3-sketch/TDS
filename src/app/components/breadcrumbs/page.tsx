@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function BreadcrumbsPage() {
   return (
@@ -49,6 +50,7 @@ export default function BreadcrumbsPage() {
         <li>Place breadcrumbs at the top of the page content</li>
         <li>Do not use breadcrumbs as the primary navigation</li>
       </ul>
+      <DoDont slug="breadcrumbs" doItems={["Show the full navigation path", "Make each level clickable except the current page", "Use a separator between levels"]} dontItems={["Use breadcrumbs as the only navigation", "Show more than 5 levels without truncation", "Use breadcrumbs on single-level pages"]} />
 
       <h2>Accessibility</h2>
       <table>

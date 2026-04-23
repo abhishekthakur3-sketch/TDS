@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function TogglePage() {
   return (
@@ -51,6 +52,7 @@ export default function TogglePage() {
         <li>Show loading state when the toggle triggers an async action</li>
         <li>Do not use toggles for form selections — use checkboxes instead</li>
       </ul>
+      <DoDont slug="toggle" doItems={["Use for immediate on/off settings", "Show the current state clearly", "Include a label describing what the toggle controls"]} dontItems={["Use for form submissions — use checkboxes", "Use toggles without labels", "Require a save button after toggling"]} />
 
       <h2>Accessibility</h2>
       <table>

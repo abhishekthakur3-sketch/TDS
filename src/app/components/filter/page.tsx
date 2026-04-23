@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function FilterPage() {
   return (
@@ -52,6 +53,7 @@ export default function FilterPage() {
         <li>Use progressive disclosure for complex filter sets</li>
         <li>Do not auto-apply filters — provide an Apply button for complex filters</li>
       </ul>
+      <DoDont slug="filter" doItems={["Show active filters clearly", "Allow clearing all filters at once", "Persist filter state across navigation"]} dontItems={["Hide the number of active filters", "Apply filters without a clear trigger", "Use filters for fewer than 3 options"]} />
 
       <h2>Accessibility</h2>
       <table>

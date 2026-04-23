@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function DropdownPage() {
   return (
@@ -56,6 +57,7 @@ export default function DropdownPage() {
         <li>Group related options with section headers</li>
         <li>Do not nest dropdowns inside other dropdowns</li>
       </ul>
+      <DoDont slug="dropdown" doItems={["Use for selecting from 5+ options", "Show a clear placeholder or default value", "Support keyboard navigation and type-ahead"]} dontItems={["Use for fewer than 5 options — use radio buttons", "Nest dropdowns inside dropdowns", "Use for navigation — use a menu instead"]} />
 
       <h2>Accessibility</h2>
       <table>

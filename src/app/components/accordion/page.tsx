@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function AccordionPage() {
   return (
@@ -51,6 +52,7 @@ export default function AccordionPage() {
         <li>Animate expand/collapse transitions smoothly</li>
         <li>Do not nest accordions more than 2 levels deep</li>
       </ul>
+      <DoDont slug="accordion" doItems={["Use for progressive disclosure of content", "Keep headers descriptive and concise", "Allow multiple sections open if content is related"]} dontItems={["Nest accordions inside accordions", "Use for critical content that must always be visible", "Hide primary navigation inside accordions"]} />
 
       <h2>Accessibility</h2>
       <table>

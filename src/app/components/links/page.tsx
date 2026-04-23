@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function LinksPage() {
   return (
@@ -49,6 +50,7 @@ export default function LinksPage() {
         <li>Open external links in a new tab with appropriate rel attributes</li>
         <li>Do not use links for actions — use buttons instead</li>
       </ul>
+      <DoDont slug="links" doItems={["Use descriptive link text that makes sense out of context", "Distinguish links from regular text visually", "Open external links in new tabs with an indicator"]} dontItems={["Use 'click here' or 'read more' as link text", "Style links to look like buttons or vice versa", "Remove the underline on inline links"]} />
 
       <h2>Accessibility</h2>
       <table>

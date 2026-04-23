@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function AlertPage() {
   return (
@@ -50,6 +51,7 @@ export default function AlertPage() {
         <li>Place alerts near the relevant content or at the top of the page</li>
         <li>Do not use alerts for success feedback after actions — use snackbars instead</li>
       </ul>
+      <DoDont slug="alert" doItems={["Use appropriate severity for the message type", "Keep messages concise and actionable", "Place alerts near relevant content"]} dontItems={["Use alerts for success feedback after actions — use snackbars", "Stack multiple alerts of the same type", "Use alerts for promotional content"]} />
 
       <h2>Accessibility</h2>
       <table>

@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function CoachmarksPage() {
   return (
@@ -53,6 +54,7 @@ export default function CoachmarksPage() {
         <li>Position tooltips to avoid covering the target element</li>
         <li>Do not block critical UI elements with coachmarks</li>
       </ul>
+      <DoDont slug="coachmarks" doItems={["Use to highlight new features or onboarding steps", "Keep messages brief and focused", "Allow users to skip or dismiss the tour"]} dontItems={["Show coachmarks on every visit", "Interrupt critical user flows", "Use more than 5 steps in a single tour"]} />
 
       <h2>Accessibility</h2>
       <table>

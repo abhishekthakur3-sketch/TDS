@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function FooterPage() {
   return (
@@ -49,6 +50,7 @@ export default function FooterPage() {
         <li>Do not duplicate primary navigation in the footer</li>
         <li>Ensure all links are descriptive and accessible</li>
       </ul>
+      <DoDont slug="footer" doItems={["Include essential navigation links", "Keep footer content organized in columns", "Include copyright and legal links"]} dontItems={["Duplicate the main navigation entirely", "Overload with too many links", "Use footer for primary calls-to-action"]} />
 
       <h2>Accessibility</h2>
       <table>

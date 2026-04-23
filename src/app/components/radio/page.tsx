@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function RadioPage() {
   return (
@@ -50,6 +51,7 @@ export default function RadioPage() {
         <li>Do not use radios for on/off — use a toggle instead</li>
         <li>Keep option labels concise and scannable</li>
       </ul>
+      <DoDont slug="radio" doItems={["Use when only one option can be selected", "Always pre-select a default option", "Group related radios with a fieldset and legend"]} dontItems={["Use for multiple selections — use checkboxes", "Use fewer than 2 options", "Use radio buttons without visible labels"]} />
 
       <h2>Accessibility</h2>
       <table>

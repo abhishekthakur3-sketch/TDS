@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function ShimmerPage() {
   return (
@@ -46,6 +47,7 @@ export default function ShimmerPage() {
         <li>Use shimmer instead of spinners for content-heavy pages</li>
         <li>Do not animate shimmer too fast — it can cause motion discomfort</li>
       </ul>
+      <DoDont slug="shimmer" doItems={["Match the layout shape of the content being loaded", "Use consistent animation speed", "Replace with real content as soon as it loads"]} dontItems={["Use shimmer for errors or empty states", "Show shimmer indefinitely without a timeout", "Mix shimmer with spinner loading patterns"]} />
 
       <h2>Accessibility</h2>
       <table>

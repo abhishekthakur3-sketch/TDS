@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function BadgePage() {
   return (
@@ -47,6 +48,7 @@ export default function BadgePage() {
         <li>Hide badges when the count is zero</li>
         <li>Do not use badges for decorative purposes</li>
       </ul>
+      <DoDont slug="badge" doItems={["Use to indicate unread counts or status changes", "Position consistently (top-right is standard)", "Hide badges when count is zero"]} dontItems={["Use badges for decorative purposes", "Show exact large numbers — use max (99+)", "Place badges on elements that are already busy"]} />
 
       <h2>Accessibility</h2>
       <table>

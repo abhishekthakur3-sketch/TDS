@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function TooltipPage() {
   return (
@@ -48,6 +49,7 @@ export default function TooltipPage() {
         <li>Position tooltips to avoid viewport overflow</li>
         <li>Do not put interactive elements inside tooltips — use popovers instead</li>
       </ul>
+      <DoDont slug="tooltip" doItems={["Use for supplementary, non-essential information", "Keep tooltip text under 2 lines", "Show on hover and focus"]} dontItems={["Put interactive content inside tooltips", "Use tooltips for essential information", "Show tooltips on touch devices without a tap trigger"]} />
 
       <h2>Accessibility</h2>
       <table>

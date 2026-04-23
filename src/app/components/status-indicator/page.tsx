@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function StatusIndicatorPage() {
   return (
@@ -52,6 +53,7 @@ export default function StatusIndicatorPage() {
         <li>Keep status labels concise (1-2 words)</li>
         <li>Do not rely on color alone to convey status meaning</li>
       </ul>
+      <DoDont slug="status-indicator" doItems={["Use consistent colors for status meanings", "Include a text label alongside the color", "Keep the indicator near the related content"]} dontItems={["Rely on color alone to convey status", "Use more than 5 status types", "Change status color meanings between contexts"]} />
 
       <h2>Accessibility</h2>
       <table>

@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function InputAreaPage() {
   return (
@@ -52,6 +53,7 @@ export default function InputAreaPage() {
         <li>Do not use text areas for single-line input — use Input instead</li>
         <li>Provide clear placeholder text indicating expected content</li>
       </ul>
+      <DoDont slug="input-area" doItems={["Show a character count for limited fields", "Allow resizing when appropriate", "Use for multi-line text input"]} dontItems={["Use for single-line input — use Input instead", "Set a tiny default height", "Disable scrolling in the textarea"]} />
 
       <h2>Accessibility</h2>
       <table>

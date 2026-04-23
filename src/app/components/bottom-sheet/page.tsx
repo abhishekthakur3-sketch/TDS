@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function BottomSheetPage() {
   return (
@@ -51,6 +52,7 @@ export default function BottomSheetPage() {
         <li>Keep action sheets to 5-7 options maximum</li>
         <li>Do not use bottom sheets on desktop — use drawers or dialogs instead</li>
       </ul>
+      <DoDont slug="bottom-sheet" doItems={["Use for secondary actions on mobile", "Include a visible drag handle", "Allow dismissal by swiping down or tapping overlay"]} dontItems={["Use bottom sheets on desktop — use modals or drawers", "Put critical actions only in bottom sheets", "Stack multiple bottom sheets"]} />
 
       <h2>Accessibility</h2>
       <table>

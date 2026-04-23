@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function DialogBoxPage() {
   return (
@@ -50,6 +51,7 @@ export default function DialogBoxPage() {
         <li>Trap focus inside the dialog while it is open</li>
         <li>Do not use dialogs for simple messages — use snackbars or alerts instead</li>
       </ul>
+      <DoDont slug="dialog-box" doItems={["Use for confirmations and critical decisions", "Provide clear action labels (not just OK/Cancel)", "Focus the first interactive element on open"]} dontItems={["Use dialogs for simple messages — use alerts", "Stack multiple dialogs", "Use dialogs for complex multi-step forms"]} />
 
       <h2>Accessibility</h2>
       <table>

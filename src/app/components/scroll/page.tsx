@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function ScrollPage() {
   return (
@@ -51,6 +52,7 @@ export default function ScrollPage() {
         <li>Do not nest scrollable areas in the same direction</li>
         <li>Provide keyboard scrolling support with arrow keys</li>
       </ul>
+      <DoDont slug="scroll" doItems={["Show scroll indicators when content overflows", "Support both mouse wheel and touch gestures", "Maintain scroll position on content updates"]} dontItems={["Hijack native scroll behavior", "Hide scrollbars completely on desktop", "Use horizontal scroll for primary content"]} />
 
       <h2>Accessibility</h2>
       <table>

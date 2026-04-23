@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function FileUploadPage() {
   return (
@@ -54,6 +55,7 @@ export default function FileUploadPage() {
         <li>Support both drag-and-drop and click-to-browse</li>
         <li>Do not auto-upload — let users review files first</li>
       </ul>
+      <DoDont slug="file-upload" doItems={["Show accepted file types and size limits", "Provide progress feedback during upload", "Allow drag-and-drop as well as click-to-browse"]} dontItems={["Accept all file types without validation", "Upload files without user confirmation", "Hide error messages for failed uploads"]} />
 
       <h2>Accessibility</h2>
       <table>

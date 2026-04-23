@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function AvatarPage() {
   return (
@@ -21,6 +22,14 @@ export default function AvatarPage() {
         <li><strong>Initials</strong> — First letter(s) of the user's name</li>
         <li><strong>Icon</strong> — Generic user icon as fallback</li>
       </ul>
+
+      <h2>Usage Guidelines</h2>
+      <ul>
+        <li>Use initials as fallback when image is unavailable</li>
+        <li>Keep sizes consistent within a context</li>
+        <li>Use circular shape for people, rounded square for entities</li>
+      </ul>
+      <DoDont slug="avatar" doItems={["Use initials as fallback when image is unavailable", "Keep sizes consistent within a context", "Use circular shape for people, rounded square for entities"]} dontItems={["Use low-resolution or stretched images", "Display more than 3 initials", "Use avatars without alt text or aria-label"]} />
     </ComponentPage>
   );
 }

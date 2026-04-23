@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function StepperPage() {
   return (
@@ -51,6 +52,7 @@ export default function StepperPage() {
         <li>Use 3-7 steps; break longer processes into sub-steps</li>
         <li>Do not use steppers for content tabs — use tabs instead</li>
       </ul>
+      <DoDont slug="stepper" doItems={["Show completed, current, and upcoming steps", "Allow navigation to completed steps", "Keep step labels short and descriptive"]} dontItems={["Use more than 7 steps", "Skip steps without validation", "Hide the step count from the user"]} />
 
       <h2>Accessibility</h2>
       <table>

@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function CheckboxPage() {
   return (
@@ -52,6 +53,7 @@ export default function CheckboxPage() {
         <li>Do not use checkboxes for binary on/off — use a toggle instead</li>
         <li>Ensure touch targets are at least 44×44px on mobile</li>
       </ul>
+      <DoDont slug="checkbox" doItems={["Use when users can select multiple options", "Always provide a visible label", "Use indeterminate state for 'select all' parents"]} dontItems={["Use for binary on/off — use a toggle instead", "Use without labels for accessibility", "Pre-check options that benefit the business, not the user"]} />
 
       <h2>Accessibility</h2>
       <table>

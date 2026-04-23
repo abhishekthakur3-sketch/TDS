@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function DateTimePickerPage() {
   return (
@@ -55,6 +56,7 @@ export default function DateTimePickerPage() {
         <li>Use clear date formatting consistent with the user locale</li>
         <li>Do not auto-close the picker on date selection for date-time combos</li>
       </ul>
+      <DoDont slug="date-time-picker" doItems={["Show the expected date format clearly", "Allow both manual input and calendar selection", "Validate dates in real-time"]} dontItems={["Use for selecting date ranges — use a range picker", "Allow selection of invalid dates", "Hide the calendar behind extra clicks"]} />
 
       <h2>Accessibility</h2>
       <table>

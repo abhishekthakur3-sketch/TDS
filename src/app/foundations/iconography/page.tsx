@@ -1,5 +1,6 @@
 'use client';
 import { PageShell } from '@/components/PageShell';
+import { DoDont } from '@/components/mdx';
 
 export default function IconographyPage() {
   return (
@@ -23,6 +24,18 @@ export default function IconographyPage() {
         <li>Maintain consistent icon sizes within the same context</li>
         <li>Don't mix icon styles (outlined vs filled) in the same interface</li>
       </ul>
+      <h2>Do&apos;s &amp; Don&apos;ts</h2>
+      <DoDont slug="iconography"         doItems={[
+          "Use icons with well-established meaning",
+          "Keep icon size consistent (24px default)",
+          "Pair icons with text labels for clarity",
+        ]}
+        dontItems={[
+          "Use ambiguous or unfamiliar icons",
+          "Use one icon to mean different things in different contexts",
+          "Resize icons below 16px",
+        ]}
+      />
     </PageShell>
   );
 }

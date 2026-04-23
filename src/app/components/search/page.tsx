@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function SearchPage() {
   return (
@@ -53,6 +54,7 @@ export default function SearchPage() {
         <li>Allow keyboard navigation through suggestions</li>
         <li>Do not require users to press Enter — search as they type when possible</li>
       </ul>
+      <DoDont slug="search" doItems={["Show search suggestions as the user types", "Support keyboard navigation in results", "Clear the search field easily"]} dontItems={["Require exact matches only", "Hide the search input behind an icon on desktop", "Show no feedback for empty results"]} />
 
       <h2>Accessibility</h2>
       <table>

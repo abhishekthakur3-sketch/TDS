@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function PaginationPage() {
   return (
@@ -53,6 +54,7 @@ export default function PaginationPage() {
         <li>Show total item count or range for context</li>
         <li>Do not use pagination for content that benefits from infinite scroll</li>
       </ul>
+      <DoDont slug="pagination" doItems={["Show the current page and total pages", "Provide first/last page shortcuts for large sets", "Keep the component at the bottom of the content"]} dontItems={["Use pagination for fewer than 2 pages", "Hide the page count", "Change page size without user control"]} />
 
       <h2>Accessibility</h2>
       <table>

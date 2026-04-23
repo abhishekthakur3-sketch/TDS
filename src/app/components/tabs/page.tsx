@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function TabsPage() {
   return (
@@ -52,6 +53,7 @@ export default function TabsPage() {
         <li>Maintain tab state when switching between tabs</li>
         <li>Do not nest tabs within tabs</li>
       </ul>
+      <DoDont slug="tabs" doItems={["Use for switching between related content views", "Keep tab labels short (1-2 words)", "Show the active tab clearly"]} dontItems={["Use tabs for sequential steps — use a stepper", "Use more than 6 tabs without scrolling", "Nest tabs inside tabs"]} />
 
       <h2>Accessibility</h2>
       <table>

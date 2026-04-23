@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function CardsPage() {
   return (
@@ -52,6 +53,7 @@ export default function CardsPage() {
         <li>Limit action buttons to 2-3 per card</li>
         <li>Do not overload cards with too much content</li>
       </ul>
+      <DoDont slug="cards" doItems={["Use cards to group related content", "Keep card content scannable", "Make the entire card clickable if it links somewhere"]} dontItems={["Overload cards with too much content", "Mix card sizes inconsistently in a grid", "Use cards for single pieces of information"]} />
 
       <h2>Accessibility</h2>
       <table>

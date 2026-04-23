@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function ListPage() {
   return (
@@ -54,6 +55,7 @@ export default function ListPage() {
         <li>Use virtualization for lists with 100+ items</li>
         <li>Do not mix different list item layouts in the same list</li>
       </ul>
+      <DoDont slug="list" doItems={["Use consistent row heights and spacing", "Support sorting and filtering for data lists", "Highlight the selected or active row"]} dontItems={["Display too many columns on mobile", "Use lists for fewer than 3 items", "Mix different content types in the same list"]} />
 
       <h2>Accessibility</h2>
       <table>

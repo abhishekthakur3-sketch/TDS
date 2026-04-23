@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function HeaderPage() {
   return (
@@ -51,6 +52,7 @@ export default function HeaderPage() {
         <li>Provide a mobile-friendly hamburger menu for small screens</li>
         <li>Do not overload the header with too many actions</li>
       </ul>
+      <DoDont slug="header" doItems={["Keep the header consistent across pages", "Include primary navigation and branding", "Make it responsive with a mobile menu"]} dontItems={["Overload with too many actions", "Hide the logo or brand identity", "Use different header layouts on different pages"]} />
 
       <h2>Accessibility</h2>
       <table>

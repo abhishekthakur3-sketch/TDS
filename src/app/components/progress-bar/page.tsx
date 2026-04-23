@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function ProgressBarPage() {
   return (
@@ -49,6 +50,7 @@ export default function ProgressBarPage() {
         <li>Animate transitions smoothly between values</li>
         <li>Do not use progress bars for loading content — use shimmer instead</li>
       </ul>
+      <DoDont slug="progress-bar" doItems={["Show percentage or step count when possible", "Use determinate bars when progress is known", "Animate smoothly between states"]} dontItems={["Use for unknown durations — use a spinner", "Show progress bars that never complete", "Use multiple progress bars simultaneously"]} />
 
       <h2>Accessibility</h2>
       <table>

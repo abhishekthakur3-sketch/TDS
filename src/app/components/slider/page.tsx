@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function SliderPage() {
   return (
@@ -52,6 +53,7 @@ export default function SliderPage() {
         <li>Use range sliders for price or date range selection</li>
         <li>Do not use sliders for precise value entry — pair with an input field</li>
       </ul>
+      <DoDont slug="slider" doItems={["Show the current value clearly", "Use appropriate step increments", "Provide min/max labels"]} dontItems={["Use for precise numeric input — use an input field", "Use sliders for fewer than 5 possible values", "Hide the current value from the user"]} />
 
       <h2>Accessibility</h2>
       <table>

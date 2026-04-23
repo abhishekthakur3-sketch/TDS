@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function InputPage() {
   return (
@@ -56,6 +57,7 @@ export default function InputPage() {
         <li>Provide clear error messages that explain how to fix the issue</li>
         <li>Do not disable the submit button — show validation on submit instead</li>
       </ul>
+      <DoDont slug="input" doItems={["Always include a visible label", "Show validation errors inline below the field", "Use appropriate input types (email, tel, number)"]} dontItems={["Use placeholder text as the only label", "Show errors only on form submission", "Disable paste on password fields"]} />
 
       <h2>Accessibility</h2>
       <table>

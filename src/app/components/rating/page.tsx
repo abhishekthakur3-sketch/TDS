@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function RatingPage() {
   return (
@@ -52,6 +53,7 @@ export default function RatingPage() {
         <li>Provide clear hover feedback showing the potential rating</li>
         <li>Do not use ratings for binary feedback — use thumbs up/down instead</li>
       </ul>
+      <DoDont slug="rating" doItems={["Use a 5-star scale for consistency", "Show the current rating value numerically", "Allow half-star ratings for precision"]} dontItems={["Use for binary feedback — use thumbs up/down", "Change the scale between contexts", "Auto-submit on rating selection without confirmation"]} />
 
       <h2>Accessibility</h2>
       <table>

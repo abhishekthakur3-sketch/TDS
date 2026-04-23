@@ -1,5 +1,6 @@
 'use client';
 import { ComponentPage } from '@/components/ComponentPage';
+import { DoDont } from '@/components/mdx';
 
 export default function SpinnerPage() {
   return (
@@ -46,6 +47,7 @@ export default function SpinnerPage() {
         <li>Use overlay spinners sparingly to avoid blocking interaction</li>
         <li>Do not use spinners for content loading — use shimmer instead</li>
       </ul>
+      <DoDont slug="spinner" doItems={["Use for short loading states (under 10 seconds)", "Center the spinner in the loading area", "Provide an aria-label for accessibility"]} dontItems={["Use for page-level loading — use shimmer", "Show spinners without context", "Use multiple spinners on the same screen"]} />
 
       <h2>Accessibility</h2>
       <table>
