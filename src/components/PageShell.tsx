@@ -46,7 +46,7 @@ export function PageShell({
         className="relative overflow-hidden flex flex-col"
         style={{
           background: 'var(--color-surface-container-low)',
-          minHeight: '50vh',
+          minHeight: '35vh',
         }}
       >
         {/* Subtle + pattern */}
@@ -64,15 +64,15 @@ export function PageShell({
 
         {/* Spacer — pushes title to vertical center */}
         <div className="flex-1" />
-        <div className="relative w-full max-w-4xl mx-auto px-6">
+        <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6">
           <h1
-            className="text-[2.5rem] font-bold tracking-tight mb-2 leading-tight"
+            className="text-2xl sm:text-3xl lg:text-[2.5rem] font-bold tracking-tight mb-2 leading-tight"
             style={{ color: 'var(--color-on-surface)' }}
           >
             {title}
           </h1>
           {description && (
-            <p className="text-[15px] leading-relaxed mb-6" style={{ color: 'var(--color-on-surface-variant)' }}>
+            <p className="text-sm sm:text-[15px] leading-relaxed mb-6" style={{ color: 'var(--color-on-surface-variant)' }}>
               {description}
             </p>
           )}
@@ -81,7 +81,7 @@ export function PageShell({
         <div className="flex-1" />
 
         {/* Tabs — left aligned with title, pinned to bottom */}
-        <div className="relative w-full max-w-4xl mx-auto px-6">
+        <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 overflow-x-auto">
           {allTabs.length > 1 ? (
             <div className="flex gap-0 border-b" style={{ borderColor: 'var(--color-outline)' }}>
               {allTabs.map((tab, i) => (
@@ -103,7 +103,7 @@ export function PageShell({
       </div>
 
       {/* Tab content — same constrained width */}
-      <div className="w-full max-w-4xl mx-auto px-6 py-8 mdx-content">
+      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 mdx-content">
         <MdxProvider>{allTabs[activeTab].content}</MdxProvider>
       </div>
     </div>

@@ -87,7 +87,7 @@ export function PageFooter() {
     <footer className="px-5 sm:px-10 pb-12">
       <div className="content-area">
         {(prev || next) && (
-          <div className="grid grid-cols-2 gap-4 pt-8 border-t" style={{ borderColor: 'var(--color-outline)' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-8 border-t" style={{ borderColor: 'var(--color-outline)' }}>
             {prev ? (
               <Link href={prev.href} className="group p-4 rounded-lg border transition-colors" style={{ borderColor: 'var(--color-outline)' }}
                 onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
