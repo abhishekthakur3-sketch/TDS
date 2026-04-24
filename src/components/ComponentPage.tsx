@@ -113,9 +113,15 @@ export function ComponentPage({ name, description, slug, children }: ComponentPa
     });
   }
 
-  if (design.length > 0) tabs.push({ label: 'Design', content: <>{design}</> });
-  if (usage.length > 0) tabs.push({ label: 'Usage', content: <>{usage}</> });
+  // Order: Examples → Usage → Code → Changelog
+  const usageWithDesign = [...design, ...usage];
+  if (usageWithDesign.length > 0) tabs.push({ label: 'Usage', content: <>{usageWithDesign}</> });
   if (code.length > 0) tabs.push({ label: 'Code', content: <>{code}</> });
+  tabs.push({ label: 'Changelog', content: (
+    <div className="py-4">
+      <p style={{ color: 'var(--color-on-surface-variant)' }}>No changelog entries yet. Updates will appear here as the component evolves.</p>
+    </div>
+  )});
 
   // Fallback: if no splitting happened, put everything in one tab
   if (tabs.length === 0 || (design.length === 0 && usage.length === 0 && code.length === 0)) {
