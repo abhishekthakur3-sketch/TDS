@@ -1,110 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { PageShell } from '@/components/PageShell';
-import { StorybookEmbed, DoDont } from '@/components/mdx';
-import { ComponentExampleSection } from '@/components/ComponentPreview';
-import { useTheme } from '@/components/ThemeProvider';
-
-/* ── Spinner variant colors ── */
-const variantColors: Record<string, string> = {
-  dark: '#0D0D0D',
-  light: '#FFFFFF',
-  white: '#FFFFFF',
-  'dlv-red': '#ED1B36',
-};
-
-const variantLabels: Record<string, string> = {
-  dark: 'Dark on Light',
-  light: 'Light on Dark',
-  white: 'White on Transparent',
-  'dlv-red': 'DLV Red on Light',
-};
-
-const sizeMap: Record<string, number> = { sm: 16, md: 24, lg: 32, xl: 48 };
-
-const sizeLabels: Record<string, string> = {
-  sm: 'Small (16px)',
-  md: 'Medium (24px)',
-  lg: 'Large (32px)',
-  xl: 'XLarge (48px)',
-};
-
-/* ── Keyframes injected once ── */
-const spinKeyframes = `@keyframes tds-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`;
-
-/* ── Spinner component ── */
-function Spinner({
-  variant = 'dark',
-  size = 'md',
-}: {
-  variant?: 'dark' | 'light' | 'white' | 'dlv-red';
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-}) {
-  const px = sizeMap[size] || 24;
-  const color = variantColors[variant] || '#0D0D0D';
-  const borderWidth = px <= 16 ? 2 : px <= 24 ? 2.5 : px <= 32 ? 3 : 4;
-
-  return (
-    <div
-      role="status"
-      aria-label="Loading"
-      style={{
-        width: px,
-        height: px,
-        borderRadius: '50%',
-        border: `${borderWidth}px solid ${color}`,
-        borderTopColor: 'transparent',
-        animation: 'tds-spin 0.8s linear infinite',
-        boxSizing: 'border-box',
-        flexShrink: 0,
-      }}
-    />
-  );
-}
-
-/* ── Spinner Demo with variant/size controls ── */
-function SpinnerDemo({
-  title,
-  desc,
-  children,
-}: {
-  title: string;
-  desc: string;
-  children: (props: { size: 'sm' | 'md' | 'lg' | 'xl'; theme: 'light' | 'dark' }) => React.ReactNode;
-}) {
-  const { theme: globalTheme } = useTheme();
-  const [size, setSize] = useState<'sm' | 'md' | 'lg' | 'xl'>('md');
-  const [theme, setTheme] = useState<'light' | 'dark'>(globalTheme as 'light' | 'dark');
-
-  useEffect(() => { setTheme(globalTheme as 'light' | 'dark'); }, [globalTheme]);
-
-  const bg = theme === 'dark' ? '#1A1A1A' : '#F5F5F5';
-  const selectStyle: React.CSSProperties = {
-    padding: '4px 8px', borderRadius: 6, fontSize: 12, border: '1px solid var(--color-outline)',
-    background: 'var(--color-surface)', color: 'var(--color-on-surface)', cursor: 'pointer',
-  };
-
-  return (
-    <div style={{ marginBottom: 32 }}>
-      <h3 style={{ color: 'var(--color-on-surface)', marginBottom: 4 }}>{title}</h3>
-      <p style={{ color: 'var(--color-on-surface-variant)', fontSize: 14, marginBottom: 12 }}>{desc}</p>
-      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}>
-        <select value={size} onChange={e => setSize(e.target.value as 'sm' | 'md' | 'lg' | 'xl')} style={selectStyle}>
-          {Object.entries(sizeLabels).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-        </select>
-        <select value={theme} onChange={e => setTheme(e.target.value as 'light' | 'dark')} style={selectStyle}>
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
-      </div>
-      <div style={{ background: bg, borderRadius: 12, padding: 24, display: 'flex', gap: 20, flexWrap: 'wrap', alignItems: 'center' }}>
-        {children({ size, theme })}
-      </div>
-    </div>
-  );
-}
-
+import { DoDont } from '@/components/mdx';
+import { StorybookVariantViewer } from '@/components/StorybookVariantViewer';
 
 /* ─────────────────────────────────────────────── */
 /*  TAB 1 — Examples                               */
@@ -112,166 +10,10 @@ function SpinnerDemo({
 function ExamplesTab() {
   return (
     <>
-      <StorybookEmbed
-        url="https://tarmac-storybook-dev.pntrzz.com/storybook/sb/iframe.html?id=tarmac-tds-spinner--playground&viewMode=story"
-        storybookUrl="https://tarmac-storybook-dev.pntrzz.com/storybook/?path=/story/tarmac-tds-spinner--playground"
-        height={420}
-        title="Spinner — TARMAC Storybook"
-      />
-      <style>{spinKeyframes}</style>
-
-      <h2>Overview</h2>
-      <p>
-        Spinners are animated circular indicators used to communicate an indeterminate
-        loading state. They draw attention without conveying progress, making them ideal
-        for short waits where duration is unknown.
-      </p>
-
-      <table>
-        <thead><tr><th>Property</th><th>Options</th></tr></thead>
-        <tbody>
-          <tr><td>Variants</td><td>Dark on Light, Light on Dark, White on Transparent, DLV Red on Light</td></tr>
-          <tr><td>Sizes</td><td>Small (16px), Medium (24px), Large (32px), XLarge (48px)</td></tr>
-          <tr><td>Animation</td><td>CSS rotation — 0.8s linear infinite</td></tr>
-        </tbody>
-      </table>
-
-      <h2>All Variants</h2>
-
-      <SpinnerDemo
-        title="Color Variants"
-        desc="Each variant targets a specific background context. Dark for light surfaces, Light/White for dark surfaces, DLV Red for brand emphasis."
-      >
-        {({ size, theme }) => (
-          <>
-            {(Object.keys(variantColors) as Array<'dark' | 'light' | 'white' | 'dlv-red'>).map(v => {
-              const needsDarkBg = v === 'light' || v === 'white';
-              return (
-                <div
-                  key={v}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: 8,
-                    padding: 16,
-                    borderRadius: 8,
-                    background: needsDarkBg ? '#1A1A1A' : theme === 'dark' ? '#2A2A2A' : '#FFFFFF',
-                    minWidth: 80,
-                  }}
-                >
-                  <Spinner variant={v} size={size} />
-                  <span style={{ fontSize: 11, color: needsDarkBg ? '#999' : theme === 'dark' ? '#999' : '#666' }}>
-                    {variantLabels[v]}
-                  </span>
-                </div>
-              );
-            })}
-          </>
-        )}
-      </SpinnerDemo>
-
-      <h2>Sizes</h2>
-
-      <SpinnerDemo
-        title="Size Comparison"
-        desc="Four sizes for different contexts — inline indicators, buttons, sections, and full-page loading."
-      >
-        {({ theme }) => (
-          <>
-            {(Object.keys(sizeMap) as Array<'sm' | 'md' | 'lg' | 'xl'>).map(s => (
-              <div key={s} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-                <Spinner variant={theme === 'dark' ? 'light' : 'dark'} size={s} />
-                <span style={{ fontSize: 11, color: 'var(--color-on-surface-variant)' }}>
-                  {sizeLabels[s]}
-                </span>
-              </div>
-            ))}
-          </>
-        )}
-      </SpinnerDemo>
-
-      <h2>Contextual Examples</h2>
-
-      <SpinnerDemo
-        title="Inline with Text"
-        desc="Small spinners work well alongside text for inline loading states."
-      >
-        {({ size, theme }) => {
-          const textColor = theme === 'dark' ? '#CCC' : '#333';
-          return (
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Spinner variant={theme === 'dark' ? 'light' : 'dark'} size="sm" />
-              <span style={{ fontSize: 14, color: textColor }}>Loading results…</span>
-            </div>
-          );
-        }}
-      </SpinnerDemo>
-
-      <SpinnerDemo
-        title="Button Loading State"
-        desc="Spinners inside buttons indicate an action is processing."
-      >
-        {({ theme }) => {
-          const btnBg = theme === 'dark' ? '#ED1B36' : '#0D0D0D';
-          return (
-            <button
-              disabled
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                padding: '10px 20px',
-                borderRadius: 8,
-                background: btnBg,
-                color: '#FFF',
-                border: 'none',
-                fontSize: 14,
-                fontWeight: 600,
-                opacity: 0.85,
-                cursor: 'not-allowed',
-              }}
-            >
-              <Spinner variant="white" size="sm" />
-              Submitting…
-            </button>
-          );
-        }}
-      </SpinnerDemo>
-
-      <SpinnerDemo
-        title="Card Loading Placeholder"
-        desc="Centered spinners within content areas indicate section-level loading."
-      >
-        {({ theme }) => {
-          const cardBg = theme === 'dark' ? '#252525' : '#FFFFFF';
-          const borderColor = theme === 'dark' ? '#333' : '#E5E5E5';
-          return (
-            <div
-              style={{
-                width: '100%',
-                maxWidth: 320,
-                height: 160,
-                borderRadius: 12,
-                background: cardBg,
-                border: `1px solid ${borderColor}`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexDirection: 'column',
-                gap: 12,
-              }}
-            >
-              <Spinner variant={theme === 'dark' ? 'light' : 'dark'} size="lg" />
-              <span style={{ fontSize: 13, color: 'var(--color-on-surface-variant)' }}>Loading content…</span>
-            </div>
-          );
-        }}
-      </SpinnerDemo>
+      <StorybookVariantViewer slug="spinner" />
     </>
   );
 }
-
 
 /* ─────────────────────────────────────────────── */
 /*  TAB 2 — Code                                   */
@@ -382,7 +124,6 @@ function CodeTab() {
   );
 }
 
-
 /* ─────────────────────────────────────────────── */
 /*  TAB 3 — Usage                                  */
 /* ─────────────────────────────────────────────── */
@@ -477,7 +218,6 @@ function UsageTab() {
     </>
   );
 }
-
 
 /* ─────────────────────────────────────────────── */
 /*  TAB 4 — Changelog                              */

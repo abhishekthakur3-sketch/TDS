@@ -5,6 +5,7 @@ import { useRef, useCallback, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { useTheme } from '@/components/ThemeProvider';
+import { GrainOverlay } from '@/components/GrainOverlay';
 
 const foundations = [
   { title: 'Colors', desc: 'A 3-layer color architecture — Core, Semantic, and Usage tokens.', href: '/foundations/colors' },
@@ -60,26 +61,43 @@ export default function Home() {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         className="relative overflow-hidden"
-        style={{ background: theme === 'dark' ? '#000000' : '#F0F0F0', minHeight: '100vh', display: 'flex', alignItems: 'center', cursor: 'none' }}
+        style={{ background: theme === 'dark' ? '#0A0A0A' : '#F0F0F0', minHeight: '100vh', display: 'flex', alignItems: 'center', cursor: 'none' }}
       >
-        {/* Subtle geometric pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
+        {/* Road/tarmac texture background */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/assets/images/road-texture.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        />
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0" style={{
+          background: theme === 'dark'
+            ? 'linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.4) 100%)'
+            : 'rgba(255,255,255,0.99)',
+        }} />
+        {/* Film grain overlay */}
+        <GrainOverlay opacity={0.15} blendMode="overlay" size={3} type="film" />
+        {/* Clean grid mesh pattern */}
+        <div className="absolute inset-0 opacity-[0.05]" style={{
           backgroundImage: theme === 'dark'
-            ? `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-            : `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            ? `linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)`
+            : `linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)`,
+          backgroundSize: '48px 48px',
         }} />
         <div className="absolute inset-0 opacity-[0.04]" style={{
           backgroundImage: `radial-gradient(circle at 20% 50%, rgba(255,255,255,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2) 0%, transparent 40%)`,
         }} />
-        {/* Mouse glow — 20% near cursor */}
+        {/* Mouse glow — reveals mesh lines near cursor */}
         <div
           ref={glowRef}
           className="absolute inset-0 pointer-events-none transition-opacity duration-300"
           style={{
             opacity: 0,
             backgroundImage: theme === 'dark'
-              ? `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-              : `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              ? `linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)`
+              : `linear-gradient(rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.12) 1px, transparent 1px)`,
+            backgroundSize: '48px 48px',
           }}
         />
         {/* "You" cursor — follows user's mouse */}
@@ -89,11 +107,11 @@ export default function Home() {
           style={{ opacity: showYou ? 1 : 0, willChange: 'transform' }}
         >
           <svg width="22" height="26" viewBox="0 0 16 20" fill="none">
-            <path d="M0 0L16 12L8 12L4 20L0 0Z" fill="#CF9F02"/>
+            <path d="M0 0L16 12L8 12L4 20L0 0Z" fill="#FBBF24"/>
           </svg>
           <span
             className="px-3 py-1.5 rounded-full text-[13px] font-bold whitespace-nowrap shadow-lg -mt-1 ml-3"
-            style={{ background: '#CF9F02', color: '#000', border: '2px solid rgba(255,255,255,0.25)' }}
+            style={{ background: '#FBBF24', color: '#000', border: '2px solid rgba(255,255,255,0.25)' }}
           >
             You
           </span>
@@ -151,28 +169,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Foundation highlights */}
-      <section>
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {foundations.map((f) => (
-              <Link
-                key={f.title}
-                href={f.href}
-                className="group p-5 rounded-2xl border transition-all duration-200 hover:shadow-md card-hover"
-                style={{ borderColor: 'var(--color-outline)' }}
-              >
-                <h3 className="font-semibold text-base mb-1.5" style={{ color: 'var(--color-on-surface)' }}>{f.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>{f.desc}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="max-w-5xl mx-auto px-5 sm:px-8 my-0"><hr className="my-0" style={{ borderColor: 'var(--color-outline)', borderWidth: 0, borderTopWidth: '1px' }} /></div>
 
       {/* Discover the system — card grid like Atlassian */}
       <section>
@@ -289,7 +285,7 @@ export default function Home() {
               { src: '/assets/images/fun-3.jpg', caption: 'Design Review' },
               { src: '/assets/images/fun-4.jpg', caption: 'After Hours' },
               { src: '/assets/images/fun-5.jpg', caption: 'Crew Night' },
-              { src: '/assets/images/fun-6.jpg', caption: 'Late Night Hustle' },
+              { src: '/assets/images/fun-6.jpg', caption: 'Behind the Scene' },
             ].map((item) => (
               <div
                 key={item.src}

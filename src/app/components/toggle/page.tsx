@@ -1,158 +1,8 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
 import { PageShell } from '@/components/PageShell';
-import { StorybookEmbed, DoDont } from '@/components/mdx';
-import { ComponentExampleSection } from '@/components/ComponentPreview';
-import { useTheme } from '@/components/ThemeProvider';
-
-/* ── Variant colors ── */
-const variantColors: Record<string, string> = {
-  black: '#0D0D0D',
-  blue: '#2396FB',
-  green: '#1BA86E',
-  'dlv-red': '#ED1B36',
-};
-
-const variantLabels: Record<string, string> = {
-  black: 'Black',
-  blue: 'Blue',
-  green: 'Green',
-  'dlv-red': 'DLV Red',
-};
-
-/* ── Size presets ── */
-const sizePresets: Record<string, { trackW: number; trackH: number; thumbSize: number; radius: number }> = {
-  sm: { trackW: 32, trackH: 18, thumbSize: 14, radius: 9 },
-  md: { trackW: 40, trackH: 22, thumbSize: 18, radius: 11 },
-  lg: { trackW: 52, trackH: 28, thumbSize: 24, radius: 14 },
-};
-
-/* ── Interactive Toggle Demo ── */
-function ToggleDemo({
-  checked: controlledChecked,
-  onChange,
-  label,
-  disabled = false,
-  variant = 'black',
-  size = 'md',
-  theme,
-}: {
-  checked?: boolean;
-  onChange?: (checked: boolean) => void;
-  label?: string;
-  disabled?: boolean;
-  variant?: 'black' | 'blue' | 'green' | 'dlv-red';
-  size?: 'sm' | 'md' | 'lg';
-  theme: 'light' | 'dark';
-}) {
-  const [internalChecked, setInternalChecked] = useState(controlledChecked ?? false);
-  const [hovered, setHovered] = useState(false);
-  const [focused, setFocused] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const isChecked = controlledChecked !== undefined ? controlledChecked : internalChecked;
-  const accentColor = variantColors[variant] || variantColors.black;
-  const dims = sizePresets[size] || sizePresets.md;
-
-  useEffect(() => {
-    if (controlledChecked !== undefined) setInternalChecked(controlledChecked);
-  }, [controlledChecked]);
-
-  const handleToggle = () => {
-    if (disabled) return;
-    const next = !isChecked;
-    setInternalChecked(next);
-    onChange?.(next);
-  };
-
-  const offTrackColor = theme === 'dark' ? '#555' : '#D4D4D4';
-  const trackColor = isChecked ? accentColor : offTrackColor;
-  const hoverTrackColor = isChecked
-    ? accentColor
-    : (theme === 'dark' ? '#666' : '#BFBFBF');
-  const thumbColor = '#FFFFFF';
-  const thumbOffset = 2;
-  const thumbTranslate = isChecked ? dims.trackW - dims.thumbSize - thumbOffset * 2 : 0;
-  const opacity = disabled ? 0.4 : 1;
-  const textColor = theme === 'dark' ? '#E0E0E0' : '#1A1A1A';
-
-  return (
-    <div style={{ opacity, cursor: disabled ? 'not-allowed' : 'pointer' }}>
-      <label
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: 10,
-          cursor: disabled ? 'not-allowed' : 'pointer',
-        }}
-        onMouseEnter={() => !disabled && setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
-        {/* Hidden native input for accessibility */}
-        <input
-          ref={inputRef}
-          type="checkbox"
-          role="switch"
-          checked={isChecked}
-          disabled={disabled}
-          onChange={handleToggle}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
-          aria-checked={isChecked}
-          aria-label={label || 'Toggle'}
-          style={{
-            position: 'absolute',
-            width: 1,
-            height: 1,
-            overflow: 'hidden',
-            clip: 'rect(0,0,0,0)',
-            whiteSpace: 'nowrap',
-            border: 0,
-          }}
-        />
-        {/* Track */}
-        <span
-          style={{
-            position: 'relative',
-            width: dims.trackW,
-            height: dims.trackH,
-            minWidth: dims.trackW,
-            borderRadius: dims.radius,
-            background: hovered && !disabled ? hoverTrackColor : trackColor,
-            transition: 'background 0.2s ease',
-            boxShadow: focused
-              ? `0 0 0 3px ${accentColor}44`
-              : 'none',
-          }}
-        >
-          {/* Thumb */}
-          <span
-            style={{
-              position: 'absolute',
-              top: thumbOffset,
-              left: thumbOffset,
-              width: dims.thumbSize,
-              height: dims.thumbSize,
-              borderRadius: '50%',
-              background: thumbColor,
-              boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
-              transition: 'transform 0.2s ease',
-              transform: `translateX(${thumbTranslate}px)`,
-            }}
-          />
-        </span>
-        {/* Label */}
-        {label && (
-          <span style={{ fontSize: 14, fontWeight: 500, color: textColor, lineHeight: '20px', userSelect: 'none' }}>
-            {label}
-          </span>
-        )}
-      </label>
-    </div>
-  );
-}
-
+import { DoDont } from '@/components/mdx';
+import { StorybookVariantViewer } from '@/components/StorybookVariantViewer';
 
 /* ─────────────────────────────────────────────── */
 /*  TAB 1 — Examples                               */
@@ -160,92 +10,10 @@ function ToggleDemo({
 function ExamplesTab() {
   return (
     <>
-      <StorybookEmbed
-        url="https://tarmac-storybook-dev.pntrzz.com/storybook/sb/iframe.html?id=tarmac-tds-toggle--playground&viewMode=story"
-        storybookUrl="https://tarmac-storybook-dev.pntrzz.com/storybook/?path=/story/tarmac-tds-toggle--playground"
-        height={420}
-        title="Toggle — TARMAC Storybook"
-      />
-      <h2>Overview</h2>
-      <p>
-        Toggles (switches) are binary on/off controls that let users enable or disable a setting instantly.
-        They feature a pill-shaped track with a sliding circle thumb and smooth animation.
-      </p>
-
-      <table>
-        <thead><tr><th>Property</th><th>Options</th></tr></thead>
-        <tbody>
-          <tr><td>Variants</td><td>Black (#0D0D0D), Blue (#2396FB), Green (#1BA86E), DLV Red (#ED1B36)</td></tr>
-          <tr><td>States</td><td>Off, On, Hover, Focus, Disabled</td></tr>
-          <tr><td>Sizes</td><td>Small (32×18), Medium (40×22), Large (52×28)</td></tr>
-          <tr><td>Features</td><td>Optional label text, controlled &amp; uncontrolled modes</td></tr>
-        </tbody>
-      </table>
-
-      <h2>All Variants</h2>
-
-      <ComponentExampleSection
-        title="Color Variants"
-        desc="Each variant uses a distinct accent color when toggled on. Click to toggle."
-      >
-        {({ theme }) => (
-          <>
-            {(Object.keys(variantColors) as Array<'black' | 'blue' | 'green' | 'dlv-red'>).map(v => (
-              <ToggleDemo key={v} variant={v} label={variantLabels[v]} theme={theme} />
-            ))}
-          </>
-        )}
-      </ComponentExampleSection>
-
-      <h2>States</h2>
-
-      <ComponentExampleSection
-        title="All States"
-        desc="Demonstrates off, on, disabled off, and disabled on states."
-      >
-        {({ theme }) => (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <ToggleDemo variant="black" label="Off (default)" theme={theme} />
-            <ToggleDemo variant="black" label="On" checked theme={theme} />
-            <ToggleDemo variant="black" label="Disabled off" disabled theme={theme} />
-            <ToggleDemo variant="black" label="Disabled on" checked disabled theme={theme} />
-          </div>
-        )}
-      </ComponentExampleSection>
-
-      <h2>Sizes</h2>
-
-      <ComponentExampleSection
-        title="Size Variants"
-        desc="Toggles come in small, medium (default), and large sizes."
-      >
-        {({ theme }) => (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <ToggleDemo variant="blue" label="Small" size="sm" theme={theme} />
-            <ToggleDemo variant="blue" label="Medium (default)" size="md" theme={theme} />
-            <ToggleDemo variant="blue" label="Large" size="lg" theme={theme} />
-          </div>
-        )}
-      </ComponentExampleSection>
-
-      <h2>With Label</h2>
-
-      <ComponentExampleSection
-        title="Toggle with Labels"
-        desc="Toggles can include an adjacent label for context. Clicking the label also toggles the switch."
-      >
-        {({ theme }) => (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <ToggleDemo variant="green" label="Enable notifications" theme={theme} />
-            <ToggleDemo variant="green" label="Dark mode" theme={theme} />
-            <ToggleDemo variant="green" label="Auto-save" checked theme={theme} />
-          </div>
-        )}
-      </ComponentExampleSection>
+      <StorybookVariantViewer slug="toggle" />
     </>
   );
 }
-
 
 /* ─────────────────────────────────────────────── */
 /*  TAB 2 — Code                                   */
@@ -349,7 +117,6 @@ function CodeTab() {
   );
 }
 
-
 /* ─────────────────────────────────────────────── */
 /*  TAB 3 — Usage                                  */
 /* ─────────────────────────────────────────────── */
@@ -435,7 +202,6 @@ function UsageTab() {
     </>
   );
 }
-
 
 /* ─────────────────────────────────────────────── */
 /*  TAB 4 — Changelog                              */

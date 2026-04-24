@@ -1,153 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import { type ReactNode } from 'react';
 import { PageShell } from '@/components/PageShell';
-import { StorybookEmbed, DoDont } from '@/components/mdx';
-import { ComponentExampleSection, type PreviewSize, type PreviewTheme } from '@/components/ComponentPreview';
+import { DoDont } from '@/components/mdx';
+import { StorybookVariantViewer } from '@/components/StorybookVariantViewer';
 
-const sizeMap: Record<PreviewSize, number> = { xs: 24, sm: 28, md: 36, lg: 44, xl: 48 };
-const variantColors: Record<string, { bg: string; text: string }> = {
-  black: { bg: '#0D0D0D', text: '#FFFFFF' },
-  white: { bg: '#FFFFFF', text: '#0D0D0D' },
-  blue: { bg: '#2396FB', text: '#FFFFFF' },
-  success: { bg: '#1BA86E', text: '#FFFFFF' },
-  error: { bg: '#DC143C', text: '#FFFFFF' },
-  warning: { bg: '#CF9F02', text: '#FFFFFF' },
-  'dlv-red': { bg: '#ED1B36', text: '#FFFFFF' },
-};
-
-function ButtonDemo({ label, variant, style: btnStyle, size, theme, disabled, loading }: {
-  label: string; variant: string; style: 'primary' | 'secondary' | 'tertiary';
-  size: PreviewSize; theme: PreviewTheme; disabled?: boolean; loading?: boolean;
-}) {
-  const [hovered, setHovered] = useState(false);
-  const [pressed, setPressed] = useState(false);
-  const h = sizeMap[size];
-  const colors = variantColors[variant] || variantColors.black;
-  const isPrimary = btnStyle === 'primary';
-  const isSecondary = btnStyle === 'secondary';
-  const bg = isPrimary ? colors.bg : 'transparent';
-  const text = isPrimary ? colors.text : colors.bg;
-  const border = isSecondary ? `1.5px solid ${colors.bg}` : isPrimary ? 'none' : 'none';
-  const opacity = disabled ? 0.4 : loading ? 0.7 : 1;
-  const scale = pressed ? 0.96 : hovered ? 1.02 : 1;
-
-  return (
-    <button
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => { setHovered(false); setPressed(false); }}
-      onMouseDown={() => setPressed(true)}
-      onMouseUp={() => setPressed(false)}
-      disabled={disabled}
-      style={{
-        height: h, padding: `0 ${h * 0.5}px`, borderRadius: 6, fontSize: Math.max(11, h * 0.32),
-        fontWeight: 600, background: bg, color: text, border, cursor: disabled ? 'not-allowed' : 'pointer',
-        opacity, transform: `scale(${scale})`, transition: 'all 0.15s ease',
-        display: 'inline-flex', alignItems: 'center', gap: 4, whiteSpace: 'nowrap',
-        textDecoration: btnStyle === 'tertiary' && hovered ? 'underline' : 'none',
-      }}
-    >
-      {loading && <span style={{ width: 12, height: 12, border: '2px solid currentColor', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 0.6s linear infinite' }} />}
-      {label}
-    </button>
-  );
-}
-
+/* ─────────────────────────────────────────────── */
+/*  TAB 1 — Examples                               */
+/* ─────────────────────────────────────────────── */
 function ExamplesTab() {
   return (
     <>
-      <StorybookEmbed
-        url="https://tarmac-storybook-dev.pntrzz.com/storybook/sb/iframe.html?id=tarmac-tds-button--playground&viewMode=story"
-        storybookUrl="https://tarmac-storybook-dev.pntrzz.com/storybook/?path=/story/tarmac-tds-button--playground"
-        height={420}
-        title="Button — TARMAC Storybook"
-      />
-      <h2>Overview</h2>
-      <p>Buttons are interactive elements used to initiate actions such as submitting data, confirming decisions, or triggering system processes.</p>
-      <table>
-        <thead><tr><th>Property</th><th>Options</th></tr></thead>
-        <tbody>
-          <tr><td>Variants</td><td>Black, White, Blue, Success, Error, Warning, DLV Red</td></tr>
-          <tr><td>Styles</td><td>Primary, Secondary, Tertiary</td></tr>
-          <tr><td>Sizes</td><td>XS (24px), SM (28px), MD (36px), LG (44px), XL (48px)</td></tr>
-          <tr><td>States</td><td>Default, Hover, Pressed, Focused, Disabled, Loading</td></tr>
-        </tbody>
-      </table>
-
-      <h2>Color Variants</h2>
-
-      <ComponentExampleSection title="Primary Buttons" desc="Main call-to-action buttons. Use one primary button per section.">
-        {({ size, theme }) => (
-          <>
-            {Object.keys(variantColors).map(v => (
-              <ButtonDemo key={v} label={v.charAt(0).toUpperCase() + v.slice(1)} variant={v} style="primary" size={size} theme={theme} />
-            ))}
-          </>
-        )}
-      </ComponentExampleSection>
-
-      <ComponentExampleSection title="Secondary Buttons" desc="Supporting actions with outlined style. Pair with primary buttons.">
-        {({ size, theme }) => (
-          <>
-            {['black', 'blue', 'success', 'error', 'warning'].map(v => (
-              <ButtonDemo key={v} label={v.charAt(0).toUpperCase() + v.slice(1)} variant={v} style="secondary" size={size} theme={theme} />
-            ))}
-          </>
-        )}
-      </ComponentExampleSection>
-
-      <ComponentExampleSection title="Tertiary Buttons" desc="Subtle text-only buttons for low-emphasis actions like 'Learn More' or 'Cancel'.">
-        {({ size, theme }) => (
-          <>
-            {['black', 'blue', 'success', 'error', 'warning'].map(v => (
-              <ButtonDemo key={v} label={v.charAt(0).toUpperCase() + v.slice(1)} variant={v} style="tertiary" size={size} theme={theme} />
-            ))}
-          </>
-        )}
-      </ComponentExampleSection>
-
-      <h2>States</h2>
-
-      <ComponentExampleSection title="Default & Hover" desc="Hover scales up slightly (1.02x) with smooth transition.">
-        {({ size, theme }) => (
-          <>
-            <ButtonDemo label="Default" variant="black" style="primary" size={size} theme={theme} />
-            <ButtonDemo label="Secondary" variant="black" style="secondary" size={size} theme={theme} />
-            <ButtonDemo label="Tertiary" variant="blue" style="tertiary" size={size} theme={theme} />
-          </>
-        )}
-      </ComponentExampleSection>
-
-      <ComponentExampleSection title="Disabled" desc="40% opacity, not-allowed cursor. Avoid using — prefer validation instead.">
-        {({ size, theme }) => (
-          <>
-            <ButtonDemo label="Disabled Primary" variant="black" style="primary" size={size} theme={theme} disabled />
-            <ButtonDemo label="Disabled Secondary" variant="black" style="secondary" size={size} theme={theme} disabled />
-            <ButtonDemo label="Disabled Tertiary" variant="blue" style="tertiary" size={size} theme={theme} disabled />
-          </>
-        )}
-      </ComponentExampleSection>
-
-      <ComponentExampleSection title="Loading" desc="Spinner replaces or precedes the label. Button is non-interactive during loading.">
-        {({ size, theme }) => (
-          <>
-            <ButtonDemo label="Loading..." variant="black" style="primary" size={size} theme={theme} loading />
-            <ButtonDemo label="Saving..." variant="blue" style="primary" size={size} theme={theme} loading />
-            <ButtonDemo label="Deleting..." variant="error" style="primary" size={size} theme={theme} loading />
-          </>
-        )}
-      </ComponentExampleSection>
-
-      <h2>Size Comparison</h2>
-      <ComponentExampleSection title="All Sizes" desc="Buttons scale from XS (24px) to XL (48px) height.">
-        {({ theme }) => (
-          <>
-            {(['xs', 'sm', 'md', 'lg', 'xl'] as PreviewSize[]).map(s => (
-              <ButtonDemo key={s} label={s.toUpperCase()} variant="black" style="primary" size={s} theme={theme} />
-            ))}
-          </>
-        )}
-      </ComponentExampleSection>
+      <StorybookVariantViewer slug="button" />
     </>
   );
 }
