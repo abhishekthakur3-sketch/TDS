@@ -114,19 +114,23 @@ export function Tab({ children }: { title: string; children: React.ReactNode }) 
 export function StorybookEmbed({ url, storybookUrl, height = 400, title = 'Component Demo' }: {
   url: string; storybookUrl?: string; height?: number; title?: string;
 }) {
-  const fullUrl = storybookUrl || (() => {
-    const idMatch = url.match(/[?&]id=([^&]+)/);
-    if (idMatch) {
-      const baseUrl = url.split('/sb/iframe.html')[0] || url.split('/iframe.html')[0];
-      return `${baseUrl}/?path=/story/${idMatch[1]}`;
-    }
-    return url;
-  })();
+  const idMatch = url.match(/[?&]id=([^&]+)/);
+  const storyId = idMatch ? idMatch[1] : '';
+  const baseUrl = url.split('/sb/iframe.html')[0] || url.split('/iframe.html')[0];
+
+  const fullUrl = storybookUrl || (storyId
+    ? `${baseUrl}/?path=/story/${storyId}`
+    : url);
+
+  // Always use bare iframe — canvas only, no sidebar, no toolbar
+  const canvasUrl = storyId
+    ? `${baseUrl}/sb/iframe.html?id=${storyId}&viewMode=story`
+    : url;
 
   return (
     <div className="rounded-xl overflow-hidden border mb-8" style={{ borderColor: 'var(--color-outline)' }}>
       <iframe
-        src={url}
+        src={canvasUrl}
         style={{ width: '100%', height: `${height}px`, border: 'none', background: '#fff' }}
         title={title}
         allow="clipboard-write"
@@ -139,16 +143,14 @@ export function StorybookEmbed({ url, storybookUrl, height = 400, title = 'Compo
         }}
       >
         <span className="text-xs" style={{ color: 'var(--color-on-surface-variant)' }}>
-          Canvas preview · Open Storybook for full controls &amp; QR code
+          Canvas preview
         </span>
         <a
           href={fullUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs font-medium px-2 py-1 rounded transition-colors flex items-center gap-1.5 shrink-0 hover:underline"
-          style={{
-            color: 'var(--color-on-surface-variant)',
-          }}
+          style={{ color: 'var(--color-on-surface-variant)' }}
         >
           Open in Storybook
           <svg className="w-3 h-3 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
