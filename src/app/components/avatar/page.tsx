@@ -1,22 +1,9 @@
 'use client';
 
+import { type ReactNode } from 'react';
 import { PageShell } from '@/components/PageShell';
 import { DoDont } from '@/components/mdx';
 import { StorybookVariantViewer } from '@/components/StorybookVariantViewer';
-import { AvatarExampleSection } from './AvatarPreview';
-
-/* ── Storybook URLs ── */
-const SB_BASE = 'https://tarmac-storybook-dev.pntrzz.com/storybook';
-const sbIframe = (id: string) => `${SB_BASE}/sb/iframe.html?id=${id}&viewMode=story`;
-const sbFull = (id: string) => `${SB_BASE}/?path=/story/${id}`;
-
-const avatarStories = [
-  { id: 'tarmac-tds-avatar--playground', title: 'Default', desc: 'Interactive playground with all avatar props. Adjust size, shape, variant, status, and state.' },
-  { id: 'tarmac-tds-avatar--full-matrix', title: 'Full Matrix', desc: 'All avatar variants, sizes, shapes, and states displayed in a comprehensive grid.' },
-  { id: 'tarmac-tds-avatar--shapes-comparison', title: 'Shapes', desc: 'Circle avatars for people, rounded square for entities and structured layouts.' },
-  { id: 'tarmac-tds-avatar--status-dots', title: 'Status Indicators', desc: 'Small colored dots indicating user presence — active, inactive, idle, busy, and more.' },
-  { id: 'tarmac-tds-avatar--light-vs-dark', title: 'Light vs Dark Mode', desc: 'Avatar appearance across light and dark themes, ensuring proper contrast and readability.' },
-];
 
 /* ─────────────────────────────────────────────── */
 /*  TAB 1 — Examples                               */
@@ -25,128 +12,6 @@ function ExamplesTab() {
   return (
     <>
       <StorybookVariantViewer slug="avatar" />
-      <h2>Overview</h2>
-      <p>
-        Avatars represent people, entities, or ownership within the interface. They provide quick visual identification,
-        support recognition in collaborative contexts, and help humanize data-heavy experiences.
-      </p>
-
-      <table>
-        <thead><tr><th>Property</th><th>Options</th></tr></thead>
-        <tbody>
-          <tr><td>Variants</td><td>Image, Initials, Icon, Numeric</td></tr>
-          <tr><td>Shapes</td><td>Circle (people), Square (entities)</td></tr>
-          <tr><td>Sizes</td><td>S (24px), M (28px), L (36px), XL (40px), XXL (48px)</td></tr>
-          <tr><td>Status</td><td>Active, Inactive, Idle, Busy, Focus, Do not disturb, Custom</td></tr>
-          <tr><td>States</td><td>Default, Hover, Pressed, Focused, Disabled, Ghost, Loading</td></tr>
-        </tbody>
-      </table>
-
-      <h2>Variants</h2>
-
-      <AvatarExampleSection
-        title="Initials — Circle"
-        desc="Displays 1–2 characters from the user's name on a colored background. Default shape for people."
-        variants={[
-          { variant: 'initials', label: 'JD' },
-          { variant: 'initials', label: 'AB' },
-          { variant: 'initials', label: 'MK' },
-        ]}
-      />
-
-      <AvatarExampleSection
-        title="Initials — Square"
-        desc="Initials in a rounded square shape. Use for entities like teams, projects, or workspaces."
-        defaultShape="square"
-        variants={[
-          { variant: 'initials', label: 'T1' },
-          { variant: 'initials', label: 'PR' },
-          { variant: 'initials', label: 'DS' },
-        ]}
-      />
-
-      <AvatarExampleSection
-        title="Image — Circle"
-        desc="User photo cropped to a circle. The preferred variant when a profile image is available."
-        variants={[
-          { variant: 'image', label: 'john' },
-          { variant: 'image', label: 'jane' },
-          { variant: 'image', label: 'alex' },
-        ]}
-      />
-
-      <AvatarExampleSection
-        title="Image — Square"
-        desc="Photo in a rounded square. Use for entity avatars like workspaces, repositories, or team logos."
-        defaultShape="square"
-        variants={[
-          { variant: 'image', label: 'team-alpha' },
-          { variant: 'image', label: 'project-x' },
-          { variant: 'image', label: 'org-logo' },
-        ]}
-      />
-
-      <AvatarExampleSection
-        title="Icon Fallback"
-        desc="Generic user icon for system accounts, anonymous users, or when no other content is available."
-        variants={[
-          { variant: 'icon', label: 'Default' },
-          { variant: 'icon', label: 'System' },
-          { variant: 'icon', label: 'Anonymous' },
-        ]}
-      />
-
-      <AvatarExampleSection
-        title="Numeric Overflow"
-        desc="Used in Avatar Groups to show how many additional participants are not displayed (e.g. +3)."
-        variants={[
-          { variant: 'numeric', label: '+3' },
-          { variant: 'numeric', label: '+5' },
-          { variant: 'numeric', label: '+12' },
-        ]}
-      />
-
-      <h2>Status Indicators</h2>
-      <p>Small colored dots on the avatar corner indicating user presence or contextual state. Each color has a specific meaning.</p>
-
-      <AvatarExampleSection
-        title="All Status Types"
-        desc="Each status color communicates a specific user state. Labels below show the meaning."
-        variants={[
-          { variant: 'initials', label: 'JD', status: 'active' },
-          { variant: 'initials', label: 'AB', status: 'inactive' },
-          { variant: 'initials', label: 'MK', status: 'idle' },
-          { variant: 'initials', label: 'RS', status: 'orange' },
-          { variant: 'initials', label: 'PL', status: 'cyan' },
-          { variant: 'initials', label: 'NK', status: 'purple' },
-          { variant: 'initials', label: 'ST', status: 'pink' },
-        ]}
-      />
-
-      <AvatarExampleSection
-        title="Status on Image Avatars"
-        desc="Status indicators work on all avatar variants including photo avatars."
-        variants={[
-          { variant: 'image', label: 'john-online', status: 'active' },
-          { variant: 'image', label: 'jane-busy', status: 'orange' },
-          { variant: 'image', label: 'alex-away', status: 'idle' },
-          { variant: 'image', label: 'sam-offline', status: 'inactive' },
-        ]}
-      />
-
-      <h2>Status Reference</h2>
-      <table>
-        <thead><tr><th>Status</th><th>Color</th><th>Meaning</th></tr></thead>
-        <tbody>
-          <tr><td>Active</td><td>🟢 Green</td><td>User is online and active</td></tr>
-          <tr><td>Inactive</td><td>⚪ Gray</td><td>User is offline</td></tr>
-          <tr><td>Idle</td><td>🟡 Yellow</td><td>User is away / idle</td></tr>
-          <tr><td>Busy</td><td>🟠 Orange</td><td>In a meeting or busy</td></tr>
-          <tr><td>Focus</td><td>🔵 Cyan</td><td>Available but in focus mode</td></tr>
-          <tr><td>Do not disturb</td><td>🟣 Purple</td><td>Notifications silenced</td></tr>
-          <tr><td>Custom</td><td>🩷 Pink</td><td>Custom / app-defined state</td></tr>
-        </tbody>
-      </table>
     </>
   );
 }
