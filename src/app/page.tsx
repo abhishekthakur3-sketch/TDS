@@ -107,11 +107,11 @@ export default function Home() {
           style={{ opacity: showYou ? 1 : 0, willChange: 'transform' }}
         >
           <svg width="22" height="26" viewBox="0 0 16 20" fill="none">
-            <path d="M0 0L16 12L8 12L4 20L0 0Z" fill="#CF9F02"/>
+            <path d="M0 0L16 12L8 12L4 20L0 0Z" fill="#FBBF24"/>
           </svg>
           <span
             className="px-3 py-1.5 rounded-full text-[13px] font-bold whitespace-nowrap shadow-lg -mt-1 ml-3"
-            style={{ background: '#CF9F02', color: '#000', border: '2px solid rgba(255,255,255,0.25)' }}
+            style={{ background: '#FBBF24', color: '#000', border: '2px solid rgba(255,255,255,0.25)' }}
           >
             You
           </span>
@@ -169,28 +169,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Foundation highlights */}
-      <section>
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {foundations.map((f) => (
-              <Link
-                key={f.title}
-                href={f.href}
-                className="group p-5 rounded-2xl border transition-all duration-200 hover:shadow-md card-hover"
-                style={{ borderColor: 'var(--color-outline)' }}
-              >
-                <h3 className="font-semibold text-base mb-1.5" style={{ color: 'var(--color-on-surface)' }}>{f.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>{f.desc}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="max-w-5xl mx-auto px-5 sm:px-8 my-0"><hr className="my-0" style={{ borderColor: 'var(--color-outline)', borderWidth: 0, borderTopWidth: '1px' }} /></div>
 
       {/* Discover the system — card grid like Atlassian */}
       <section>

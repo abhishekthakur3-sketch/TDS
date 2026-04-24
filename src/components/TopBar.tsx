@@ -158,17 +158,15 @@ export function TopBar({ onMenuClick }: { onMenuClick?: () => void }) {
             const active = isActive(item.section);
             return (
               <Link key={item.href} href={item.href}
-                className="relative px-3 py-1.5 text-[13px] font-medium rounded-lg transition-all duration-200 hover:bg-white/10"
+                className="px-3 py-1.5 text-[13px] font-medium rounded-lg transition-all duration-200 hover:bg-white/10"
                 style={{
                   color: onHero
                     ? heroTextColor
-                    : active ? 'var(--color-on-surface)' : 'var(--color-on-surface-variant)',
+                    : active ? 'var(--color-primary)' : 'var(--color-on-surface-variant)',
+                  background: !onHero && active ? 'var(--color-primary-container)' : 'transparent',
                 }}
               >
                 {item.label}
-                {active && !onHero && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full" style={{ background: 'var(--color-primary)' }} />
-                )}
               </Link>
             );
           })}
