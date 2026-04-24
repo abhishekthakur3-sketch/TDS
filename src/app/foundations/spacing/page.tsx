@@ -1,5 +1,6 @@
 'use client';
 import { PageShell } from '@/components/PageShell';
+import { DoDont } from '@/components/mdx';
 
 export default function SpacingPage() {
   return (
@@ -27,6 +28,18 @@ export default function SpacingPage() {
         <li>Use medium values (16–24px) for padding within components</li>
         <li>Use larger values (32–64px) for separating sections and page-level spacing</li>
       </ul>
+      <h2>Do&apos;s &amp; Don&apos;ts</h2>
+      <DoDont slug="spacing"         doItems={[
+          "Use the 4px base unit for all spacing",
+          "Apply consistent spacing within component groups",
+          "Use larger spacing to separate distinct sections",
+        ]}
+        dontItems={[
+          "Use arbitrary pixel values outside the scale",
+          "Mix spacing scales within the same component",
+          "Remove spacing between interactive elements",
+        ]}
+      />
     </PageShell>
   );
 }

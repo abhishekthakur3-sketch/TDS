@@ -1,6 +1,7 @@
 'use client';
 import { PageShell } from '@/components/PageShell';
 import { CardGroup, Card } from '@/components/mdx';
+import { ImagePlaceholder } from '@/components/ImagePlaceholder';
 
 export default function OverviewPage() {
   return (
@@ -12,6 +13,8 @@ export default function OverviewPage() {
       <p>
         Delhivery's mission is to enable customers to operate flexible, reliable, and resilient supply chains at the lowest costs — serving a diverse base of 48K+ active customers including e-commerce marketplaces, D2C brands, and enterprises across FMCG, consumer durables, electronics, lifestyle, retail, automotive, and manufacturing.
       </p>
+
+      <ImagePlaceholder label="Delhivery — Connecting India through logistics" path="/assets/images/about-delhivery-hero.png" height={280} />
 
       <h2>Brand Philosophy</h2>
       <p>
@@ -29,6 +32,8 @@ export default function OverviewPage() {
         Each of the tangram's seven pieces twists and turns into different forms, embodying the unseen complexity and adaptability of logistics. This system of iconography becomes a versatile toolkit — representing everything from data-driven solutions to seamless shipping, all while paying homage to the universal art of movement and connection.
       </p>
 
+      <ImagePlaceholder label="Tangram geometric pieces — Delhivery's visual identity" path="/assets/images/tangram-identity.png" height={240} />
+
       <h2>What is TARMAC?</h2>
       <p>
         TARMAC is more than a component library — it's Delhivery's complete, unified design system. It serves as the single source of truth for design decisions, UI components, and interaction patterns, bridging the gap between design and engineering so every team builds with the same foundational building blocks.
@@ -36,6 +41,8 @@ export default function OverviewPage() {
       <p>
         TARMAC provides a shared language across disciplines: designers work from a comprehensive Figma library, developers implement with production-grade React components, and product teams benefit from a consistent, high-quality user experience across all Delhivery products.
       </p>
+
+      <ImagePlaceholder label="TARMAC Design System overview — Figma, React, Tokens" path="/assets/images/tarmac-overview.png" height={260} />
 
       <CardGroup cols={3}>
         <Card title="Figma Library" icon="🎨">
@@ -79,7 +86,7 @@ export default function OverviewPage() {
       <p>
         Delhivery's design vision is rooted in three core principles that guide every product decision:
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div className="p-6 rounded-xl border" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface-container-low)' }}>
           <div className="text-2xl mb-3">🌐</div>
           <h4 className="font-semibold mb-2" style={{ color: 'var(--color-on-surface)' }}>Ecosystem</h4>

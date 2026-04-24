@@ -192,6 +192,67 @@ export function AccordionGroup({ children }: { children: React.ReactNode }) {
   return <div className="mb-6">{children}</div>;
 }
 
+export function DoDont({ doItems, dontItems, slug }: { doItems: string[]; dontItems: string[]; slug?: string }) {
+  const maxLen = Math.max(doItems.length, dontItems.length);
+  const pairs: Array<{ doItem?: string; dontItem?: string; idx: number }> = [];
+  for (let i = 0; i < maxLen; i++) {
+    pairs.push({ doItem: doItems[i], dontItem: dontItems[i], idx: i + 1 });
+  }
+
+  const ImgBlock = ({ path }: { path: string }) => {
+    const [failed, setFailed] = React.useState(false);
+    if (!failed) {
+      return (
+        <div style={{ background: 'var(--color-surface-container)', minHeight: '140px', borderBottom: '1px solid var(--color-outline)' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={path} alt="" className="w-full object-cover" style={{ minHeight: '140px', maxHeight: '180px' }} onError={() => setFailed(true)} />
+        </div>
+      );
+    }
+    return (
+      <div className="flex flex-col items-center justify-center gap-1.5" style={{ background: 'var(--color-surface-container)', minHeight: '140px', borderBottom: '1px solid var(--color-outline)' }}>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" style={{ color: 'var(--color-outline-variant)' }}>
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span className="text-[9px] font-mono px-2 text-center" style={{ color: 'var(--color-outline-variant)' }}>{path}</span>
+      </div>
+    );
+  };
+
+  return (
+    <div className="space-y-4 mb-8">
+      {pairs.map((pair) => (
+        <div key={pair.idx} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {pair.doItem ? (
+            <div className="rounded-xl overflow-hidden border" style={{ borderColor: 'var(--color-outline)' }}>
+              <ImgBlock path={`/assets/images/guidelines/${slug || 'component'}-do-${pair.idx}.png`} />
+              <div style={{ borderTop: '3px solid #1BA86E' }}>
+                <div className="px-4 pt-3 pb-1 flex items-center gap-2">
+                  <span className="text-sm">✅</span>
+                  <span className="text-sm font-bold" style={{ color: '#1BA86E' }}>Do</span>
+                </div>
+                <p className="px-4 pb-3 text-sm leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>{pair.doItem}</p>
+              </div>
+            </div>
+          ) : <div />}
+          {pair.dontItem ? (
+            <div className="rounded-xl overflow-hidden border" style={{ borderColor: 'var(--color-outline)' }}>
+              <ImgBlock path={`/assets/images/guidelines/${slug || 'component'}-dont-${pair.idx}.png`} />
+              <div style={{ borderTop: '3px solid #DC143C' }}>
+                <div className="px-4 pt-3 pb-1 flex items-center gap-2">
+                  <span className="text-sm">❌</span>
+                  <span className="text-sm font-bold" style={{ color: '#DC143C' }}>Don&apos;t</span>
+                </div>
+                <p className="px-4 pb-3 text-sm leading-relaxed" style={{ color: 'var(--color-on-surface-variant)' }}>{pair.dontItem}</p>
+              </div>
+            </div>
+          ) : <div />}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function Steps({ children }: { children: React.ReactNode }) {
   return <div className="mb-6 space-y-4">{children}</div>;
 }

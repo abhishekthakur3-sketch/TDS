@@ -1,5 +1,6 @@
 'use client';
 import { PageShell } from '@/components/PageShell';
+import { DoDont } from '@/components/mdx';
 
 export default function RadiusPage() {
   return (
@@ -27,6 +28,18 @@ export default function RadiusPage() {
           </div>
         ))}
       </div>
+      <h2>Do&apos;s &amp; Don&apos;ts</h2>
+      <DoDont slug="radius"         doItems={[
+          "Use consistent border radius within component families",
+          "Use smaller radius for compact elements, larger for cards",
+          "Follow the defined radius scale (4, 8, 12, 16px)",
+        ]}
+        dontItems={[
+          "Mix rounded and sharp corners in the same context",
+          "Use fully rounded corners on rectangular containers",
+          "Override radius tokens with arbitrary values",
+        ]}
+      />
     </PageShell>
   );
 }

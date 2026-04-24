@@ -1,5 +1,6 @@
 'use client';
 import { PageShell } from '@/components/PageShell';
+import { ImagePlaceholder } from '@/components/ImagePlaceholder';
 
 export default function PhilosophyPage() {
   return (
@@ -12,8 +13,10 @@ export default function PhilosophyPage() {
         This dual philosophy shapes everything from micro-interactions to system architecture. Components are engineered for performance and reliability, while their visual language communicates care, clarity, and approachability.
       </p>
 
+      <ImagePlaceholder label="Philosophy hero — Machine precision meets human touch" path="/assets/images/philosophy-hero.png" height={260} />
+
       <h2>Core Principles</h2>
-      <div className="space-y-4 mb-8">
+      <div className="space-y-4 mb-6">
         <div className="p-5 rounded-xl border" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface-container-low)' }}>
           <h4 className="font-semibold mb-1" style={{ color: 'var(--color-on-surface)' }}>♿ Accessibility First</h4>
           <p className="text-sm" style={{ color: 'var(--color-on-surface-variant)' }}>
@@ -46,6 +49,8 @@ export default function PhilosophyPage() {
         </div>
       </div>
 
+      <ImagePlaceholder label="Core principles visual — Clarity, Consistency, Accessibility, Efficiency" path="/assets/images/core-principles.png" height={220} />
+
       <h2>Deriving Our Principles</h2>
       <p>
         TARMAC's design principles are derived from three pillars that reflect Delhivery's broader vision:
@@ -67,7 +72,7 @@ export default function PhilosophyPage() {
       </p>
 
       <h2>Design Values</h2>
-      <div className="grid grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-2 gap-4 mb-6">
         <div className="p-6 rounded-xl border text-center" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface-container-low)' }}>
           <h4 className="font-semibold" style={{ color: 'var(--color-on-surface)' }}>Clarity Over Cleverness</h4>
           <p className="text-xs mt-2" style={{ color: 'var(--color-on-surface-variant)' }}>Simple, understandable interfaces that don't require a manual</p>

@@ -1,5 +1,6 @@
 'use client';
 import { PageShell } from '@/components/PageShell';
+import { DoDont } from '@/components/mdx';
 
 export default function TypographyPage() {
   return (
@@ -51,6 +52,19 @@ export default function TypographyPage() {
           </p>
         </div>
       ))}
+
+      <h2>Do&apos;s &amp; Don&apos;ts</h2>
+      <DoDont slug="typography"         doItems={[
+          "Use the type scale consistently across all pages",
+          "Maintain clear hierarchy with heading levels",
+          "Use Noto Sans as the primary typeface",
+        ]}
+        dontItems={[
+          "Skip heading levels (e.g., h1 to h3)",
+          "Use more than 3 font weights on a single page",
+          "Set body text smaller than 14px",
+        ]}
+      />
 
       <h2>Implementation</h2>
       <h3>CSS Custom Properties</h3>

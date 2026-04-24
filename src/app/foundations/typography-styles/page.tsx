@@ -1,5 +1,6 @@
 'use client';
 import { PageShell } from '@/components/PageShell';
+import { DoDont } from '@/components/mdx';
 
 export default function TypographyStylesPage() {
   return (
@@ -24,6 +25,18 @@ export default function TypographyStylesPage() {
         <p style={{ fontSize: '14px', fontWeight: 400, lineHeight: '22px' }}>The quick brown fox jumps over the lazy dog. TARMAC provides a consistent type system across all Delhivery products.</p>
         <p className="text-xs text-neutral-400 mt-2">14px / Regular / 22px line-height</p>
       </div>
+      <h2>Do&apos;s &amp; Don&apos;ts</h2>
+      <DoDont slug="typography-styles"         doItems={[
+          "Follow the defined line-height for each text style",
+          "Use the correct font weight for each style level",
+          "Test readability at different viewport sizes",
+        ]}
+        dontItems={[
+          "Override line-height without checking readability",
+          "Mix type styles from different scales",
+          "Use all-caps for body text",
+        ]}
+      />
     </PageShell>
   );
 }

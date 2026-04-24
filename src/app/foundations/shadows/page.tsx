@@ -1,5 +1,6 @@
 'use client';
 import { PageShell } from '@/components/PageShell';
+import { DoDont } from '@/components/mdx';
 
 export default function ShadowsPage() {
   return (
@@ -28,6 +29,18 @@ export default function ShadowsPage() {
           </div>
         ))}
       </div>
+      <h2>Do&apos;s &amp; Don&apos;ts</h2>
+      <DoDont slug="shadows"         doItems={[
+          "Use shadows to indicate elevation and hierarchy",
+          "Apply consistent shadow levels (sm, md, lg)",
+          "Use subtle shadows — less is more",
+        ]}
+        dontItems={[
+          "Use heavy shadows that look dated",
+          "Apply shadows to flat, inline elements",
+          "Mix shadow levels inconsistently",
+        ]}
+      />
     </PageShell>
   );
 }

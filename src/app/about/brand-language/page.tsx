@@ -1,6 +1,7 @@
 'use client';
 import { PageShell } from '@/components/PageShell';
 import { Tabs, Tab } from '@/components/mdx';
+import { ImagePlaceholder } from '@/components/ImagePlaceholder';
 
 export default function BrandLanguagePage() {
   return (
@@ -10,9 +11,11 @@ export default function BrandLanguagePage() {
         TARMAC's brand language reflects our values and connects with our audience — across documentation, UI copy, error messages, and marketing. It's the verbal expression of the same principles that drive our visual design: clarity, consistency, and human connection.
       </p>
 
+      <ImagePlaceholder label="Brand language overview — Voice, tone, and writing style" path="/assets/images/brand-language-hero.png" height={260} />
+
       <h2>Voice</h2>
       <p>Our voice is consistent across all communications:</p>
-      <div className="space-y-3 mb-8">
+      <div className="space-y-3 mb-6">
         <div className="p-4 rounded-xl border" style={{ borderColor: 'var(--color-outline)', background: 'var(--color-surface-container-low)' }}>
           <h4 className="font-semibold mb-1" style={{ color: 'var(--color-on-surface)' }}>Professional Yet Approachable</h4>
           <p className="text-sm" style={{ color: 'var(--color-on-surface-variant)' }}>We're experts, but we don't talk down. We explain complex concepts clearly without oversimplifying.</p>
@@ -30,6 +33,8 @@ export default function BrandLanguagePage() {
           <p className="text-sm" style={{ color: 'var(--color-on-surface-variant)' }}>We're here to help teams succeed. Our tone is encouraging and solution-oriented.</p>
         </div>
       </div>
+
+      <ImagePlaceholder label="Voice attributes — Clear, Confident, Human, Precise" path="/assets/images/voice-attributes.png" height={200} />
 
       <h2>Tone by Context</h2>
       <Tabs>

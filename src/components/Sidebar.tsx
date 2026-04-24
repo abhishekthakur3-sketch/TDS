@@ -4,35 +4,55 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-type NavGroup = { title: string; items: { label: string; href: string }[] };
+type NavLink = { label: string; href: string };
+type NavSubGroup = { title: string; children: NavLink[] };
+type NavItem = NavLink | NavSubGroup;
+type NavGroup = { title: string; items: NavItem[] };
+
+function isSubGroup(item: NavItem): item is NavSubGroup {
+  return 'children' in item;
+}
 
 const sidebarSections: NavGroup[] = [
-  { title: 'Get started', items: [
-    { label: 'Brand Language', href: '/about/brand-language' },
-    { label: 'Installation', href: '/getting-started/installation' },
+  { title: 'Get Started', items: [
     { label: 'Introduction to TARMAC', href: '/about/overview' },
-    { label: 'Movement Metaphors', href: '/about/movement-metaphors' },
     { label: 'Philosophy', href: '/about/philosophy' },
-    { label: 'Quick Start', href: '/getting-started/quick-start' },
+    { label: 'Brand Language', href: '/about/brand-language' },
+    { label: 'Movement Metaphors', href: '/about/movement-metaphors' },
     { label: 'TARMAC Logo', href: '/about/logo' },
+    { label: 'Installation', href: '/getting-started/installation' },
+    { label: 'Quick Start', href: '/getting-started/quick-start' },
   ]},
   { title: 'Foundations', items: [
-    { label: 'Borders', href: '/foundations/borders' },
-    { label: 'Colors', href: '/foundations/colors' },
-    { label: 'Dividers', href: '/foundations/dividers' },
-    { label: 'Grid System', href: '/foundations/grid-system' },
+    { title: 'Color', children: [
+      { label: 'Overview', href: '/foundations/colors' },
+      { label: 'Color Palette', href: '/foundations/colors-palette' },
+      { label: 'Implementation', href: '/foundations/colors-implementation' },
+    ]},
+    { title: 'Typography', children: [
+      { label: 'Overview', href: '/foundations/typography' },
+      { label: 'Styles', href: '/foundations/typography-styles' },
+      { label: 'Implementation', href: '/foundations/typography-implementation' },
+    ]},
+    { title: 'Grid', children: [
+      { label: 'Grid System', href: '/foundations/grid-system' },
+      { label: 'Advanced', href: '/foundations/grid-advanced' },
+      { label: 'Implementation', href: '/foundations/grid-implementation' },
+    ]},
     { label: 'Iconography', href: '/foundations/iconography' },
-    { label: 'Image Library', href: '/foundations/image-library' },
-    { label: 'Radius', href: '/foundations/radius' },
-    { label: 'Shadows', href: '/foundations/shadows' },
     { label: 'Spacing', href: '/foundations/spacing' },
-    { label: 'Typography', href: '/foundations/typography' },
+    { label: 'Radius', href: '/foundations/radius' },
+    { label: 'Borders', href: '/foundations/borders' },
+    { label: 'Shadows', href: '/foundations/shadows' },
+    { label: 'Dividers', href: '/foundations/dividers' },
+    { label: 'Image Library', href: '/foundations/image-library' },
   ]},
   { title: 'Components', items: [
     { label: 'Accordion', href: '/components/accordion' },
     { label: 'Alert', href: '/components/alert' },
     { label: 'Audio Player', href: '/components/audio-player' },
     { label: 'Avatar', href: '/components/avatar' },
+    { label: 'Avatar Group', href: '/components/avatar-group' },
     { label: 'Badge', href: '/components/badge' },
     { label: 'Bottom Sheet', href: '/components/bottom-sheet' },
     { label: 'Breadcrumbs', href: '/components/breadcrumbs' },
@@ -74,30 +94,77 @@ const sidebarSections: NavGroup[] = [
     { label: 'Tooltip', href: '/components/tooltip' },
   ]},
   { title: 'Patterns', items: [
-    { label: 'Form Patterns', href: '/patterns/forms' },
-    { label: 'Layout Patterns', href: '/patterns/layout' },
+    { label: 'Layout', href: '/patterns/layout' },
+    { label: 'Forms', href: '/patterns/forms' },
   ]},
   { title: 'Accessibility', items: [
-    { label: 'Accessibility', href: '/accessibility/overview' },
-    { label: 'Accessibility Guidelines', href: '/accessibility/guidelines' },
-    { label: 'Accessibility Testing', href: '/accessibility/testing' },
-    { label: 'Color Contrast', href: '/accessibility/color-contrast' },
-    { label: 'Focus Management', href: '/accessibility/focus-management' },
+    { label: 'Overview', href: '/accessibility/overview' },
+    { label: 'Guidelines', href: '/accessibility/guidelines' },
     { label: 'Keyboard Navigation', href: '/accessibility/keyboard-navigation' },
     { label: 'Screen Readers', href: '/accessibility/screen-readers' },
+    { label: 'Color Contrast', href: '/accessibility/color-contrast' },
+    { label: 'Focus Management', href: '/accessibility/focus-management' },
+    { label: 'Testing', href: '/accessibility/testing' },
   ]},
 ];
 
+function SidebarSubGroup({ sub }: { sub: NavSubGroup }) {
+  const pathname = usePathname();
+  const hasActive = sub.children.some(c => c.href === pathname);
+  const [open, setOpen] = useState(hasActive);
+
+  return (
+    <li>
+      <button
+        onClick={() => setOpen(!open)}
+        className={`w-full flex items-center gap-2 pl-3 pr-3 py-2.5 text-[13px] rounded-lg sidebar-link ${hasActive ? 'font-semibold' : ''}`}
+        style={{ color: hasActive ? 'var(--color-on-surface)' : 'var(--color-on-surface-variant)' }}
+      >
+        <svg
+          width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+          strokeLinecap="round" strokeLinejoin="round"
+          className="shrink-0"
+          style={{ transform: open ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.15s' }}
+        >
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+        {sub.title}
+      </button>
+      {open && (
+        <ul>
+          {sub.children.map((child) => {
+            const isActive = pathname === child.href;
+            return (
+              <li key={child.href}>
+                <Link
+                  href={child.href}
+                  className={`block pl-9 pr-3 py-2 text-[13px] rounded-lg sidebar-link ${isActive ? 'sidebar-link-active' : ''}`}
+                  style={{ color: isActive ? undefined : 'var(--color-on-surface-variant)' }}
+                >
+                  {child.label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </li>
+  );
+}
+
 function SidebarGroup({ group }: { group: NavGroup }) {
   const pathname = usePathname();
-  const hasActive = group.items.some(i => i.href === pathname);
+  const allHrefs = group.items.flatMap(item =>
+    isSubGroup(item) ? item.children.map(c => c.href) : [item.href]
+  );
+  const hasActive = allHrefs.includes(pathname);
   const [open, setOpen] = useState(hasActive);
 
   return (
     <div className="mb-1">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-3 py-2 text-[13px] font-semibold rounded-lg transition-colors"
+        className="w-full flex items-center justify-between px-3 py-2 text-[13px] font-semibold rounded-lg sidebar-link"
         style={{ color: 'var(--color-on-surface)' }}
       >
         {group.title}
@@ -112,16 +179,17 @@ function SidebarGroup({ group }: { group: NavGroup }) {
       {open && (
         <ul className="mt-0.5">
           {group.items.map((item) => {
+            if (isSubGroup(item)) {
+              return <SidebarSubGroup key={item.title} sub={item} />;
+            }
             const isActive = pathname === item.href;
             return (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block px-3 py-3 text-[13px] transition-all rounded-lg"
+                  className={`block pl-9 pr-3 py-2.5 text-[13px] rounded-lg sidebar-link ${isActive ? 'sidebar-link-active' : ''}`}
                   style={{
-                    color: isActive ? 'var(--color-on-surface)' : 'var(--color-on-surface-variant)',
-                    background: isActive ? 'var(--color-surface-container)' : 'transparent',
-                    fontWeight: isActive ? 600 : 400,
+                    color: isActive ? undefined : 'var(--color-on-surface-variant)',
                   }}
                 >
                   {item.label}

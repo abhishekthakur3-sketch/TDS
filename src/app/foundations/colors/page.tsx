@@ -1,6 +1,6 @@
 'use client';
 import { PageShell } from '@/components/PageShell';
-import { Info } from '@/components/mdx';
+import { Info, DoDont } from '@/components/mdx';
 
 const palette = [
   { name: 'Red', shades: [{s:'50',h:'#FEF2F2'},{s:'100',h:'#FEE2E2'},{s:'200',h:'#FECACA'},{s:'300',h:'#FCA5A5'},{s:'400',h:'#F87171'},{s:'500',h:'#ED1B36'},{s:'600',h:'#DC2626'},{s:'700',h:'#B91C1C'},{s:'800',h:'#991B1B'},{s:'900',h:'#7F1D1D'}] },
@@ -85,6 +85,19 @@ export default function ColorsPage() {
           <tr><td>Border</td><td><code>color.border.default</code>, <code>color.border.focus</code></td><td>Stroke colors for outlines and dividers</td></tr>
         </tbody>
       </table>
+
+      <h2>Do&apos;s &amp; Don&apos;ts</h2>
+      <DoDont slug="colors"         doItems={[
+          "Use semantic tokens instead of raw hex values",
+          "Ensure all text meets WCAG AA contrast ratios (4.5:1)",
+          "Use brand red sparingly — only for primary actions and accents",
+        ]}
+        dontItems={[
+          "Hardcode hex values in component styles",
+          "Use color alone to convey meaning — pair with icons or text",
+          "Mix core tokens and semantic tokens in the same component",
+        ]}
+      />
 
       <h2>Implementation</h2>
       <h3>CSS Custom Properties</h3>

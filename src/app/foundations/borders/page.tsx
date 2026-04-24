@@ -1,5 +1,6 @@
 'use client';
 import { PageShell } from '@/components/PageShell';
+import { DoDont } from '@/components/mdx';
 
 export default function BordersPage() {
   return (
@@ -24,6 +25,18 @@ export default function BordersPage() {
           <tr><td>border-error</td><td>#DC143C</td><td>Error state borders</td></tr>
         </tbody>
       </table>
+      <h2>Do&apos;s &amp; Don&apos;ts</h2>
+      <DoDont slug="borders"         doItems={[
+          "Use 1px borders for subtle separation",
+          "Use border color tokens for consistency",
+          "Apply borders consistently within a component family",
+        ]}
+        dontItems={[
+          "Use borders thicker than 2px for UI elements",
+          "Mix border styles (solid, dashed) without purpose",
+          "Use borders and shadows together on the same element",
+        ]}
+      />
     </PageShell>
   );
 }
