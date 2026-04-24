@@ -1,62 +1,30 @@
 'use client';
 
-import { useState } from 'react';
 import { StorybookEmbed } from '@/components/mdx';
 import { storybookVariants, getIframeUrl, getStorybookUrl } from '@/components/storybookVariants';
 
 /**
- * Renders Storybook story variants for a component.
- * Shows pill buttons to switch between variants — canvas-only view.
+ * Renders ALL Storybook story variants for a component,
+ * each as its own labeled section with a separate canvas iframe.
  */
 export function StorybookVariantViewer({ slug }: { slug: string }) {
   const variants = storybookVariants[slug];
-  const [selected, setSelected] = useState(0);
 
   if (!variants || variants.length === 0) return null;
 
-  if (variants.length === 1) {
-    return (
-      <StorybookEmbed
-        url={getIframeUrl(variants[0].id)}
-        storybookUrl={getStorybookUrl(variants[0].id)}
-        height={420}
-        title={variants[0].label}
-      />
-    );
-  }
-
   return (
-    <div style={{ marginBottom: 32 }}>
-      {/* Variant pills */}
-      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 16 }}>
-        {variants.map((v, i) => (
-          <button
-            key={v.id}
-            onClick={() => setSelected(i)}
-            style={{
-              padding: '5px 14px',
-              borderRadius: 8,
-              fontSize: 13,
-              fontWeight: 500,
-              border: selected === i ? 'none' : '1px solid var(--color-outline)',
-              background: selected === i ? 'var(--color-primary)' : 'transparent',
-              color: selected === i ? '#fff' : 'var(--color-on-surface-variant)',
-              cursor: 'pointer',
-              transition: 'all 0.15s ease',
-            }}
-          >
-            {v.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Canvas-only Storybook embed */}
-      <StorybookEmbed
-        url={getIframeUrl(variants[selected].id)}
-        storybookUrl={getStorybookUrl(variants[selected].id)}
-        height={420}
-        title={variants[selected].label}
-      />
+    <div>
+      {variants.map((v) => (
+        <div key={v.id} style={{ marginBottom: 40 }}>
+          <h3 style={{ color: 'var(--color-on-surface)', marginBottom: 8 }}>{v.label}</h3>
+          <StorybookEmbed
+            url={getIframeUrl(v.id)}
+            storybookUrl={getStorybookUrl(v.id)}
+            height={360}
+            title={v.label}
+          />
+        </div>
+      ))}
     </div>
   );
 }

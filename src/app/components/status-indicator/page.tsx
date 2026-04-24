@@ -1,328 +1,20 @@
 'use client';
 
-import { useState, useEffect, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { PageShell } from '@/components/PageShell';
 import { DoDont } from '@/components/mdx';
 import { StorybookVariantViewer } from '@/components/StorybookVariantViewer';
-import { ComponentExampleSection } from '@/components/ComponentPreview';
-import { useTheme } from '@/components/ThemeProvider';
-
-/* ── Status type definitions ── */
-type StatusType =
-  | 'success' | 'failed' | 'warning' | 'information'
-  | 'synced' | 'scheduled' | 'unknown' | 'pause'
-  | 'play' | 'downloading' | 'pending';
-
-type IndicatorSize = 'xs' | 'sm' | 'md' | 'lg';
-
-interface StatusIndicatorProps {
-  status: StatusType;
-  label?: string;
-  size?: IndicatorSize;
-  animated?: boolean;
-  icon?: ReactNode;
-}
-
-/* ── Color map ── */
-const statusColors: Record<StatusType, string> = {
-  success:      '#1BA86E',
-  failed:       '#DC143C',
-  warning:      '#CF9F02',
-  information:  '#2396FB',
-  synced:       '#1BA86E',
-  scheduled:    '#CF9F02',
-  unknown:      '#A3A3A3',
-  pause:        '#CF9F02',
-  play:         '#1BA86E',
-  downloading:  '#2396FB',
-  pending:      '#A3A3A3',
-};
-
-const statusLabels: Record<StatusType, string> = {
-  success:     'Success',
-  failed:      'Failed',
-  warning:     'Warning',
-  information: 'Information',
-  synced:      'Synced',
-  scheduled:   'Scheduled',
-  unknown:     'Unknown',
-  pause:       'Pause',
-  play:        'Play',
-  downloading: 'Downloading',
-  pending:     'Pending',
-};
-
-/* Active states that should pulse */
-const activeStatuses: StatusType[] = ['success', 'play', 'synced', 'downloading'];
-
-const dotSizeMap: Record<IndicatorSize, number> = { lg: 12, md: 10, sm: 8, xs: 6 };
-const fontSizeMap: Record<IndicatorSize, number> = { lg: 14, md: 13, sm: 12, xs: 11 };
-
-/* ── Pulse keyframes (injected once) ── */
-const pulseKeyframes = `
-@keyframes statusPulse {
-  0%   { transform: scale(1);   opacity: 1; }
-  50%  { transform: scale(1.8); opacity: 0; }
-  100% { transform: scale(1.8); opacity: 0; }
-}
-`;
-
-/* ── StatusIndicator Demo Component ── */
-function StatusIndicatorDemo({
-  status,
-  label,
-  size = 'md',
-  animated = false,
-  icon,
-  theme,
-}: StatusIndicatorProps & { theme: 'light' | 'dark' }) {
-  const color = statusColors[status] || '#A3A3A3';
-  const dotSize = dotSizeMap[size];
-  const fontSize = fontSizeMap[size];
-  const showPulse = animated && activeStatuses.includes(status);
-  const textColor = theme === 'dark' ? '#E5E5E5' : '#1A1A1A';
-
-  return (
-    <div
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: size === 'xs' ? 4 : size === 'sm' ? 5 : 6,
-      }}
-      role="status"
-      aria-label={label ? `${statusLabels[status]}: ${label}` : statusLabels[status]}
-    >
-      <div style={{ position: 'relative', width: dotSize, height: dotSize, flexShrink: 0 }}>
-        {/* Pulse ring */}
-        {showPulse && (
-          <span
-            style={{
-              position: 'absolute',
-              inset: 0,
-              borderRadius: '50%',
-              background: color,
-              animation: 'statusPulse 2s ease-in-out infinite',
-            }}
-          />
-        )}
-        {/* Dot or icon */}
-        {icon ? (
-          <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color, width: dotSize, height: dotSize }}>
-            {icon}
-          </span>
-        ) : (
-          <span
-            style={{
-              position: 'relative',
-              display: 'block',
-              width: dotSize,
-              height: dotSize,
-              borderRadius: '50%',
-              background: color,
-            }}
-          />
-        )}
-      </div>
-      {label && (
-        <span style={{ fontSize, fontWeight: 500, color: textColor, lineHeight: 1, whiteSpace: 'nowrap' }}>
-          {label}
-        </span>
-      )}
-    </div>
-  );
-}
-
-/* ── Small demo icons ── */
-function CheckIcon({ size = 10 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 8.5l3.5 3.5 6.5-8" />
-    </svg>
-  );
-}
-
-function CrossIcon({ size = 10 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-      <path d="M4 4l8 8M12 4l-8 8" />
-    </svg>
-  );
-}
-
-function ClockIcon({ size = 10 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-      <circle cx="8" cy="8" r="6" />
-      <path d="M8 4.5V8l2.5 1.5" />
-    </svg>
-  );
-}
-
-/* ── Status Example Section with size/animated controls ── */
-function StatusExampleSection({
-  title,
-  desc,
-  children,
-}: {
-  title: string;
-  desc: string;
-  children: (props: { size: IndicatorSize; theme: 'light' | 'dark'; animated: boolean }) => ReactNode;
-}) {
-  const { theme: globalTheme } = useTheme();
-  const [size, setSize] = useState<IndicatorSize>('md');
-  const [theme, setTheme] = useState<'light' | 'dark'>(globalTheme as 'light' | 'dark');
-  const [animated, setAnimated] = useState(false);
-
-  useEffect(() => { setTheme(globalTheme as 'light' | 'dark'); }, [globalTheme]);
-
-  const bg = theme === 'dark' ? '#1A1A1A' : '#F5F5F5';
-  const selectStyle: React.CSSProperties = {
-    padding: '4px 8px', borderRadius: 6, fontSize: 12, border: '1px solid var(--color-outline)',
-    background: 'var(--color-surface)', color: 'var(--color-on-surface)', cursor: 'pointer',
-  };
-
-  return (
-    <div style={{ marginBottom: 32 }}>
-      <style>{pulseKeyframes}</style>
-      <h3 style={{ color: 'var(--color-on-surface)', marginBottom: 4 }}>{title}</h3>
-      <p style={{ color: 'var(--color-on-surface-variant)', fontSize: 14, marginBottom: 12 }}>{desc}</p>
-      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 12, alignItems: 'center' }}>
-        <select value={size} onChange={e => setSize(e.target.value as IndicatorSize)} style={selectStyle}>
-          <option value="xs">XS (6px)</option>
-          <option value="sm">SM (8px)</option>
-          <option value="md">MD (10px)</option>
-          <option value="lg">LG (12px)</option>
-        </select>
-        <select value={theme} onChange={e => setTheme(e.target.value as 'light' | 'dark')} style={selectStyle}>
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
-        <label style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'var(--color-on-surface)', cursor: 'pointer' }}>
-          <input type="checkbox" checked={animated} onChange={e => setAnimated(e.target.checked)} />
-          Animated
-        </label>
-      </div>
-      <div style={{ background: bg, borderRadius: 12, padding: 24, display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
-        {children({ size, theme, animated })}
-      </div>
-    </div>
-  );
-}
 
 /* ─────────────────────────────────────────────── */
 /*  TAB 1 — Examples                               */
 /* ─────────────────────────────────────────────── */
 function ExamplesTab() {
-  const allStatuses: StatusType[] = [
-    'success', 'failed', 'warning', 'information',
-    'synced', 'scheduled', 'unknown', 'pause',
-    'play', 'downloading', 'pending',
-  ];
-
   return (
     <>
       <StorybookVariantViewer slug="status-indicator" />
-      <h2>Overview</h2>
-      <p>
-        Status Indicators are compact visual cues that communicate the current state of a system,
-        process, or item. They render as colored dots with optional labels and support pulse
-        animations for active states.
-      </p>
-
-      <table>
-        <thead><tr><th>Property</th><th>Options</th></tr></thead>
-        <tbody>
-          <tr><td>Types</td><td>Success, Failed, Warning, Information, Synced, Scheduled, Unknown, Pause, Play, Downloading, Pending</td></tr>
-          <tr><td>Sizes</td><td>XSmall (6px), Small (8px), Medium (10px), Large (12px)</td></tr>
-          <tr><td>Features</td><td>Colored dot, Label text, Custom icons, Without label</td></tr>
-          <tr><td>States</td><td>Default, Animated (pulse for active states)</td></tr>
-        </tbody>
-      </table>
-
-      <h2>All Status Types</h2>
-
-      <StatusExampleSection
-        title="Status Types"
-        desc="Each status type has a distinct color for quick visual identification. Toggle animation to see pulse on active states."
-      >
-        {({ size, theme, animated }) => (
-          <>
-            {allStatuses.map(s => (
-              <StatusIndicatorDemo key={s} status={s} label={statusLabels[s]} size={size} animated={animated} theme={theme} />
-            ))}
-          </>
-        )}
-      </StatusExampleSection>
-
-      <h2>Sizes</h2>
-
-      <ComponentExampleSection
-        title="Size Comparison"
-        desc="Status indicators come in four sizes. XSmall for dense layouts, Large for prominent displays."
-        sizes={['xs', 'sm', 'md', 'lg'] as ('xs' | 'sm' | 'md' | 'lg')[]}
-      >
-        {({ theme }) => (
-          <>
-            <style>{pulseKeyframes}</style>
-            <StatusIndicatorDemo status="success" label="XSmall" size="xs" theme={theme as 'light' | 'dark'} />
-            <StatusIndicatorDemo status="success" label="Small" size="sm" theme={theme as 'light' | 'dark'} />
-            <StatusIndicatorDemo status="success" label="Medium" size="md" theme={theme as 'light' | 'dark'} />
-            <StatusIndicatorDemo status="success" label="Large" size="lg" theme={theme as 'light' | 'dark'} />
-          </>
-        )}
-      </ComponentExampleSection>
-
-      <h2>With Custom Icons</h2>
-
-      <StatusExampleSection
-        title="Custom Icons"
-        desc="Replace the default dot with a custom icon for additional semantic meaning."
-      >
-        {({ size, theme, animated }) => (
-          <>
-            <StatusIndicatorDemo status="success" label="Verified" size={size} animated={animated} icon={<CheckIcon size={dotSizeMap[size]} />} theme={theme} />
-            <StatusIndicatorDemo status="failed" label="Rejected" size={size} animated={animated} icon={<CrossIcon size={dotSizeMap[size]} />} theme={theme} />
-            <StatusIndicatorDemo status="scheduled" label="Scheduled" size={size} animated={animated} icon={<ClockIcon size={dotSizeMap[size]} />} theme={theme} />
-          </>
-        )}
-      </StatusExampleSection>
-
-      <h2>Without Label</h2>
-
-      <StatusExampleSection
-        title="Dot Only"
-        desc="Status indicators can be used without labels for compact layouts like tables or lists."
-      >
-        {({ size, theme, animated }) => (
-          <>
-            {allStatuses.map(s => (
-              <StatusIndicatorDemo key={s} status={s} size={size} animated={animated} theme={theme} />
-            ))}
-          </>
-        )}
-      </StatusExampleSection>
-
-      <h2>Animated States</h2>
-
-      <StatusExampleSection
-        title="Pulse Animation"
-        desc="Active states (Success, Play, Synced, Downloading) display a pulse animation to indicate live activity."
-      >
-        {({ size, theme }) => (
-          <>
-            <StatusIndicatorDemo status="success" label="Active" size={size} animated theme={theme} />
-            <StatusIndicatorDemo status="play" label="Playing" size={size} animated theme={theme} />
-            <StatusIndicatorDemo status="synced" label="Syncing" size={size} animated theme={theme} />
-            <StatusIndicatorDemo status="downloading" label="Downloading" size={size} animated theme={theme} />
-            <StatusIndicatorDemo status="failed" label="Failed (no pulse)" size={size} animated theme={theme} />
-            <StatusIndicatorDemo status="pending" label="Pending (no pulse)" size={size} animated theme={theme} />
-          </>
-        )}
-      </StatusExampleSection>
     </>
   );
 }
-
 
 /* ─────────────────────────────────────────────── */
 /*  TAB 2 — Code                                   */
@@ -488,7 +180,6 @@ import { CheckCircle } from 'lucide-react';
   );
 }
 
-
 /* ─────────────────────────────────────────────── */
 /*  TAB 3 — Usage                                  */
 /* ─────────────────────────────────────────────── */
@@ -575,7 +266,6 @@ function UsageTab() {
     </>
   );
 }
-
 
 /* ─────────────────────────────────────────────── */
 /*  TAB 4 — Changelog                              */

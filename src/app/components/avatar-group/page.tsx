@@ -1,93 +1,17 @@
 'use client';
 
+import { type ReactNode } from 'react';
 import { PageShell } from '@/components/PageShell';
 import { DoDont } from '@/components/mdx';
 import { StorybookVariantViewer } from '@/components/StorybookVariantViewer';
-import { AvatarExampleSection } from '../avatar/AvatarPreview';
 
-const SB_BASE = 'https://tarmac-storybook-dev.pntrzz.com/storybook';
-
+/* ─────────────────────────────────────────────── */
+/*  TAB 1 — Examples                               */
+/* ─────────────────────────────────────────────── */
 function ExamplesTab() {
   return (
     <>
       <StorybookVariantViewer slug="avatar-group" />
-      <h2>Overview</h2>
-      <p>
-        Avatar Groups display multiple participants together in a compact, overlapping layout.
-        When avatars exceed the visible limit, a numeric indicator appears (e.g. +5).
-        Supports all sizes and both shapes.
-      </p>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="https://mintcdn.com/delhivery-c9432998/doIU2Z4FdwFszuPW/assets/components/avatar/avatar-group-preview.png?w=1650&fit=max&auto=format&n=doIU2Z4FdwFszuPW&q=85&s=5ae3de149ed0acddc7e9874d7ef455ee" alt="Avatar group" style={{ width: '100%', borderRadius: 8, marginBottom: 16, border: '1px solid var(--color-outline)' }} />
-
-      <table>
-        <thead><tr><th>Property</th><th>Options</th></tr></thead>
-        <tbody>
-          <tr><td>Max visible</td><td>Configurable via <code>max</code> prop</td></tr>
-          <tr><td>Overflow</td><td>Numeric avatar showing remaining count (+N)</td></tr>
-          <tr><td>Sizes</td><td>S (24px), M (28px), L (36px), XL (40px), XXL (48px)</td></tr>
-          <tr><td>Shapes</td><td>Circle (people), Square (entities)</td></tr>
-          <tr><td>Overlap</td><td>Avatars overlap by ~25% of their width</td></tr>
-        </tbody>
-      </table>
-
-      <h2>Default Group</h2>
-      <AvatarExampleSection
-        title="Circle Group — 3 visible"
-        desc="Shows first 3 avatars with a +N overflow indicator for the rest."
-        variants={[
-          { variant: 'image', label: 'john' },
-          { variant: 'image', label: 'jane' },
-          { variant: 'image', label: 'alex' },
-          { variant: 'numeric', label: '+2' },
-        ]}
-      />
-
-      <AvatarExampleSection
-        title="Initials Group"
-        desc="When images aren't available, initials avatars stack the same way."
-        variants={[
-          { variant: 'initials', label: 'JD' },
-          { variant: 'initials', label: 'AB' },
-          { variant: 'initials', label: 'MK' },
-          { variant: 'initials', label: 'RS' },
-          { variant: 'numeric', label: '+5' },
-        ]}
-      />
-
-      <AvatarExampleSection
-        title="Square Group"
-        desc="Square avatar groups for entity representations like teams or projects."
-        defaultShape="square"
-        variants={[
-          { variant: 'image', label: 'team-a' },
-          { variant: 'image', label: 'team-b' },
-          { variant: 'image', label: 'team-c' },
-          { variant: 'numeric', label: '+3' },
-        ]}
-      />
-
-      <AvatarExampleSection
-        title="Mixed Variants"
-        desc="Groups can mix image and initials avatars. The overflow count always uses the numeric variant."
-        variants={[
-          { variant: 'image', label: 'john' },
-          { variant: 'initials', label: 'AB' },
-          { variant: 'image', label: 'jane' },
-          { variant: 'numeric', label: '+8' },
-        ]}
-      />
-
-      <AvatarExampleSection
-        title="With Status Indicators"
-        desc="Individual avatars in a group can show status indicators."
-        variants={[
-          { variant: 'image', label: 'john-active', status: 'active' },
-          { variant: 'initials', label: 'AB', status: 'idle' },
-          { variant: 'image', label: 'jane-busy', status: 'orange' },
-          { variant: 'numeric', label: '+4' },
-        ]}
-      />
     </>
   );
 }
