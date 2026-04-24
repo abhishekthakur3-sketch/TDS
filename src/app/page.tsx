@@ -289,7 +289,7 @@ export default function Home() {
               { src: '/assets/images/fun-3.jpg', caption: 'Design Review' },
               { src: '/assets/images/fun-4.jpg', caption: 'After Hours' },
               { src: '/assets/images/fun-5.jpg', caption: 'Crew Night' },
-              { src: '/assets/images/fun-6.jpg', caption: 'Late Night Hustle' },
+              { src: '/assets/images/fun-6.jpg', caption: 'Behind the Scene' },
             ].map((item) => (
               <div
                 key={item.src}
