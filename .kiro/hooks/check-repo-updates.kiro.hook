@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Check GitHub Repo Updates",
+  "description": "Fetches and displays recent commits and changes made by collaborators on the GitHub repository, showing who updated what and when.",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "git fetch --all && git log --oneline --all --since='7 days ago' --format='%h %an %ar - %s'"
+  }
+}

@@ -43,10 +43,9 @@ export function PageShell({
         ref={bannerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="relative overflow-hidden flex flex-col"
+        className="relative overflow-hidden flex flex-col min-h-[25vh] sm:min-h-[35vh]"
         style={{
           background: 'var(--color-surface-container-low)',
-          minHeight: '35vh',
         }}
       >
         {/* Subtle + pattern */}

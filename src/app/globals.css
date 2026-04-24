@@ -51,12 +51,17 @@
   --color-outline-variant: #333333;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Noto Sans', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   background: var(--color-surface);
   color: var(--color-on-surface);
   transition: background 0.3s ease, color 0.3s ease;
+  cursor: default;
 }
 
 /* Scrollbar — hidden until scrolling */
@@ -131,6 +136,9 @@ html:hover { scrollbar-color: var(--color-outline) transparent; }
   font-size: 0.875rem;
   margin-bottom: 1.5rem;
   border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .mdx-content thead th {
   text-align: left;
@@ -161,7 +169,9 @@ html:hover { scrollbar-color: var(--color-outline) transparent; }
   border-radius: var(--radius-md);
   margin-bottom: 1.5rem;
   overflow-x: auto;
-  font-size: 0.875rem;
+  -webkit-overflow-scrolling: touch;
+  font-size: 0.8125rem;
+  max-width: 100%;
 }
 .mdx-content pre code {
   background: transparent;
@@ -183,6 +193,17 @@ html:hover { scrollbar-color: var(--color-outline) transparent; }
 
 /* Content area — full width */
 .content-area { width: 100%; }
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .mdx-content h2 { font-size: 1.25rem; margin-top: 2rem; }
+  .mdx-content h3 { font-size: 1.1rem; margin-top: 1.5rem; }
+  .mdx-content pre { padding: 0.75rem; font-size: 0.75rem; }
+  .mdx-content thead th { padding: 0.5rem 0.625rem; font-size: 0.75rem; }
+  .mdx-content tbody td { padding: 0.5rem 0.625rem; font-size: 0.8125rem; }
+  .mdx-content code { font-size: 0.75rem; }
+  .mdx-content img { max-width: 100%; height: auto; }
+}
 
 /* Mobile responsive */
 html, body { overflow-x: hidden; }
@@ -276,4 +297,8 @@ html, body { overflow-x: hidden; }
   25% { transform: translate(-6px, -6px); }
   50% { transform: translate(10px, 4px); }
   75% { transform: translate(-4px, 10px); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
