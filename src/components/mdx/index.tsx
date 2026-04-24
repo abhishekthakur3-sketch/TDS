@@ -122,21 +122,16 @@ export function StorybookEmbed({ url, storybookUrl, height = 400, title = 'Compo
     ? `${baseUrl}/?path=/story/${storyId}`
     : url);
 
-  // Full Storybook UI with controls panel visible at bottom
-  const embedUrl = storyId
-    ? `${baseUrl}/?path=/story/${storyId}&panel=bottom&nav=false&shortcuts=false&addonPanel=storybook/controls/panel`
+  // Always use bare iframe — canvas only, no sidebar, no toolbar
+  const canvasUrl = storyId
+    ? `${baseUrl}/sb/iframe.html?id=${storyId}&viewMode=story`
     : url;
-
-  // Bare iframe URL for canvas-only view
-  const canvasUrl = url;
-
-  const [showControls, setShowControls] = React.useState(true);
 
   return (
     <div className="rounded-xl overflow-hidden border mb-8" style={{ borderColor: 'var(--color-outline)' }}>
       <iframe
-        src={showControls ? embedUrl : canvasUrl}
-        style={{ width: '100%', height: showControls ? `${Math.max(height, 520)}px` : `${height}px`, border: 'none', background: '#fff' }}
+        src={canvasUrl}
+        style={{ width: '100%', height: `${height}px`, border: 'none', background: '#fff' }}
         title={title}
         allow="clipboard-write"
       />
@@ -147,34 +142,15 @@ export function StorybookEmbed({ url, storybookUrl, height = 400, title = 'Compo
           borderColor: 'var(--color-outline)',
         }}
       >
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => setShowControls(!showControls)}
-            className="text-xs font-medium px-3 py-1.5 rounded-md transition-colors flex items-center gap-1.5"
-            style={{
-              background: showControls ? 'var(--color-primary)' : 'transparent',
-              color: showControls ? '#fff' : 'var(--color-on-surface-variant)',
-              border: showControls ? 'none' : '1px solid var(--color-outline)',
-              cursor: 'pointer',
-            }}
-          >
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M12 3v18M3 12h18M3 6h18M3 18h18" />
-            </svg>
-            {showControls ? 'Controls On' : 'Controls Off'}
-          </button>
-          <span className="text-xs hidden sm:inline" style={{ color: 'var(--color-on-surface-variant)' }}>
-            {showControls ? 'Use the controls panel below to configure the component' : 'Canvas preview only'}
-          </span>
-        </div>
+        <span className="text-xs" style={{ color: 'var(--color-on-surface-variant)' }}>
+          Canvas preview
+        </span>
         <a
           href={fullUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs font-medium px-2 py-1 rounded transition-colors flex items-center gap-1.5 shrink-0 hover:underline"
-          style={{
-            color: 'var(--color-on-surface-variant)',
-          }}
+          style={{ color: 'var(--color-on-surface-variant)' }}
         >
           Open in Storybook
           <svg className="w-3 h-3 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
