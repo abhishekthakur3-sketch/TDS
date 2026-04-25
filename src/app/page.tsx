@@ -381,12 +381,13 @@ export default function Home() {
             </Link>
             <Link
               href="/components/accordion"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-colors border"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 border"
               style={{
                 borderColor: theme === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.15)',
                 color: theme === 'dark' ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.6)',
-                background: theme === 'dark' ? '#1a1a1a' : '#f5f5f5',
               }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = theme === 'dark' ? '#2a2a2a' : '#e8e8e8'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
             >
               Browse components
             </Link>
