@@ -24,11 +24,7 @@ const sidebarSections: NavGroup[] = [
     { label: 'Quick Start', href: '/getting-started/quick-start' },
   ]},
   { title: 'Foundations', items: [
-    { title: 'Color', children: [
-      { label: 'Overview', href: '/foundations/colors' },
-      { label: 'Color Palette', href: '/foundations/colors-palette' },
-      { label: 'Implementation', href: '/foundations/colors-implementation' },
-    ]},
+    { label: 'Colors', href: '/foundations/colors' },
     { title: 'Typography', children: [
       { label: 'Overview', href: '/foundations/typography' },
       { label: 'Styles', href: '/foundations/typography-styles' },
