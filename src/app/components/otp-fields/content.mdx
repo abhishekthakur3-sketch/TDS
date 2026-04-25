@@ -1,0 +1,341 @@
+import { StorybookEmbed, CardGroup, Card, Tabs, Tab, Info, Warning } from '@/components/mdx';
+
+## Overview
+
+<CardGroup cols={3}>
+  <Card title="2 Types" icon="🔢">
+    4-Digit and 6-Digit OTP inputs
+  </Card>
+  <Card title="3 Sizes" icon="📐">
+    Large (100px), Medium (96px), Small (88px)
+  </Card>
+  <Card title="4 Styles" icon="🎨">
+    Default, Success, Error, Info
+  </Card>
+</CardGroup>
+
+---
+
+## Live Demo
+
+<StorybookEmbed
+  url="https://tarmac-storybook-dev.pntrzz.com/storybook/"
+  height={500}
+  title="OTP Field — TARMAC Storybook"
+/>
+
+<Info>
+  The live demo above loads the full TARMAC Storybook. You can interact with all OTP field variants, adjust props, and explore the API directly within this page.
+</Info>
+
+---
+
+## Playground
+
+<Tabs>
+  <Tab title="By Type">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'24px'}}>
+      <div style={{fontSize:'11px', fontWeight:600, marginBottom:'10px', opacity:0.4, letterSpacing:'0.5px'}}>4-DIGIT OTP</div>
+      <div style={{display:'flex', gap:'8px', marginBottom:'24px'}}>
+        <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>1</div>
+        <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>2</div>
+        <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>3</div>
+        <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>4</div>
+      </div>
+      <div style={{fontSize:'11px', fontWeight:600, marginBottom:'10px', opacity:0.4, letterSpacing:'0.5px'}}>6-DIGIT OTP</div>
+      <div style={{display:'flex', gap:'8px'}}>
+        <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>1</div>
+        <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>2</div>
+        <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>3</div>
+        <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>4</div>
+        <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>5</div>
+        <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>6</div>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="By Style">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'24px'}}>
+      <div style={{fontSize:'11px', fontWeight:600, marginBottom:'10px', opacity:0.4, letterSpacing:'0.5px'}}>DEFAULT</div>
+      <div style={{display:'flex', gap:'8px', marginBottom:'20px'}}>
+        <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>—</div>
+        <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>—</div>
+        <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>—</div>
+        <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>—</div>
+      </div>
+      <div style={{fontSize:'11px', fontWeight:600, marginBottom:'10px', opacity:0.4, letterSpacing:'0.5px'}}>SUCCESS</div>
+      <div style={{display:'flex', gap:'8px', marginBottom:'20px'}}>
+        <div style={{width:'48px', height:'48px', border:'1.5px solid #1BA86E', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white', color:'#1BA86E'}}>1</div>
+        <div style={{width:'48px', height:'48px', border:'1.5px solid #1BA86E', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white', color:'#1BA86E'}}>2</div>
+        <div style={{width:'48px', height:'48px', border:'1.5px solid #1BA86E', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white', color:'#1BA86E'}}>3</div>
+        <div style={{width:'48px', height:'48px', border:'1.5px solid #1BA86E', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white', color:'#1BA86E'}}>4</div>
+      </div>
+      <div style={{fontSize:'11px', fontWeight:600, marginBottom:'10px', opacity:0.4, letterSpacing:'0.5px'}}>ERROR</div>
+      <div style={{display:'flex', gap:'8px', marginBottom:'20px'}}>
+        <div style={{width:'48px', height:'48px', border:'1.5px solid #DC143C', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white', color:'#DC143C'}}>1</div>
+        <div style={{width:'48px', height:'48px', border:'1.5px solid #DC143C', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white', color:'#DC143C'}}>2</div>
+        <div style={{width:'48px', height:'48px', border:'1.5px solid #DC143C', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white', color:'#DC143C'}}>3</div>
+        <div style={{width:'48px', height:'48px', border:'1.5px solid #DC143C', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white', color:'#DC143C'}}>4</div>
+      </div>
+      <div style={{fontSize:'11px', fontWeight:600, marginBottom:'10px', opacity:0.4, letterSpacing:'0.5px'}}>INFO</div>
+      <div style={{display:'flex', gap:'8px'}}>
+        <div style={{width:'48px', height:'48px', border:'1.5px solid #2396FB', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white', color:'#2396FB'}}>1</div>
+        <div style={{width:'48px', height:'48px', border:'1.5px solid #2396FB', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white', color:'#2396FB'}}>2</div>
+        <div style={{width:'48px', height:'48px', border:'1.5px solid #2396FB', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white', color:'#2396FB'}}>3</div>
+        <div style={{width:'48px', height:'48px', border:'1.5px solid #2396FB', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white', color:'#2396FB'}}>4</div>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="By State">
+    <div style={{background:'#F5F5F5', borderRadius:'12px', padding:'24px'}}>
+      <div style={{display:'flex', flexDirection:'column', gap:'20px'}}>
+        <div>
+          <div style={{fontSize:'11px', fontWeight:600, marginBottom:'8px', opacity:0.4, letterSpacing:'0.5px'}}>DEFAULT</div>
+          <div style={{display:'flex', gap:'8px'}}>
+            <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>—</div>
+            <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>—</div>
+            <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>—</div>
+            <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>—</div>
+          </div>
+        </div>
+        <div>
+          <div style={{fontSize:'11px', fontWeight:600, marginBottom:'8px', opacity:0.4, letterSpacing:'0.5px'}}>FOCUSED</div>
+          <div style={{display:'flex', gap:'8px'}}>
+            <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white', boxShadow:'0 0 0 2px rgba(0,0,0,0.4)'}}>1</div>
+            <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>—</div>
+            <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>—</div>
+            <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>—</div>
+          </div>
+        </div>
+        <div>
+          <div style={{fontSize:'11px', fontWeight:600, marginBottom:'8px', opacity:0.4, letterSpacing:'0.5px'}}>DISABLED</div>
+          <div style={{display:'flex', gap:'8px', opacity:0.4}}>
+            <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'#f5f5f5', color:'#999'}}>—</div>
+            <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'#f5f5f5', color:'#999'}}>—</div>
+            <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'#f5f5f5', color:'#999'}}>—</div>
+            <div style={{width:'48px', height:'48px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'#f5f5f5', color:'#999'}}>—</div>
+          </div>
+        </div>
+        <div>
+          <div style={{fontSize:'11px', fontWeight:600, marginBottom:'8px', opacity:0.4, letterSpacing:'0.5px'}}>GHOST</div>
+          <div style={{display:'flex', gap:'8px'}}>
+            <div style={{width:'48px', height:'48px', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'#ededed'}}></div>
+            <div style={{width:'48px', height:'48px', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'#ededed'}}></div>
+            <div style={{width:'48px', height:'48px', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'#ededed'}}></div>
+            <div style={{width:'48px', height:'48px', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'#ededed'}}></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Tab>
+</Tabs>
+
+---
+
+## Variants
+
+| Type | Description | Use Case |
+|------|-------------|----------|
+| 4-Digit | Four individual input boxes | Short verification codes, PINs |
+| 6-Digit | Six individual input boxes | Standard OTP, two-factor authentication |
+
+---
+
+## Anatomy
+
+| # | Element | Description |
+|---|---------|-------------|
+| 1 | Title | Label text with optional icon (e.g. "Enter OTP") |
+| 2 | Helper Text (Top) | Right-aligned hint above the inputs |
+| 3 | Input Boxes | Individual single-character inputs with 8px gap |
+| 4 | Subtext | Left-aligned helper text below inputs |
+| 5 | Helper Text (Bottom) | Right-aligned helper text below inputs |
+
+---
+
+## Sizes
+
+| Size | Height | Use Case |
+|------|--------|----------|
+| Large | 100px | Prominent OTP entry, onboarding flows |
+| Medium | 96px | Default for most verification screens |
+| Small | 88px | Compact layouts, inline verification |
+
+---
+
+## States
+
+| State | Description | Visual |
+|-------|-------------|--------|
+| Default | Resting state, ready for input | Neutral border (#CCC), white background |
+| Hover | Pointer over input box | Slightly emphasized border |
+| Active | Currently being typed into | Highlighted border |
+| Focused | Keyboard focus on input | Black focus ring (2px shadow) |
+| Disabled | Input not available | Reduced opacity, grey background |
+| Ghost | Skeleton/loading placeholder | Solid grey background (#EDEDED), no border |
+
+---
+
+## Styles
+
+| Style | Border Color | Text Color | Use Case |
+|-------|-------------|------------|----------|
+| Default | `#CCC` (neutral) | `#2B2B2B` | Standard OTP entry |
+| Success | `#1BA86E` (green) | `#1BA86E` | Valid code confirmation |
+| Error | `#DC143C` (red) | `#DC143C` | Invalid code, expired OTP |
+| Info | `#2396FB` (blue) | `#2396FB` | Informational state |
+
+---
+
+## Usage Guidelines
+
+<div style={{display:'flex', gap:'24px', marginBottom:'32px', flexWrap:'wrap'}}>
+  <div style={{flex:'1', minWidth:'280px', borderRadius:'12px', overflow:'hidden', border:'1px solid #E5E7EB'}}>
+    <div style={{background:'#F8F8F8', padding:'32px', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', minHeight:'140px', gap:'8px'}}>
+      <div style={{fontSize:'12px', color:'#454545', marginBottom:'4px'}}>Enter verification code</div>
+      <div style={{display:'flex', gap:'8px'}}>
+        <div style={{width:'44px', height:'44px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>1</div>
+        <div style={{width:'44px', height:'44px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>2</div>
+        <div style={{width:'44px', height:'44px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>3</div>
+        <div style={{width:'44px', height:'44px', border:'1px solid #ccc', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'14px', fontWeight:500, background:'white'}}>4</div>
+      </div>
+      <div style={{fontSize:'11px', color:'#666'}}>Resend in 00:30</div>
+    </div>
+    <div style={{borderTop:'4px solid #4A7A3D', padding:'16px 20px'}}>
+      <div style={{display:'flex', alignItems:'center', gap:'8px', marginBottom:'6px'}}>
+        <span style={{fontSize:'16px'}}>✅</span>
+        <span style={{fontSize:'16px', fontWeight:700, color:'#166534'}}>Do</span>
+      </div>
+      <span style={{fontSize:'13px', color:'#555'}}>Provide clear labels, auto-focus the first box, and show a resend timer.</span>
+    </div>
+  </div>
+  <div style={{flex:'1', minWidth:'280px', borderRadius:'12px', overflow:'hidden', border:'1px solid #E5E7EB'}}>
+    <div style={{background:'#F8F8F8', padding:'32px', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', minHeight:'140px', gap:'8px'}}>
+      <div style={{display:'flex', gap:'8px'}}>
+        <input style={{width:'44px', height:'44px', border:'1px solid #ccc', borderRadius:'6px', textAlign:'center', fontSize:'14px', fontWeight:500}} defaultValue="•" readOnly />
+        <input style={{width:'44px', height:'44px', border:'1px solid #ccc', borderRadius:'6px', textAlign:'center', fontSize:'14px', fontWeight:500}} defaultValue="•" readOnly />
+        <input style={{width:'44px', height:'44px', border:'1px solid #ccc', borderRadius:'6px', textAlign:'center', fontSize:'14px', fontWeight:500}} defaultValue="•" readOnly />
+        <input style={{width:'44px', height:'44px', border:'1px solid #ccc', borderRadius:'6px', textAlign:'center', fontSize:'14px', fontWeight:500}} defaultValue="•" readOnly />
+      </div>
+    </div>
+    <div style={{borderTop:'4px solid #DC2626', padding:'16px 20px'}}>
+      <div style={{display:'flex', alignItems:'center', gap:'8px', marginBottom:'6px'}}>
+        <span style={{fontSize:'16px'}}>❌</span>
+        <span style={{fontSize:'16px', fontWeight:700, color:'#DC2626'}}>Don't</span>
+      </div>
+      <span style={{fontSize:'13px', color:'#555'}}>Don't mask OTP digits or omit labels. OTP codes are temporary and should be visible for easy entry.</span>
+    </div>
+  </div>
+</div>
+
+- Auto-focus the first input box on mount
+- Auto-advance focus to the next box after each digit
+- Support paste to fill all boxes at once
+- Allow backspace to clear and move to the previous box
+- Show a resend option with a cooldown timer
+- Do not mask OTP digits — they are already temporary
+
+---
+
+## Accessibility
+
+| Requirement | Guideline |
+|-------------|-----------|
+| Semantic HTML | Use `<input>` elements within a `role="group"` container |
+| aria-label | `"One-time password"` on the group container |
+| aria-describedby | Link to instructions or error text |
+| inputmode | `numeric` — shows numeric keyboard on mobile |
+| autocomplete | `one-time-code` — enables OTP autofill |
+| Keyboard: Tab | Navigate between input boxes |
+| Keyboard: Backspace | Clear current and move to previous box |
+| Focus ring | 2px visible shadow, ≥ 3:1 contrast |
+| Text contrast | ≥ 4.5:1 against background (WCAG AA) |
+
+---
+
+## Design Tokens
+
+<Tabs>
+  <Tab title="Sizing">
+    | Token | Value | Description |
+    |-------|-------|-------------|
+    | `otp-height-lg` | 100px | Large variant total height |
+    | `otp-height-md` | 96px | Medium variant total height |
+    | `otp-height-sm` | 88px | Small variant total height |
+    | `otp-box-radius` | 6px | Input box corner rounding |
+    | `otp-gap` | 8px | Space between input boxes |
+    | `otp-padding` | 12px | Inner padding of each box |
+  </Tab>
+  <Tab title="Colors">
+    | Token | Value | Description |
+    |-------|-------|-------------|
+    | `otp-border-default` | #CCCCCC | Default border color |
+    | `otp-border-success` | #1BA86E | Success state border |
+    | `otp-border-error` | #DC143C | Error state border |
+    | `otp-border-info` | #2396FB | Info state border |
+    | `otp-bg-default` | #FFFFFF | Default background |
+    | `otp-bg-disabled` | #F5F5F5 | Disabled background |
+    | `otp-bg-ghost` | #EDEDED | Ghost/skeleton background |
+  </Tab>
+  <Tab title="Typography">
+    | Token | Value | Description |
+    |-------|-------|-------------|
+    | `otp-font-family` | Noto Sans Medium | Input digit font |
+    | `otp-font-size` | 14px (Scale/550) | Digit text size |
+    | `otp-line-height` | 20px (Scale/700) | Digit line height |
+    | `otp-title-size` | 14px | Title label size |
+    | `otp-caption-size` | 12px (Scale/500) | Subtext and helper text size |
+  </Tab>
+</Tabs>
+
+---
+
+## Developer Handoff
+
+```tsx
+interface OTPFieldProps {
+  type?: '4-digit' | '6-digit';
+  size?: 'large' | 'medium' | 'small';
+  style?: 'default' | 'success' | 'error' | 'info';
+  title?: string;
+  titleIcon?: boolean;
+  helperTextTop?: string;
+  subtext?: string;
+  helperTextBottom?: string;
+  value?: string;
+  onChange?: (value: string) => void;
+  onComplete?: (value: string) => void;
+  autoFocus?: boolean;
+  disabled?: boolean;
+}
+```
+
+```tsx
+// Default 4-digit OTP
+<OTPField
+  type="4-digit"
+  title="Enter OTP"
+  subtext="Check your SMS"
+  autoFocus
+  onComplete={handleVerify}
+/>
+
+// 6-digit with error state
+<OTPField
+  type="6-digit"
+  style="error"
+  title="Verification Code"
+  helperTextTop="Expires in 5:00"
+  subtext="Invalid code, please try again"
+  value={otp}
+  onChange={setOtp}
+/>
+
+// Success confirmation
+<OTPField
+  type="4-digit"
+  style="success"
+  title="OTP Verified"
+  subtext="Code accepted"
+  disabled
+/>
+```
