@@ -9,7 +9,7 @@ import { useTheme } from '@/components/ThemeProvider';
 const topNav = [
   { label: 'About', href: '/about/overview', section: 'about' },
   { label: 'Foundations', href: '/foundations/colors', section: 'foundations' },
-  { label: 'Components', href: '/components/button', section: 'components' },
+  { label: 'Components', href: '/components/accordion', section: 'components' },
   { label: 'Accessibility', href: '/accessibility/overview', section: 'accessibility' },
 ];
 

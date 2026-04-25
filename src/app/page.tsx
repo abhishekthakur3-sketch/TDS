@@ -157,7 +157,7 @@ export default function Home() {
               Get started <ArrowRight size={16} />
             </Link>
             <Link
-              href="/components/button"
+              href="/components/accordion"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-colors border"
               style={{
                 borderColor: theme === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.15)',
