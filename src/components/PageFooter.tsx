@@ -92,7 +92,7 @@ export function PageFooter() {
 
   return (
     <footer className="content-area pb-16 px-8">
-      <div className="max-w-3xl mx-auto">
+      <div>
       {/* Prev / Next navigation */}
       {(prev || next) && (
         <div

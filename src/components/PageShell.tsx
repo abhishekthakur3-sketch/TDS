@@ -17,7 +17,7 @@ export function PageShell({
     <>
       <TableOfContents />
       <div className="content-area py-10 px-8">
-        <div className="max-w-3xl mx-auto">
+        <div>
           <div className="mb-8">
             <h1
               className="text-3xl sm:text-4xl font-bold tracking-tight mb-3"
