@@ -111,7 +111,7 @@ interface UploadedFile {
       <h2>Storybook</h2>
       <p>
         Explore all file upload variants interactively in{' '}
-        <a href="https://tarmac-storybook-dev.pntrzz.com/storybook/?path=/story/tarmac-tds-fileupload--playground" target="_blank" rel="noopener noreferrer">
+        <a href="https://tarmac-storybook-dev.pntrzz.com/storybook/sb/index.html?path=/story/tarmac-tds-fileupload--playground" target="_blank" rel="noopener noreferrer">
           TARMAC Storybook →
         </a>
       </p>

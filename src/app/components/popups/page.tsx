@@ -87,7 +87,7 @@ interface ConfirmPopupProps extends PopupProps {
       <h2>Storybook</h2>
       <p>
         Explore all popup variants interactively in{' '}
-        <a href="https://tarmac-storybook-dev.pntrzz.com/storybook/?path=/story/tarmac-tds-popup--playground" target="_blank" rel="noopener noreferrer">TARMAC Storybook →</a>
+        <a href="https://tarmac-storybook-dev.pntrzz.com/storybook/sb/index.html?path=/story/tarmac-tds-popup--playground" target="_blank" rel="noopener noreferrer">TARMAC Storybook →</a>
       </p>
     </>
   );

@@ -83,7 +83,7 @@ interface ShimmerListItemProps {
       <h2>Storybook</h2>
       <p>
         Explore all shimmer variants interactively in{' '}
-        <a href="https://tarmac-storybook-dev.pntrzz.com/storybook/?path=/story/tarmac-tds-shimmer--playground" target="_blank" rel="noopener noreferrer">TARMAC Storybook →</a>
+        <a href="https://tarmac-storybook-dev.pntrzz.com/storybook/sb/index.html?path=/story/tarmac-tds-shimmer--playground" target="_blank" rel="noopener noreferrer">TARMAC Storybook →</a>
       </p>
     </>
   );

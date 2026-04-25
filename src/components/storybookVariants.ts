@@ -18,7 +18,7 @@ export function getIframeUrl(storyId: string) {
 }
 
 export function getStorybookUrl(storyId: string) {
-  return `${BASE}/?path=/story/${storyId}`;
+  return `${BASE}/sb/index.html?path=/story/${storyId}`;
 }
 
 // Keep legacy helpers for backward compat
@@ -27,7 +27,7 @@ export function getDocsIframeUrl(docsId: string) {
 }
 
 export function getDocsStorybookUrl(docsId: string) {
-  return `${BASE}/?path=/docs/${docsId}`;
+  return `${BASE}/sb/index.html?path=/docs/${docsId}`;
 }
 
 export function getStoryIframeUrl(storyId: string) {

@@ -91,7 +91,7 @@ interface BreadcrumbItem {
       <h2>Storybook</h2>
       <p>
         Explore all navigation variants in{' '}
-        <a href="https://tarmac-storybook-dev.pntrzz.com/storybook/?path=/story/tarmac-tds-navigation--playground" target="_blank" rel="noopener noreferrer">
+        <a href="https://tarmac-storybook-dev.pntrzz.com/storybook/sb/index.html?path=/story/tarmac-tds-navigation--playground" target="_blank" rel="noopener noreferrer">
           TARMAC Storybook →
         </a>
       </p>
