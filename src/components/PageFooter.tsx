@@ -115,7 +115,10 @@ export function PageFooter() {
           <span className="text-xs" style={{ color: 'var(--color-on-surface-variant)' }}>
             © {new Date().getFullYear()} Delhivery Ltd. All rights reserved.
           </span>
-          <div className="flex gap-4 text-xs" style={{ color: 'var(--color-on-surface-variant)' }}>
+          <div className="flex items-center gap-4 text-xs" style={{ color: 'var(--color-on-surface-variant)' }}>
+            <span className="flex items-center gap-1">
+              Crafted with <span className="inline-block" style={{ animation: 'heartPulse 3s ease-in-out infinite', color: '#ED1B36' }}>&#10084;</span>
+            </span>
             <a href="https://www.delhivery.com" target="_blank" rel="noopener noreferrer" className="hover:underline">delhivery.com</a>
             <a href="https://github.com/abhishekthakur3-sketch/TDS" target="_blank" rel="noopener noreferrer" className="hover:underline">GitHub</a>
           </div>

@@ -645,8 +645,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="mt-8 pt-4 border-t text-sm" style={{ borderColor: 'var(--color-outline)', color: 'var(--color-on-surface-variant)' }}>
-            © {new Date().getFullYear()} Delhivery Ltd. All rights reserved.
+          <div className="mt-8 pt-4 border-t text-sm flex items-center justify-between" style={{ borderColor: 'var(--color-outline)', color: 'var(--color-on-surface-variant)' }}>
+            <span>© {new Date().getFullYear()} Delhivery Ltd. All rights reserved.</span>
+            <span className="flex items-center gap-1">
+              Crafted with <span className="inline-block" style={{ animation: 'heartPulse 3s ease-in-out infinite', color: '#ED1B36' }}>&#10084;</span>
+            </span>
           </div>
         </div>
       </footer>
