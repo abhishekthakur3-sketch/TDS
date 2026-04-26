@@ -1,20 +1,42 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 import { TopBar } from '@/components/TopBar';
 import { Sidebar } from '@/components/Sidebar';
 import { PageFooter } from '@/components/PageFooter';
+import { SplashScreen } from '@/components/SplashScreen';
 
 export function LayoutShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isHome = pathname === '/';
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showSplash, setShowSplash] = useState(false);
 
   // Close sidebar on route change
   useEffect(() => {
     setSidebarOpen(false);
   }, [pathname]);
+
+  // Show splash only on homepage, once per session
+  useEffect(() => {
+    if (isHome && typeof window !== 'undefined') {
+      const seen = sessionStorage.getItem('tarmac-splash-seen');
+      if (!seen) {
+        setShowSplash(true);
+      }
+    }
+  }, [isHome]);
+
+  const handleSplashComplete = useCallback(() => {
+    setShowSplash(false);
+    try { sessionStorage.setItem('tarmac-splash-seen', '1'); } catch { /* private browsing */ }
+  }, []);
+
+  /* While splash is active, hide everything else so nothing bleeds through */
+  if (showSplash) {
+    return <SplashScreen onComplete={handleSplashComplete} />;
+  }
 
   return (
     <>
